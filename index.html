@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Journalistin — Portfolio</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <img src="assets/title.svg" alt="Titelbild" class="hero-image">
+    <h1>Journalistin — Name Nachname</h1>
+    <p class="lead">Recherche · Reportagen · Interviews</p>
+  </header>
+
+  <main class="container">
+    <section class="articles">
+      <h2>Aktuelle Artikel</h2>
+
+      <article class="card">
+        <img class="card-image" src="assets/article1.svg" alt="Vorschau Artikel 1">
+        <div class="card-body">
+          <h3>Artikel 1: Überschrift</h3>
+          <p class="excerpt">Kurzer Teasertext für Artikel 1 — ein bis zwei Sätze, die neugierig machen.</p>
+          <a class="read-more" href="#">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card-image" src="assets/article2.svg" alt="Vorschau Artikel 2">
+        <div class="card-body">
+          <h3>Artikel 2: Überschrift</h3>
+          <p class="excerpt">Kurzer Teasertext für Artikel 2 — ein bis zwei Sätze, die neugierig machen.</p>
+          <a class="read-more" href="#">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card-image" src="assets/article3.svg" alt="Vorschau Artikel 3">
+        <div class="card-body">
+          <h3>Artikel 3: Überschrift</h3>
+          <p class="excerpt">Kurzer Teasertext für Artikel 3 — ein bis zwei Sätze, die neugierig machen.</p>
+          <a class="read-more" href="#">Weiterlesen →</a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <section class="about">
+      <h2>Über mich</h2>
+      <p>Ich bin Journalistin mit Schwerpunkt auf Recherche und Gesellschaftsthemen. Kontakt: <a href="mailto:mail@example.com">mail@example.com</a></p>
+    </section>
+    <p class="copyright">© <span id="year"></span> Name Nachname</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
