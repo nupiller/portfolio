@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#fef3ef" />
+      <stop offset="1" stop-color="#fff0e6" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="600" fill="url(#g)" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Inter, Arial, sans-serif" font-size="64" fill="#111" font-weight="900">
+    Titelbild — Recherche & Portrait
+  </text>
+</svg>
