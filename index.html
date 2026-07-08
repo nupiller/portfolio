@@ -12,18 +12,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
   <!-- Cache‑Busted CSS -->
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=24">
 </head>
 <body>
   <header class="hero">
     <div class="hero-media" aria-hidden="true"></div>
 
-    <!-- Hero bar: left = brand (absolutely positioned at viewport left), right = vertical nav; slim and centered vertically -->
-    <div class="hero-bar container" role="banner">
-      <div class="brand">
-        <div class="mast-name">Nuria Piller</div>
-      </div>
+    <!-- Brand moved out of the centered container and positioned at the viewport left edge -->
+    <div class="brand">
+      <div class="mast-name">Nuria Piller</div>
+    </div>
 
+    <!-- Hero bar: contains only the centered container with the nav on the right -->
+    <div class="hero-bar container" role="banner">
       <nav class="topnav" aria-label="Hauptnavigation">
         <ul class="topnav-columns">
           <li><a href="#">Arbeiten</a></li>

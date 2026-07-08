@@ -44,8 +44,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
 }
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05);opacity:0.32}
 
-/* Hero bar: slim; left brand (flushed to viewport left), right vertical nav; large gap between them
-   - padding-left reduced so brand can sit at viewport left
+/* Hero bar: slim; contains only the centered container with the nav; large gap between brand and nav
    - padding-right increased by 20px to shift menu stable to the right
    - height 44px as requested */
 .hero-bar{
@@ -53,8 +52,8 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   z-index:10;
   display:flex;
   align-items:center; /* vertically center both stacks */
-  justify-content:space-between;
-  gap:6rem; /* large central gap */
+  justify-content:flex-end; /* nav sits at the right edge of the centered container */
+  gap:6rem; /* large central gap (visual) */
   padding:0 calc(2rem + 20px) 0 0; /* right padding includes +20px for menu; left padding removed */
   height:44px; /* requested 44px height */
 }
@@ -74,7 +73,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
 }
 .mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(20px,4vw,28px);line-height:1;color:var(--black);} /* larger as requested */
 
-/* Right nav: vertical stack, right-aligned; stable shift via increased right padding */
+/* Right nav: vertical stack, right-aligned inside the container */
 .topnav{margin-left:auto; margin-right:0; transform:none;}
 .topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.25rem;align-items:flex-end;font-family:"Courier New",monospace;font-size:14px;line-height:1}
 .topnav-columns li{color:var(--black)}
