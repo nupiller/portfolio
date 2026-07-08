@@ -1,62 +1,81 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Journalistin — Portfolio</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Journalistin — Portfolio (Artsy)</title>
+
+  <!-- Playfair Display für große, elegante Überschriften -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <img src="assets/title.svg" alt="Titelbild" class="hero-image">
-    <h1>Journalistin — Name Nachname</h1>
-    <p class="lead">Recherche · Reportagen · Interviews</p>
+  <header class="hero">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="hero-inner container">
+      <h1 class="hero-title">JOURNALISTIN</h1>
+      <p class="hero-sub">Reportagen · Recherche · Stimmen</p>
+    </div>
   </header>
 
+  <nav class="topbar container">
+    <a href="#" class="logo">JOURNALISTIN</a>
+    <ul class="navlinks" aria-hidden="true">
+      <li><a href="#">Arbeiten</a></li>
+      <li><a href="#">Über</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </nav>
+
   <main class="container">
-    <section class="articles">
-      <h2>Aktuelle Artikel</h2>
-
-      <article class="card">
-        <img class="card-image" src="assets/article1.svg" alt="Vorschau Artikel 1">
-        <div class="card-body">
-          <h3>Artikel 1: Überschrift</h3>
-          <p class="excerpt">Kurzer Teasertext für Artikel 1 — ein bis zwei Sätze, die neugierig machen.</p>
-          <a class="read-more" href="#">Weiterlesen →</a>
+    <section class="grid">
+      <article class="tile tile-large">
+        <div class="img" style="background-image:url('/images/article1.svg')"></div>
+        <div class="meta">
+          <span class="place">Berlin</span> · <span class="date">06.07.2026</span>
         </div>
+        <h2 class="title">Große Reportage über Stadt und Wandel</h2>
+        <p class="excerpt">Kurztext / Teaser: Ein dichter, neugierig machender Satz in Courier New, der zum Weiterlesen einlädt.</p>
+        <a class="more" href="#">Weiterlesen →</a>
       </article>
 
-      <article class="card">
-        <img class="card-image" src="assets/article2.svg" alt="Vorschau Artikel 2">
-        <div class="card-body">
-          <h3>Artikel 2: Überschrift</h3>
-          <p class="excerpt">Kurzer Teasertext für Artikel 2 — ein bis zwei Sätze, die neugierig machen.</p>
-          <a class="read-more" href="#">Weiterlesen →</a>
-        </div>
+      <article class="tile tile-medium">
+        <div class="img" style="background-image:linear-gradient(135deg,#fff8f2,#fff);"></div>
+        <div class="meta"><span class="place">Hamburg</span></div>
+        <h3 class="title">Recherche: Hinter den Fassaden</h3>
+        <p class="excerpt">Zwei Zeilen Teaser, knapp formuliert.</p>
+        <a class="more" href="#">Weiterlesen →</a>
       </article>
 
-      <article class="card">
-        <img class="card-image" src="assets/article3.svg" alt="Vorschau Artikel 3">
-        <div class="card-body">
-          <h3>Artikel 3: Überschrift</h3>
-          <p class="excerpt">Kurzer Teasertext für Artikel 3 — ein bis zwei Sätze, die neugierig machen.</p>
-          <a class="read-more" href="#">Weiterlesen →</a>
-        </div>
+      <article class="tile tile-medium alt">
+        <div class="img" style="background-image:url('/images/article3.svg')"></div>
+        <div class="meta"><span class="place">München</span></div>
+        <h3 class="title">Interview: Stimmen und Perspektiven</h3>
+        <p class="excerpt">Kurztext als Anreiz.</p>
+        <a class="more" href="#">Weiterlesen →</a>
       </article>
 
+      <article class="tile tile-small">
+        <div class="img" style="background-image:url('/images/article4.svg')"></div>
+        <h4 class="title">Kolumne</h4>
+      </article>
+
+      <article class="tile about-tile">
+        <img class="portrait" src="/images/portrait.svg" alt="Porträt">
+        <div class="about-body">
+          <h3>Über mich</h3>
+          <p class="excerpt">Ich arbeite als freie Journalistin und recherchiere zu Politik, Gesellschaft und Kultur. (Platzhalter)</p>
+          <p class="contact">Kontakt: <em>Platzhalter</em></p>
+        </div>
+      </article>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <section class="about">
-      <h2>Über mich</h2>
-      <p>Ich bin Journalistin mit Schwerpunkt auf Recherche und Gesellschaftsthemen. Kontakt: <a href="mailto:mail@example.com">mail@example.com</a></p>
-    </section>
-    <p class="copyright">© <span id="year"></span> Name Nachname</p>
+  <footer class="site-footer container">
+    <small>© <span id="year"></span> Journalistin — Alle Rechte vorbehalten</small>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="/script.js"></script>
 </body>
 </html>
