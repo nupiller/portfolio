@@ -22,7 +22,7 @@ body{
 
 /* Hero */
 .hero{position:relative;height:58vh;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.02))}
-.hero-media{position:absolute;inset:0;background-image:url('/images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05)}
+.hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05)}
 .hero-inner{position:relative;padding:3rem 1rem;color:var(--white);mix-blend-mode:normal}
 .hero-title{
   font-family: 'Playfair Display', serif;
