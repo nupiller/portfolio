@@ -34,11 +34,12 @@ main{margin-top:3.5rem}
 .hero{position:relative;height:58vh;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.02))}
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05)}
 
-/* Masthead: brand + nav positioned top-left */
-.masthead{position:absolute;top:1rem;left:1rem;z-index:10;display:flex;flex-direction:column;gap:.5rem;align-items:flex-start}
-.masthead .hero-title{font-weight:900;font-size:clamp(40px,9vw,120px);margin:0;line-height:0.92;color:var(--white);text-transform:uppercase;letter-spacing:-0.75px;text-shadow:none}
+/* Masthead: brand + nav positioned top-left, rounded container */
+.masthead{position:absolute;top:1.25rem;left:1.25rem;z-index:10;display:flex;flex-direction:column;gap:.5rem;align-items:flex-start;background:rgba(255,255,255,0.94);padding:.6rem 1rem;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
+.masthead .hero-title{font-weight:900;font-size:clamp(40px,9vw,120px);margin:0;line-height:0.92;color:var(--black);text-transform:none;letter-spacing:-0.75px;text-shadow:none}
+.masthead .hero-title .hero-subline{display:block;font-weight:400;font-size:0.5em;margin-top:0.15rem;letter-spacing:0}
 .mastnav .nav-columns{display:grid;grid-template-columns:repeat(3,auto);gap:1.25rem;list-style:none;margin:0;padding:0}
-.mastnav .nav-columns a{text-decoration:none;color:var(--white);font-family:"Courier New",monospace;font-size:0.95rem}
+.mastnav .nav-columns a{text-decoration:none;color:var(--black);font-family:"Courier New",monospace;font-size:0.95rem}
 
 .hero-inner{position:relative;padding:3rem 1rem;color:var(--white);mix-blend-mode:normal}
 .hero-sub{font-family:"Courier New", monospace;margin-top:.5rem;color:rgba(255,255,255,0.9)}
@@ -104,7 +105,7 @@ main{margin-top:3.5rem}
 @media (max-width:720px){
   /* mobile layout tweaks */
   .hero{height:40vh;align-items:center}
-  .masthead{position:relative;top:0;left:0;padding-top:1rem}
+  .masthead{position:relative;top:0;left:0;padding-top:1rem;flex-direction:row;align-items:center}
   .masthead .hero-title{font-size:clamp(26px,10vw,48px);font-weight:700;letter-spacing:-0.25px}
   .mastnav .nav-columns{grid-template-columns:repeat(1,auto);gap:.75rem}
   .hero-inner{padding:1rem}
