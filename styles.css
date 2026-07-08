@@ -52,16 +52,13 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   align-items:center; /* vertically center both stacks */
   justify-content:space-between;
   gap:6rem; /* large central gap */
-  padding:0 2rem 0 0.5rem; /* move brand further to the left by reducing left padding */
+  padding:0 2rem 0 0; /* move brand further to the left by reducing left padding */
   height:44px; /* requested 44px height */
 }
 
-/* Brand on the left (single line), left aligned */
-.brand{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(16px,2.4vw,18px);line-height:1;color:var(--black);}
-
-/* Horizontal rule under the hero-bar */
-.header-rule{border:0;border-top:1px solid #bfbfbf;margin:0;padding:0;width:100%}
+/* Brand on the left (single line), left aligned, pushed farther left */
+.brand{display:flex;flex-direction:column;align-items:flex-start;text-align:left;margin-left:-2.5rem}
+.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(18px,3.4vw,24px);line-height:1;color:var(--black);}
 
 /* Right nav: vertical stack, right-aligned; nudged 20px further to the right using margin */
 .topnav{margin-left:auto; margin-right:-20px; transform:none;}
@@ -132,7 +129,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   /* mobile layout: stack brand above nav */
   .hero{min-height:260px;padding:1rem 0}
   .hero-bar{flex-direction:column;align-items:flex-start;padding:0 1rem;gap:0.5rem;height:auto}
-  .brand{text-align:left;margin-top:0}
+  .brand{text-align:left;margin-top:0;margin-left:0}
   .mast-role{display:none}
   .topnav-columns{flex-direction:row;gap:1rem;align-items:center}
   .topnav{margin-left:0;transform:none;margin-right:0}
