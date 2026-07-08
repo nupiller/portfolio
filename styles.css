@@ -35,8 +35,8 @@ main{margin-top:3.5rem}
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05)}
 
 /* Masthead: brand + nav positioned top-left, rounded container */
-.masthead{position:absolute;top:1.25rem;left:1.25rem;z-index:10;display:flex;flex-direction:column;gap:.5rem;align-items:flex-start;background:rgba(255,255,255,0.94);padding:.6rem 1rem;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
-.masthead .hero-title{font-weight:900;font-size:clamp(40px,9vw,120px);margin:0;line-height:0.92;color:var(--black);text-transform:none;letter-spacing:-0.75px;text-shadow:none}
+.masthead{position:absolute;top:2rem;left:2rem;z-index:10;display:flex;flex-direction:column;gap:.5rem;align-items:flex-start;background:rgba(255,255,255,0.94);padding:.9rem 1.1rem;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
+.masthead .hero-title{font-weight:900;font-size:clamp(28px,6.5vw,72px);margin:0;line-height:1;color:var(--black);text-transform:none;letter-spacing:-0.5px;text-shadow:none}
 .masthead .hero-title .hero-subline{display:block;font-weight:400;font-size:0.5em;margin-top:0.15rem;letter-spacing:0}
 .mastnav .nav-columns{display:grid;grid-template-columns:repeat(3,auto);gap:1.25rem;list-style:none;margin:0;padding:0}
 .mastnav .nav-columns a{text-decoration:none;color:var(--black);font-family:"Courier New",monospace;font-size:0.95rem}
