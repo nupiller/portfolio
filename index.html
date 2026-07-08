@@ -8,29 +8,33 @@
   <!-- Preconnect für Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Inter für Überschriften und Fließtext (ZHDK-style Sans-Serif) -->
+  <!-- Inter für Überschriften und Fließtext -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
   <!-- Cache‑Busted CSS -->
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <header class="hero">
     <div class="hero-media" aria-hidden="true"></div>
-    <div class="hero-inner container">
+
+    <!-- Masthead: brand + navigation top-left as requested -->
+    <div class="masthead container" role="banner">
       <h1 class="hero-title">JOURNALISTIN</h1>
+
+      <nav class="mastnav" aria-label="Hauptnavigation">
+        <ul class="nav-columns">
+          <li><a href="#">Arbeiten</a></li>
+          <li><a href="#">Über</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="hero-inner container">
       <p class="hero-sub">Reportagen · Recherche · Stimmen</p>
     </div>
   </header>
-
-  <nav class="topbar container">
-    <a href="#" class="logo">JOURNALISTIN</a>
-    <ul class="navlinks" aria-hidden="true">
-      <li><a href="#">Arbeiten</a></li>
-      <li><a href="#">Über</a></li>
-      <li><a href="#">Kontakt</a></li>
-    </ul>
-  </nav>
 
   <main class="container">
     <section class="grid">
