@@ -17,6 +17,14 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+/* Headings: Inter (nur Überschriften und Brand) */
+h1,h2,h3,h4,h5,h6,
+.logo, .hero-title, .title, .about-body h3 {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight:900;
+  letter-spacing:-0.5px;
+}
+
 /* Layout container */
 .container{max-width:var(--max);margin:0 auto;padding:0 1rem}
 
@@ -25,21 +33,20 @@ body{
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05)}
 .hero-inner{position:relative;padding:3rem 1rem;color:var(--white);mix-blend-mode:normal}
 .hero-title{
-  font-family: 'Playfair Display', serif;
   font-weight:900;
   font-size:clamp(36px,9vw,96px);
   margin:0;
   line-height:0.9;
   color:var(--white);
   text-transform:uppercase;
-  letter-spacing:-2px;
+  letter-spacing:-1px;
   text-shadow:0 8px 30px rgba(0,0,0,0.45);
 }
 .hero-sub{font-family:"Courier New", monospace;margin-top:.5rem;color:rgba(255,255,255,0.9)}
 
 /* Topbar */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
-.logo{font-family:'Playfair Display',serif;text-decoration:none;color:var(--black);font-weight:700}
+.logo{text-decoration:none;color:var(--black);font-weight:700}
 .navlinks{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
 .navlinks a{text-decoration:none;color:#333;font-family:"Courier New",monospace;font-size:.9rem}
 
@@ -60,14 +67,14 @@ body{
 .tile.alt{background:linear-gradient(180deg,#fff,#fffaf6)}
 
 /* typography inside tiles */
-.title{font-family:'Playfair Display',serif;margin:.4rem 0 0;color:var(--black);font-weight:700}
+.title{margin:.4rem 0 0;color:var(--black);font-weight:700}
 .meta{font-family:"Courier New",monospace;color:#666;font-size:.85rem}
 .excerpt{font-family:"Courier New",monospace;color:#222;margin:.75rem 0;line-height:1.4}
 .more{font-weight:700;color:var(--accent);text-decoration:none}
 
 /* About tile */
 .portrait{width:92px;height:92px;object-fit:cover;border-radius:6px;background:#efefef}
-.about-body h3{margin:0;font-family:'Playfair Display',serif}
+.about-body h3{margin:0}
 
 /* Hover effects */
 .tile:hover .img{transform:scale(1.03)}
