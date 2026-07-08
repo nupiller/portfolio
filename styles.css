@@ -34,19 +34,19 @@ main{margin-top:3rem} /* slightly less spacing now that header is shorter */
 .hero{position:relative;min-height:200px;display:flex;flex-direction:column;align-items:stretch;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.02))}
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05);opacity:0.32}
 
-/* Hero bar (left nav, right brand) */
-.hero-bar{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+/* Hero bar: very slim (35px total height) */
+.hero-bar{position:relative;z-index:10;display:flex;align-items:center;justify-content:flex-start;gap:1rem;padding:0;height:35px}
 
-/* Left vertical nav */
-.topnav{margin-left:0}
-.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;align-items:flex-start}
-.topnav-columns li{font-family:"Courier New",monospace;color:var(--black);font-size:0.95rem}
-.topnav-columns a{text-decoration:none;color:var(--black)}
+/* Left vertical nav but aligned to the right edge of the bar (right-aligned menu) */
+.topnav{margin-left:auto}
+.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;align-items:flex-end;font-family:"Courier New",monospace;font-size:12px;line-height:12px}
+.topnav-columns li{color:var(--black)}
+.topnav-columns a{text-decoration:none;color:var(--black);display:block;padding:0}
 
-/* Right brand (no box) */
-.brand{margin-right:0;text-align:right}
-.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(14px,2.8vw,20px);line-height:1;color:var(--black)}
-.mast-role{font-family:'Inter',sans-serif;font-weight:400;font-size:0.85rem;color:rgba(0,0,0,0.75);margin-top:2px}
+/* Right brand (no box) — two lines, vertically centered */
+.brand{margin-right:0;text-align:right;display:flex;flex-direction:column;align-items:flex-end}
+.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(12px,2.4vw,14px);line-height:1;color:var(--black)}
+.mast-role{font-family:'Inter',sans-serif;font-weight:400;font-size:0.8rem;color:rgba(0,0,0,0.75);margin-top:2px}
 
 /* Hero inner (intro) */
 .hero-inner{position:relative;padding:0 1rem 1.25rem;color:var(--black);mix-blend-mode:normal}
@@ -110,10 +110,11 @@ main{margin-top:3rem} /* slightly less spacing now that header is shorter */
 @media (max-width:720px){
   /* mobile layout: stack brand above nav */
   .hero{min-height:260px}
-  .hero-bar{flex-direction:column;align-items:flex-start;padding:1rem 0}
+  .hero-bar{flex-direction:column;align-items:flex-start;padding:0.6rem 0;height:auto}
   .brand{text-align:left;margin-top:0.5rem}
   .mast-role{display:none}
   .topnav-columns{flex-direction:row;gap:1rem}
+  .topnav{margin-left:0}
   .hero-inner{padding:1rem}
   .grid{grid-template-columns:repeat(6,1fr);gap:14px}
   .tile-large{grid-column:span 6;grid-row:auto}
