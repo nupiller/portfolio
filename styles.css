@@ -15,6 +15,7 @@ body{
   color:var(--black);
   font-family: "Courier New", monospace; /* Fließtext */
   -webkit-font-smoothing:antialiased;
+  line-height:1.5; /* improves readability */
 }
 
 /* Headings: Inter (nur Überschriften und Brand) */
@@ -27,14 +28,15 @@ h1,h2,h3,h4,h5,h6,
 
 /* Layout container */
 .container{max-width:var(--max);margin:0 auto;padding:0 1rem}
+main{margin-top:3.5rem}
 
 /* Hero */
 .hero{position:relative;height:58vh;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.02))}
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05)}
 
-/* Masthead: brand + nav positioned top-left (as requested) */
+/* Masthead: brand + nav positioned top-left */
 .masthead{position:absolute;top:1rem;left:1rem;z-index:10;display:flex;flex-direction:column;gap:.5rem;align-items:flex-start}
-.masthead .hero-title{font-weight:900;font-size:clamp(36px,9vw,96px);margin:0;line-height:0.92;color:var(--white);text-transform:uppercase;letter-spacing:-1px;text-shadow:none}
+.masthead .hero-title{font-weight:900;font-size:clamp(40px,9vw,120px);margin:0;line-height:0.92;color:var(--white);text-transform:uppercase;letter-spacing:-0.75px;text-shadow:none}
 .mastnav .nav-columns{display:grid;grid-template-columns:repeat(3,auto);gap:1.25rem;list-style:none;margin:0;padding:0}
 .mastnav .nav-columns a{text-decoration:none;color:var(--white);font-family:"Courier New",monospace;font-size:0.95rem}
 
@@ -50,6 +52,25 @@ h1,h2,h3,h4,h5,h6,
 /* Tile base */
 .tile{background:var(--white);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.5rem;border-radius:8px;padding:0;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
 .tile .img{height:100%;min-height:160px;background-size:cover;background-position:center;transition:transform .6s ease, filter .4s ease}
+.tile .img[role="img"]{background-repeat:no-repeat}
+
+/* Overlay feature text (large, subtle) */
+.tile.feature{position:relative}
+.tile.feature .overlay-text{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Inter',sans-serif;
+  font-weight:900;
+  font-size:clamp(80px,18vw,260px);
+  color:var(--accent);
+  opacity:0.12;
+  pointer-events:none;
+  white-space:nowrap;
+  mix-blend-mode:multiply;
+  z-index:2;
+}
 
 /* sizes in grid units */
 .tile-large{grid-column: span 7; grid-row: span 2; padding:1.25rem}
@@ -63,8 +84,8 @@ h1,h2,h3,h4,h5,h6,
 /* typography inside tiles */
 .title{margin:.4rem 0 0;color:var(--black);font-weight:700}
 .meta{font-family:"Courier New",monospace;color:#666;font-size:.85rem}
-.excerpt{font-family:"Courier New",monospace;color:#222;margin:.75rem 0;line-height:1.4}
-.more{font-weight:700;color:var(--accent);text-decoration:none}
+.excerpt{font-family:"Courier New",monospace;color:#222;margin:.75rem 0;line-height:1.6;max-width:75ch}
+.more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0.25rem}
 
 /* About tile */
 .portrait{width:92px;height:92px;object-fit:cover;border-radius:6px;background:#efefef}
