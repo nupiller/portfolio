@@ -63,8 +63,8 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
 /* Horizontal rule under the hero-bar */
 .header-rule{border:0;border-top:1px solid #bfbfbf;margin:0;padding:0;width:100%}
 
-/* Right nav: vertical stack, right-aligned; nudged 20px further to the right */
-.topnav{margin-left:auto; transform: translateX(20px);}
+/* Right nav: vertical stack, right-aligned; nudged 20px further to the right using margin */
+.topnav{margin-left:auto; margin-right:-20px; transform:none;}
 .topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.25rem;align-items:flex-end;font-family:"Courier New",monospace;font-size:14px;line-height:1}
 .topnav-columns li{color:var(--black)}
 .topnav-columns a{text-decoration:none;color:var(--black);display:block}
