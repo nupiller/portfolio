@@ -74,7 +74,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   padding-left:76px; /* 2cm ≈ 76px — use px for consistent rendering */
   z-index:11;
 }
-.mast-name{font-family:"Courier New", monospace;font-weight:400;font-size:clamp(20px,4vw,28px);line-height:1;color:var(--black);} /* jetzt Courier New statt Inter */
+.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(24px,4.5vw,32px);line-height:1;color:rgba(255,0,0,0.55);}
 
 /* Right nav: vertical stack, right-aligned inside .hero-bar */
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
