@@ -91,26 +91,46 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
 .grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:1fr;gap:20px;margin:2rem 0;align-items:start}
 
 /* Tile base */
-.tile{background:var(--white);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.5rem;border-radius:8px;padding:0;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
+.tile{background:var(--white);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.5rem;border-radius:0;padding:0;box-shadow:none}
 .tile .img{height:100%;min-height:160px;background-size:cover;background-position:center;transition:transform .6s ease, filter .4s ease}
 .tile .img[role="img"]{background-repeat:no-repeat}
 
-/* Overlay feature text (large, subtle) */
-.tile.feature{position:relative}
-.tile.feature .overlay-text{
+/* Feature-row: erste drei Artikel als gleich große Bilder in EINER Zeile,
+   mit einem durchgehenden großen Overlay-Text darüber (wie im Referenzbild) */
+.feature-row{
+  grid-column: 1 / -1;
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  align-items:start;
+}
+.tile-row-item{padding:0}
+.tile-row-item .img{height:340px}
+
+.overlay-band{
   position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
+  left:0; right:0; top:0; height:340px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-family:'Inter',sans-serif;
   font-weight:900;
-  font-size:clamp(80px,18vw,260px);
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  font-size:clamp(60px,9vw,180px);
   color:var(--accent);
-  opacity:0.12;
-  pointer-events:none;
-  white-space:nowrap;
+  opacity:0.8;
   mix-blend-mode:multiply;
-  z-index:2;
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:5;
+}
+
+@media (max-width:900px){
+  .feature-row{grid-template-columns:1fr}
+  .tile-row-item .img{height:220px}
+  .overlay-band{position:static;height:auto;padding:0.5rem 0;font-size:clamp(32px,10vw,60px);opacity:0.9}
 }
 
 /* sizes in grid units */
