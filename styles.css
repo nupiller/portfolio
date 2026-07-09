@@ -46,7 +46,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
 .hero::before{
   content:'';
   position:absolute;
-  top:0;
+  top:28px;
   left:76px; /* gleicher Einzug wie .brand padding-left, daher optisch stimmig */
   right:0;
   height:2px;
@@ -125,7 +125,8 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   left:0; right:0; top:0; height:340px;
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-end;
+  padding-right:2rem;
   font-family:'Inter',sans-serif;
   font-weight:900;
   text-transform:uppercase;
