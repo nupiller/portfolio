@@ -68,10 +68,10 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   flex-direction:column;
   align-items:flex-start;
   text-align:left;
-  padding-left:1rem; /* breathing space from viewport edge */
+  padding-left:2cm; /* 2cm Abstand zum linken Rand */
   z-index:11;
 }
-.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(20px,4vw,28px);line-height:1;color:var(--black);} /* larger as requested */
+.mast-name{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(20px,4vw,28px);line-height:1;color:var(--black);} /* now non-bold */
 
 /* Right nav: vertical stack, right-aligned inside the container */
 .topnav{margin-left:auto; margin-right:0; transform:none;}
@@ -164,7 +164,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   left: 0 !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  padding-left: 1rem !important;
+  padding-left: 2cm !important; /* 2cm Abstand */
   z-index: 9999 !important;
   max-width: none !important;
 }
