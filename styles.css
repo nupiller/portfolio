@@ -74,7 +74,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
 .mast-name{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(20px,4vw,28px);line-height:1;color:var(--black);} /* now non-bold */
 
 /* Right nav: vertical stack, right-aligned inside the container */
-.topnav{margin-left:auto; margin-right:0; transform:none;}
+.topnav{margin-left:auto; margin-right:0; transform:none; padding-right:76px;}
 .topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.25rem;align-items:flex-end;font-family:"Courier New",monospace;font-size:14px;line-height:1}
 .topnav-columns li{color:var(--black)}
 .topnav-columns a{text-decoration:none;color:var(--black);display:block}
@@ -145,7 +145,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   .brand{text-align:left;margin-top:0;position:static;padding-left:0}
   .mast-role{display:none}
   .topnav-columns{flex-direction:row;gap:1rem;align-items:center}
-  .topnav{margin-left:0;transform:none;margin-right:0}
+  .topnav{margin-left:0;transform:none;margin-right:0;padding-right:0}
   .hero-inner{padding:1rem}
   .grid{grid-template-columns:repeat(6,1fr);gap:14px}
   .tile-large{grid-column:span 6;grid-row:auto}
@@ -164,10 +164,12 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   left: 0 !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  padding-left: 76px !important; /* 2cm ≈ 76px — use px for consistent rendering */
+  padding-left: 76px !important; /* px for consistent rendering */
   z-index: 9999 !important;
   max-width: none !important;
 }
+.topnav { padding-right: 76px !important; }
 @media (max-width:720px){
   .brand { position: static !important; transform: none !important; padding-left: 0 !important; }
+  .topnav { padding-right: 0 !important; }
 }
