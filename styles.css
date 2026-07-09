@@ -41,6 +41,7 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   overflow:hidden;
   padding:1.5rem 0; /* equal top & bottom spacing around the bar */
   background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.02));
+  border-top:2px solid var(--black); /* dünne Trennlinie oben, wie im Referenzbild */
 }
 .hero-media{position:absolute;inset:0;background-image:url('images/hero.svg');background-size:cover;background-position:center;filter:grayscale(10%) contrast(1.02) saturate(0.9);transform:scale(1.05);opacity:0.32}
 
@@ -74,13 +75,13 @@ main{margin-top:2.5rem} /* a bit tighter now that the rule sits above the conten
   padding-left:76px; /* 2cm ≈ 76px — use px for consistent rendering */
   z-index:11;
 }
-.mast-name{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(48px,9vw,110px);line-height:1;color:rgba(255,0,0,0.12);}
+.mast-name{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(22px,3vw,32px);line-height:1.15;color:var(--black);}
 
 /* Right nav: vertical stack, right-aligned inside .hero-bar */
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
-.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.25rem;align-items:flex-end;font-family:"Courier New",monospace;font-size:14px;line-height:1;text-align:right}
-.topnav-columns li{color:var(--black);text-align:right;width:100%}
-.topnav-columns a{text-decoration:none;color:var(--black);display:block;text-align:right}
+.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:1.75rem;align-items:center;font-family:"Courier New",monospace;font-size:14px;line-height:1}
+.topnav-columns li{color:var(--black)}
+.topnav-columns a{text-decoration:none;color:var(--black);display:block}
 
 /* Hero inner (intro) */
 .hero-inner{position:relative;padding:1rem;color:var(--black);mix-blend-mode:normal}
