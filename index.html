@@ -4,25 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Journalistin — Portfolio (Artsy)</title>
-
   <!-- Preconnect für Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Inter für Überschriften und Fließtext -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-
   <!-- Cache‑Busted CSS -->
-  <link rel="stylesheet" href="styles.css?v=31">
+  <link rel="stylesheet" href="styles.css?v=32">
 </head>
 <body>
   <header class="hero">
     <div class="hero-media" aria-hidden="true"></div>
-
     <!-- Brand moved out of the centered container and positioned at the viewport left edge -->
     <div class="brand">
       <div class="mast-name">Nuria Piller</div>
     </div>
-
     <!-- Hero bar: contains only the centered container with the nav on the right -->
     <div class="hero-bar container" role="banner">
       <nav class="topnav" aria-label="Hauptnavigation">
@@ -33,43 +29,39 @@
         </ul>
       </nav>
     </div>
-
   </header>
-
   <main class="container">
     <section class="grid">
-      <article class="tile tile-large">
-        <div class="img bg-lazy" data-bg="images/article1.svg" role="img" aria-label="Artikelbild 1"></div>
-        <div class="meta">
-          <span class="place">Berlin</span> · <span class="date">06.07.2026</span>
-        </div>
-        <h2 class="title">Große Reportage über Stadt und Wandel</h2>
-        <p class="excerpt">Kurztext / Teaser: Ein dichter, neugierig machender Satz in einer sachlichen Sans‑Serif, der zum Weiterlesen einlädt.</p>
-        <a class="more" href="#">Weiterlesen →</a>
-      </article>
-
-      <article class="tile tile-medium feature">
-        <div class="img bg-lazy" data-bg="images/article2.svg" role="img" aria-label="Artikelbild 2"></div>
-        <div class="overlay-text">JOURNALISTIN</div>
-        <div class="meta"><span class="place">Hamburg</span></div>
-        <h3 class="title">Recherche: Hinter den Fassaden</h3>
-        <p class="excerpt">Zwei Zeilen Teaser, knapp formuliert.</p>
-        <a class="more" href="#">Weiterlesen →</a>
-      </article>
-
-      <article class="tile tile-medium alt">
-        <div class="img bg-lazy" data-bg="images/article3.svg" role="img" aria-label="Artikelbild 3"></div>
-        <div class="meta"><span class="place">München</span></div>
-        <h3 class="title">Interview: Stimmen und Perspektiven</h3>
-        <p class="excerpt">Kurztext als Anreiz.</p>
-        <a class="more" href="#">Weiterlesen →</a>
-      </article>
-
+      <div class="feature-row">
+        <article class="tile tile-row-item">
+          <div class="img bg-lazy" data-bg="images/article1.svg" role="img" aria-label="Artikelbild 1"></div>
+          <div class="meta">
+            <span class="place">Berlin</span> · <span class="date">06.07.2026</span>
+          </div>
+          <h2 class="title">Große Reportage über Stadt und Wandel</h2>
+          <p class="excerpt">Kurztext / Teaser: Ein dichter, neugierig machender Satz in einer sachlichen Sans‑Serif, der zum Weiterlesen einlädt.</p>
+          <a class="more" href="#">Weiterlesen →</a>
+        </article>
+        <article class="tile tile-row-item">
+          <div class="img bg-lazy" data-bg="images/article2.svg" role="img" aria-label="Artikelbild 2"></div>
+          <div class="meta"><span class="place">Hamburg</span></div>
+          <h3 class="title">Recherche: Hinter den Fassaden</h3>
+          <p class="excerpt">Zwei Zeilen Teaser, knapp formuliert.</p>
+          <a class="more" href="#">Weiterlesen →</a>
+        </article>
+        <article class="tile tile-row-item">
+          <div class="img bg-lazy" data-bg="images/article3.svg" role="img" aria-label="Artikelbild 3"></div>
+          <div class="meta"><span class="place">München</span></div>
+          <h3 class="title">Interview: Stimmen und Perspektiven</h3>
+          <p class="excerpt">Kurztext als Anreiz.</p>
+          <a class="more" href="#">Weiterlesen →</a>
+        </article>
+        <div class="overlay-band" aria-hidden="true">JOURNALISTIN</div>
+      </div>
       <article class="tile tile-small">
         <div class="img bg-lazy" data-bg="images/article4.svg" role="img" aria-label="Artikelbild 4"></div>
         <h4 class="title">Kolumne</h4>
       </article>
-
       <article class="tile about-tile">
         <img class="portrait" src="images/portrait.svg" alt="Porträt" loading="lazy">
         <div class="about-body">
@@ -80,11 +72,9 @@
       </article>
     </section>
   </main>
-
   <footer class="site-footer container">
     <small>© <span id="year"></span> Journalistin — Alle Rechte vorbehalten</small>
   </footer>
-
   <!-- Cache‑Busted JS -->
   <script src="script.js?v=4"></script>
 </body>
