@@ -3,6 +3,7 @@
   --white:#ffffff;
   --grey:#767676;
   --line:#e2e2e2;
+  --muted:#f6f4f2;
   --accent:#ff5a2c;
   --max:1200px;
 }
@@ -143,15 +144,23 @@ main{
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid transparent;transition:border-color .2s ease}
 .more:hover{border-color:var(--accent)}
 
-/* About: zwei getrennte Boxen nebeneinander (Text + Porträt) */
+/* About: drei Boxen (Text, Kontakt, Porträt) */
 .about-row{
   grid-column:1;
   display:grid;
   grid-template-columns:2fr 1fr;
-  gap:32px;
+  grid-template-areas:
+    "text portrait"
+    "contact portrait";
+  gap:24px;
   align-items:stretch;
 }
+.about-text{grid-area:text}
+.contact-box{grid-area:contact}
+.about-portrait{grid-area:portrait}
+
 .about-text,
+.contact-box,
 .about-portrait{
   background:rgba(255,255,255,0.97);
   border:1px solid var(--line);
@@ -159,9 +168,22 @@ main{
   padding:2.25rem;
 }
 .about-text h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
-.contact-heading{margin-top:2rem}
+
+.contact-box{
+  background:var(--muted);
+  border-color:var(--line);
+  padding:1.5rem 2.25rem;
+}
+.contact-heading{
+  margin:0 0 0.5rem;
+  font-size:0.85rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--grey);
+  font-weight:700;
+}
 .contact{
-  margin-top:0.75rem;
+  margin-top:0;
   font-family:"Courier New", monospace;
   line-height:1.8;
   letter-spacing:0.01em;
@@ -199,8 +221,13 @@ main{
   main{padding-top:2.5rem}
   .tile{padding:1.5rem}
   .tile-row-item{padding:1.5rem}
-  .about-row{grid-template-columns:1fr}
-  .about-portrait{padding:0}
+  .about-row{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "text"
+      "contact"
+      "portrait";
+  }
   .portrait{height:280px}
 }
 
