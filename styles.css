@@ -170,8 +170,6 @@ main{
 .about-text h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
 
 .contact-box{
-  background:var(--muted);
-  border-color:var(--line);
   padding:1.5rem 2.25rem;
 }
 .contact-heading{
