@@ -30,7 +30,7 @@ h1,h2,h3,h4,h5,h6,
 .container{max-width:var(--max);margin:0 auto;padding:0 1rem}
 main{
   margin-top:0;
-  background-image:url('images/Portrait-Analog.png');
+  background-image:url('images/Portrait Analog.png');
   background-size:cover;
   background-position:center top;
   background-attachment:fixed;
@@ -99,7 +99,7 @@ main{
 /* Grid: eine Spalte */
 .grid{display:grid;grid-template-columns:1fr;gap:20px;margin:2rem 0;align-items:start;max-width:700px;margin-left:auto;margin-right:auto}
 
-/* Tile base: halbtransparent weiss, damit Text über dem Portrait-Hintergrund lesbar bleibt */
+/* Tile base */
 .tile{
   background:rgba(255,255,255,0.9);
   position:relative;
@@ -122,10 +122,27 @@ main{
 .excerpt{font-family:"Courier New",monospace;color:#222;margin:.75rem 0;line-height:1.6;max-width:75ch}
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0.25rem}
 
-/* About tile */
-.portrait{width:92px;height:92px;object-fit:cover;border-radius:6px;background:#efefef}
+/* About tile: Bild rechts, gestreckt auf Texthöhe */
+.about-tile{
+  grid-column:1;
+  padding:1.5rem;
+  display:flex;
+  gap:1.5rem;
+  align-items:stretch;
+  background:rgba(255,255,255,0.9);
+  border-radius:8px;
+}
 .about-body h3{margin:0}
-.about-tile{grid-column:1; padding:1.5rem; display:flex; gap:1rem; align-items:flex-start; background:rgba(255,255,255,0.9); border-radius:8px}
+.contact-heading{margin-top:1.5rem}
+.portrait{
+  width:220px;
+  height:auto;
+  align-self:stretch;
+  object-fit:cover;
+  border-radius:6px;
+  background:#efefef;
+  order:2;
+}
 
 /* Hover effects */
 .tile:hover .img{transform:scale(1.03)}
@@ -142,6 +159,8 @@ main{
   .hero-inner{padding:1rem}
   .grid{max-width:100%}
   main{background-attachment:scroll}
+  .about-tile{flex-direction:column}
+  .portrait{width:100%;height:220px;order:0}
 }
 
 /* Footer */
