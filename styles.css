@@ -172,7 +172,7 @@ main{
   font-size:0.85rem;
   text-transform:uppercase;
   letter-spacing:0.08em;
-  color:var(--grey);
+  color:var(--black);
   font-weight:700;
 }
 .contact{
