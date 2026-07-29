@@ -19,7 +19,7 @@ body{
   line-height:1.6;
 }
 
-/* Headings: Inter, grosszügiger Type-Scale, mehr Luft */
+/* Headings: Inter, grosszügiger Type-Scale */
 h1,h2,h3,h4,h5,h6,
 .logo, .hero-title, .title, .about-body h3 {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -53,7 +53,7 @@ main{
   background:var(--white);
   border-bottom:1px solid var(--line);
 }
-.hero::before{display:none} /* dicke Trennlinie raus, border-bottom oben reicht jetzt */
+.hero::before{display:none}
 .hero-media{display:none}
 
 .hero-bar{
@@ -90,7 +90,7 @@ main{
   text-decoration:none;
 }
 
-/* Nav: dezenter, mit leichtem Letter-Spacing für modernen Magazin-Touch */
+/* Nav */
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
 .topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:"Courier New",monospace;font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
 .topnav-columns li{color:var(--black)}
@@ -103,7 +103,7 @@ main{
 /* Grid: eine Spalte, mehr Abstand */
 .grid{display:grid;grid-template-columns:1fr;gap:32px;margin:2rem 0;align-items:start;max-width:760px;margin-left:auto;margin-right:auto}
 
-/* Tile: reduzierter, moderner — feine Linie statt Schatten, mehr Innenabstand */
+/* Tile: reduzierter, moderner */
 .tile{
   background:rgba(255,255,255,0.97);
   position:relative;
@@ -123,35 +123,44 @@ main{
 
 .tile-row-item{padding:2.25rem}
 
-/* Typografie innerhalb Tiles: mehr Kontrast in der Hierarchie */
+/* Typografie innerhalb Tiles */
 .title{margin:.6rem 0 0;color:var(--black);font-weight:700;font-size:clamp(22px,3vw,30px)}
 .meta{font-family:"Courier New",monospace;color:var(--grey);font-size:.8rem;text-transform:uppercase;letter-spacing:0.05em}
 .excerpt{font-family:"Courier New",monospace;color:#222;margin:1rem 0;line-height:1.7;max-width:70ch}
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid transparent;transition:border-color .2s ease}
 .more:hover{border-color:var(--accent)}
 
-/* About tile: Bild rechts, gestreckt auf Texthöhe, ruhiger */
-.about-tile{
+/* About: zwei getrennte Boxen nebeneinander (Text + Porträt) */
+.about-row{
   grid-column:1;
-  padding:2.25rem;
-  display:flex;
-  gap:2rem;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:32px;
   align-items:stretch;
+}
+.about-text,
+.about-portrait{
   background:rgba(255,255,255,0.97);
   border:1px solid var(--line);
   border-radius:2px;
+  padding:2.25rem;
 }
-.about-body h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
+.about-text h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
 .contact-heading{margin-top:2rem}
 .contact{margin-top:0.75rem}
+
+.about-portrait{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0.75rem;
+}
 .portrait{
-  width:240px;
-  height:auto;
-  align-self:stretch;
+  width:100%;
+  height:100%;
   object-fit:cover;
   border-radius:2px;
   background:#efefef;
-  order:2;
 }
 
 /* Hover effects */
@@ -169,10 +178,11 @@ main{
   .hero-inner{padding:1rem}
   .grid{max-width:100%}
   main{background-attachment:scroll;padding-top:2.5rem}
-  .about-tile{flex-direction:column;padding:1.5rem}
   .tile{padding:1.5rem}
   .tile-row-item{padding:1.5rem}
-  .portrait{width:100%;height:220px;order:0}
+  .about-row{grid-template-columns:1fr}
+  .about-portrait{padding:0}
+  .portrait{height:280px}
 }
 
 /* Footer: dezenter */
