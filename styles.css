@@ -187,7 +187,15 @@ main{
 }
 
 /* Footer: dezenter, lässt Hintergrund leicht durchscheinen */
-.site-footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center;color:var(--grey);background:rgba(255,255,255,0.97);font-size:0.85rem}
+.site-footer{
+  border-top:1px solid var(--line);
+  padding:2.5rem 0;
+  text-align:center;
+  color:var(--grey);
+  background:var(--white);
+  font-size:0.85rem;
+  width:100%;
+}
 
 /* Brand-Positionierung */
 .hero { position: relative !important; }
