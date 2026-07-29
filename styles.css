@@ -16,14 +16,14 @@ body{
   display:flex;
   flex-direction:column;
   background:var(--white);
-  background-image:url('images/Portrait-Analog.png');
+  background-image:url('images/Hintergrund.png');
   background-size:cover;
   background-position:center top;
   background-attachment:fixed;
   color:var(--black);
-  font-family: "Courier Prime","Courier New", monospace;
+  font-family: 'Lora', serif;
   -webkit-font-smoothing:antialiased;
-  line-height:1.6;
+  line-height:1.75;
 }
 
 /* Headings: Inter, grosszügiger Type-Scale */
@@ -44,7 +44,7 @@ main{
   flex:1 0 auto;
 }
 
-/* Hero: schlankes, ruhiges weisses Banner — bleibt vollständig deckend weiss */
+/* Hero: schlankes, ruhiges weisses Banner */
 .hero{
   position:relative;
   min-height:120px;
@@ -96,13 +96,13 @@ main{
 
 /* Nav */
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
-.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:"Courier Prime","Courier New",monospace;font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
+.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:'Lora', serif;font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
 .topnav-columns li{color:var(--black)}
 .topnav-columns a{text-decoration:none;color:var(--black);display:block;transition:opacity .2s ease}
 .topnav-columns a:hover{opacity:0.5}
 
 .hero-inner{position:relative;padding:1rem;color:var(--black)}
-.hero-sub{font-family:"Courier Prime","Courier New", monospace;margin-top:.5rem;color:rgba(0,0,0,0.75)}
+.hero-sub{font-family:'Lora', serif;margin-top:.5rem;color:rgba(0,0,0,0.75)}
 
 /* Grid: eine Spalte, mehr Abstand */
 .grid{display:grid;grid-template-columns:1fr;gap:32px;margin:2rem 0;align-items:start;max-width:760px;margin-left:auto;margin-right:auto}
@@ -129,8 +129,8 @@ main{
 
 /* Typografie innerhalb Tiles */
 .title{margin:.6rem 0 0;color:var(--black);font-weight:700;font-size:clamp(22px,3vw,30px)}
-.meta{font-family:"Courier Prime","Courier New",monospace;color:var(--grey);font-size:.8rem;text-transform:uppercase;letter-spacing:0.05em}
-.excerpt{font-family:"Courier Prime","Courier New",monospace;color:#222;margin:1rem 0;line-height:1.7;max-width:70ch}
+.meta{font-family:"Courier New", monospace;color:var(--grey);font-size:.95rem;text-transform:uppercase;letter-spacing:0.05em}
+.excerpt{font-family:'Lora', serif;color:#222;margin:1rem 0;line-height:1.7;max-width:70ch}
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid transparent;transition:border-color .2s ease}
 .more:hover{border-color:var(--accent)}
 
@@ -151,7 +151,7 @@ main{
 }
 .about-text h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
 .contact-heading{margin-top:2rem}
-.contact{margin-top:0.75rem}
+.contact{margin-top:0.75rem;font-family:'Lora', serif}
 
 .about-portrait{
   display:flex;
@@ -190,7 +190,7 @@ main{
   .portrait{height:280px}
 }
 
-/* Footer: dezenter, lässt Hintergrund leicht durchscheinen */
+/* Footer: bildschirmbreit, deckend weiss */
 .site-footer{
   border-top:1px solid var(--line);
   padding:2.5rem 0;
@@ -200,6 +200,7 @@ main{
   font-size:0.85rem;
   width:100%;
 }
+.site-footer small{font-family:'Lora', serif}
 
 /* Brand-Positionierung */
 .hero { position: relative !important; }
