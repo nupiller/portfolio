@@ -13,6 +13,10 @@ html,body{height:100%}
 body{
   margin:0;
   background:var(--white);
+  background-image:url('images/Portrait-Analog.png');
+  background-size:cover;
+  background-position:center top;
+  background-attachment:fixed;
   color:var(--black);
   font-family: "Courier New", monospace;
   -webkit-font-smoothing:antialiased;
@@ -32,15 +36,11 @@ h1,h2,h3,h4,h5,h6,
 .container{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
 main{
   margin-top:0;
-  background-image:url('images/Portrait-Analog.png');
-  background-size:cover;
-  background-position:center top;
-  background-attachment:fixed;
   padding-top:4rem;
   padding-bottom:4rem;
 }
 
-/* Hero: schlankes, ruhiges weisses Banner */
+/* Hero: schlankes, ruhiges weisses Banner — bleibt vollständig deckend weiss */
 .hero{
   position:relative;
   min-height:120px;
@@ -177,7 +177,8 @@ main{
   .topnav{margin-left:0;transform:none;margin-right:0;padding-right:0}
   .hero-inner{padding:1rem}
   .grid{max-width:100%}
-  main{background-attachment:scroll;padding-top:2.5rem}
+  body{background-attachment:scroll}
+  main{padding-top:2.5rem}
   .tile{padding:1.5rem}
   .tile-row-item{padding:1.5rem}
   .about-row{grid-template-columns:1fr}
@@ -185,7 +186,7 @@ main{
   .portrait{height:280px}
 }
 
-/* Footer: dezenter */
+/* Footer: dezenter, lässt Hintergrund leicht durchscheinen */
 .site-footer{border-top:1px solid var(--line);padding:2.5rem 0;text-align:center;color:var(--grey);background:rgba(255,255,255,0.97);font-size:0.85rem}
 
 /* Brand-Positionierung */
