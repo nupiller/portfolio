@@ -30,7 +30,7 @@ h1,h2,h3,h4,h5,h6,
 .container{max-width:var(--max);margin:0 auto;padding:0 1rem}
 main{
   margin-top:0;
-  background-image:url('images/Portrait Analog.png');
+  background-image:url('images/Portrait-Analog.png');
   background-size:cover;
   background-position:center top;
   background-attachment:fixed;
