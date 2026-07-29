@@ -12,6 +12,9 @@
 html,body{height:100%}
 body{
   margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
   background:var(--white);
   background-image:url('images/Portrait-Analog.png');
   background-size:cover;
