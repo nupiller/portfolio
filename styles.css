@@ -149,18 +149,10 @@ main{
   grid-column:1;
   display:grid;
   grid-template-columns:2fr 1fr;
-  grid-template-areas:
-    "text portrait"
-    "contact portrait";
   gap:24px;
   align-items:stretch;
 }
-.about-text{grid-area:text}
-.contact-box{grid-area:contact}
-.about-portrait{grid-area:portrait}
-
 .about-text,
-.contact-box,
 .about-portrait{
   background:rgba(255,255,255,0.97);
   border:1px solid var(--line);
@@ -169,8 +161,11 @@ main{
 }
 .about-text h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
 
-.contact-box{
-  padding:1.5rem 2.25rem;
+.contact-divider{
+  border:none;
+  border-top:1px solid var(--line);
+  width:60%;
+  margin:2rem 0 1.5rem;
 }
 .contact-heading{
   margin:0 0 0.5rem;
@@ -219,13 +214,7 @@ main{
   main{padding-top:2.5rem}
   .tile{padding:1.5rem}
   .tile-row-item{padding:1.5rem}
-  .about-row{
-    grid-template-columns:1fr;
-    grid-template-areas:
-      "text"
-      "contact"
-      "portrait";
-  }
+  .about-row{grid-template-columns:1fr}
   .portrait{height:280px}
 }
 
