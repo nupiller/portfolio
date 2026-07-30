@@ -28,13 +28,14 @@ body{
   letter-spacing:0.01em;
 }
 
+/* Hintergrund nur für "Über mich" überschreiben, falls body die Klasse page-about trägt */
 body.page-about{
   background-image:url('images/Hintergrund.png');
 }
 
 /* Headings: Inter, grosszügiger Type-Scale */
 h1,h2,h3,h4,h5,h6,
-.logo, .hero-title, .title, .about-body h3 {
+.logo, .hero-title, .about-body h3 {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight:900;
   letter-spacing:-0.02em;
@@ -134,21 +135,28 @@ main{
 .tile-row-item{padding:2.25rem}
 
 /* Typografie innerhalb Tiles */
-.title{margin:.6rem 0 0;color:var(--black);font-weight:700;font-size:clamp(22px,3vw,30px)}
-.meta{font-family:"Courier New", monospace;color:var(--grey);font-size:.95rem;text-transform:uppercase;letter-spacing:0.05em}
+.title{
+  margin:.6rem 0 0;
+  color:var(--black);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  letter-spacing:0;
+  font-size:clamp(26px,3.5vw,36px);
+}
+.meta{font-family:"Courier New", monospace;color:var(--black);font-size:.95rem;text-transform:uppercase;letter-spacing:0.05em}
 .excerpt{
-  font-family:"Courier New", monospace;
+  font-family:'Cormorant Garamond',serif;
   color:#222;
   margin:1rem 0;
-  font-size:1rem;
-  line-height:1.8;
-  letter-spacing:0.01em;
+  font-size:1.2rem;
+  line-height:1.65;
+  letter-spacing:0;
   max-width:65ch;
 }
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid transparent;transition:border-color .2s ease}
 .more:hover{border-color:var(--accent)}
 
-/* About: drei Boxen (Text, Kontakt, Porträt) */
+/* About: zwei Boxen (Text inkl. Kontakt, Porträt) */
 .about-row{
   grid-column:1;
   display:grid;
@@ -163,7 +171,12 @@ main{
   border-radius:2px;
   padding:2.25rem;
 }
-.about-text h3{margin:0;font-size:clamp(20px,2.6vw,26px)}
+.about-text h3{
+  margin:0;
+  font-size:clamp(26px,3.2vw,34px);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+}
 
 .contact-divider{
   border:none;
@@ -233,6 +246,17 @@ main{
   width:100%;
 }
 .site-footer small{font-family:"Courier New", monospace;letter-spacing:0.01em}
+.footer-sep{color:var(--line);margin:0 0.25rem}
+.footer-link{
+  color:var(--grey);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:color .2s ease, border-color .2s ease;
+}
+.footer-link:hover{
+  color:var(--black);
+  border-color:var(--grey);
+}
 
 /* Brand-Positionierung */
 .hero { position: relative !important; }
@@ -251,15 +275,4 @@ main{
   .brand { position: static !important; transform: none !important; padding-left: 0 !important; }
   .hero-bar { padding-right: 1rem !important; }
   .topnav { padding-right: 0 !important; }
-}
-.footer-sep{color:var(--line);margin:0 0.25rem}
-.footer-link{
-  color:var(--grey);
-  text-decoration:none;
-  border-bottom:1px solid transparent;
-  transition:color .2s ease, border-color .2s ease;
-}
-.footer-link:hover{
-  color:var(--black);
-  border-color:var(--grey);
 }
