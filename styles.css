@@ -28,6 +28,10 @@ body{
   letter-spacing:0.01em;
 }
 
+body.page-about{
+  background-image:url('images/Hintergrund.png');
+}
+
 /* Headings: Inter, grosszügiger Type-Scale */
 h1,h2,h3,h4,h5,h6,
 .logo, .hero-title, .title, .about-body h3 {
