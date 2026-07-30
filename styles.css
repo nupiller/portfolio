@@ -22,9 +22,9 @@ body{
   background-position:center top;
   background-attachment:fixed;
   color:#222;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier Prime', monospace;
   -webkit-font-smoothing:antialiased;
-  line-height:1.8;
+  line-height:1.5;
   letter-spacing:0.01em;
 }
 
@@ -103,13 +103,13 @@ main{
 
 /* Nav */
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
-.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:"Courier New", monospace;font-size:14px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
+.topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:'Courier Prime', monospace;font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
 .topnav-columns li{color:var(--black)}
 .topnav-columns a{text-decoration:none;color:var(--black);display:block;transition:opacity .2s ease}
 .topnav-columns a:hover{opacity:0.5}
 
 .hero-inner{position:relative;padding:1rem;color:var(--black)}
-.hero-sub{font-family:"Courier New", monospace;margin-top:.5rem;color:rgba(0,0,0,0.75);letter-spacing:0.01em}
+.hero-sub{font-family:'Courier Prime', monospace;margin-top:.5rem;color:rgba(0,0,0,0.75);letter-spacing:0.01em}
 
 /* Grid: eine Spalte, mehr Abstand */
 .grid{display:grid;grid-template-columns:1fr;gap:32px;margin:2rem 0;align-items:start;max-width:760px;margin-left:auto;margin-right:auto}
@@ -143,13 +143,13 @@ main{
   letter-spacing:0;
   font-size:clamp(26px,3.5vw,36px);
 }
-.meta{font-family:"Courier New", monospace;color:var(--black);font-size:.95rem;text-transform:uppercase;letter-spacing:0.05em}
+.meta{font-family:'Courier Prime', monospace;color:var(--black);font-size:.85rem;text-transform:uppercase;letter-spacing:0.05em}
 .excerpt{
-  font-family:"Courier New", monospace;
+  font-family:'Courier Prime', monospace;
   color:#222;
   margin:1rem 0;
-  font-size:1rem;
-  line-height:1.8;
+  font-size:0.9rem;
+  line-height:1.55;
   letter-spacing:0.01em;
   max-width:65ch;
 }
@@ -195,8 +195,9 @@ main{
 }
 .contact{
   margin-top:0;
-  font-family:"Courier New", monospace;
-  line-height:1.8;
+  font-family:'Courier Prime', monospace;
+  font-size:0.9rem;
+  line-height:1.55;
   letter-spacing:0.01em;
 }
 
@@ -246,7 +247,7 @@ main{
   font-size:0.85rem;
   width:100%;
 }
-.site-footer small{font-family:"Courier New", monospace;letter-spacing:0.01em}
+.site-footer small{font-family:'Courier Prime', monospace;letter-spacing:0.01em;font-size:0.8rem}
 .footer-sep{color:var(--line);margin:0 0.25rem}
 .footer-link{
   color:var(--grey);
