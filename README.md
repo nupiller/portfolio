@@ -1,16 +1,21 @@
-# Journalistin — Portfolio
+# Portfolio Journalismus (Übung MAZ)
 
-Statische Portfolio‑Website im editorialen, "artsy" Look (große Headlines, asymmetrisches Grid, Akzent #ff5a2c).
+Statische Portfolio-Website im ruhigen, redaktionellen Look (klare Typografie, viel Weissraum, dezente Akzentfarbe 
+#ff5a2c).
+
+Live: https://nupiller.ch
 
 Status: In Bearbeitung
-
-- Lokale Vorschau: in Arbeit
-- Deployment (GitHub Pages): in Arbeit
-- Fonts (Inter): in Arbeit
-- Bilder & Content: in Arbeit
-- Design‑Feinabstimmung: in Arbeit
-- Kontakt & Metadaten: in Arbeit
-
-Hinweis
-
-Dies ist eine minimal gehaltene README‑Datei; die oben genannten Punkte werden schrittweise ergänzt.
+✅ Lokale Vorschau & Struktur: erledigt
+✅ Deployment (GitHub Pages): erledigt
+✅ Eigene Domain (nupiller.ch via Infomaniak): erledigt
+✅ Fonts (Inter für Überschriften, Courier New für Fliesstext): erledigt
+✅ Kontakt & Impressum/Datenschutz: erledigt
+🔄 Bilder & Content (Artikel, Kolumne): in Arbeit
+🔄 Design-Feinabstimmung: laufend
+Seitenstruktur
+index.html — Startseite
+ueber-mich.html — Über mich & Kontakt
+datenschutz.html — Datenschutzerklärung
+styles.css — zentrales Stylesheet für alle Seiten
+script.js — Jahr im Footer, Lazy-Loading, Navigation
