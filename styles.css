@@ -260,6 +260,33 @@ main{
   border-color:var(--grey);
 }
 
+/* Datenschutzerklärung: Überschriften in Cormorant, Text in Courier Prime wie der Rest */
+.datenschutzerklaerung h2{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  letter-spacing:0;
+  font-size:clamp(28px,3.5vw,38px);
+  margin:0 0 1.5rem;
+}
+.datenschutzerklaerung h3{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  letter-spacing:0;
+  font-size:clamp(20px,2.5vw,26px);
+  margin:2rem 0 0.5rem;
+}
+.datenschutzerklaerung p{
+  font-family:'Courier Prime', monospace;
+  font-size:0.9rem;
+  line-height:1.55;
+  letter-spacing:0.01em;
+  color:#222;
+  margin:0.75rem 0;
+}
+.datenschutzerklaerung a{
+  color:var(--accent);
+}
+
 /* Brand-Positionierung */
 .hero { position: relative !important; }
 .brand {
