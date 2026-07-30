@@ -145,12 +145,12 @@ main{
 }
 .meta{font-family:"Courier New", monospace;color:var(--black);font-size:.95rem;text-transform:uppercase;letter-spacing:0.05em}
 .excerpt{
-  font-family:'Cormorant Garamond',serif;
+  font-family:"Courier New", monospace;
   color:#222;
   margin:1rem 0;
-  font-size:1.2rem;
-  line-height:1.65;
-  letter-spacing:0;
+  font-size:1rem;
+  line-height:1.8;
+  letter-spacing:0.01em;
   max-width:65ch;
 }
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid transparent;transition:border-color .2s ease}
@@ -173,9 +173,10 @@ main{
 }
 .about-text h3{
   margin:0;
-  font-size:clamp(26px,3.2vw,34px);
+  font-size:clamp(26px,3.5vw,36px);
   font-family:'Cormorant Garamond',serif;
   font-weight:600;
+  letter-spacing:0;
 }
 
 .contact-divider{
