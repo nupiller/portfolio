@@ -99,10 +99,10 @@ main{
 .home-marker{
   font-family:'Courier Prime', monospace;
   font-weight:400;
-  font-size:0.55em;
+  font-size:0.75em;
   color:var(--grey);
   letter-spacing:0;
-  margin-right:0.4em;
+  margin-left:0.75em;
   vertical-align:middle;
 }
 
