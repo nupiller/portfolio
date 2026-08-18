@@ -510,11 +510,6 @@ main{
   transition:all .2s ease;
 }
 
-body.page-post{
-  background-image:none;
-  background-color:#fff;
-}
-
 .linkedin-footer:hover .linkedin-icon{
   color:var(--black);
   border-color:var(--black);
