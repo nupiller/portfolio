@@ -299,7 +299,11 @@ main{
 
 .single-post{
   max-width:760px;
-  margin:0 auto;
+  margin:2rem auto 0;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:2.25rem;
 }
 
 .single-post .post-title{
@@ -447,6 +451,8 @@ main{
 
   .single-post{
     max-width:100%;
+    padding:1.5rem;
+    margin-top:1.5rem;
   }
 
   .single-post .post-title{
