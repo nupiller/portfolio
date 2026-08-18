@@ -96,6 +96,15 @@ main{
   color:var(--black);
   text-decoration:none;
 }
+.home-marker{
+  font-family:'Courier Prime', monospace;
+  font-weight:400;
+  font-size:0.55em;
+  color:var(--grey);
+  letter-spacing:0;
+  margin-right:0.4em;
+  vertical-align:middle;
+}
 
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
 .topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:'Courier Prime', monospace;font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
