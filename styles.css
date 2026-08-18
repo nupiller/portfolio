@@ -28,12 +28,10 @@ body{
   letter-spacing:0.01em;
 }
 
-/* Hintergrund nur für "Über mich" überschreiben, falls body die Klasse page-about trägt */
 body.page-about{
   background-image:url('images/Hintergrund.png');
 }
 
-/* Headings: Inter, grosszügiger Type-Scale */
 h1,h2,h3,h4,h5,h6,
 .logo, .hero-title, .about-body h3 {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -42,7 +40,6 @@ h1,h2,h3,h4,h5,h6,
   line-height:1.1;
 }
 
-/* Layout container */
 .container{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
 main{
   margin-top:0;
@@ -51,7 +48,6 @@ main{
   flex:1 0 auto;
 }
 
-/* Hero: schlankes, ruhiges weisses Banner */
 .hero{
   position:relative;
   min-height:120px;
@@ -101,7 +97,6 @@ main{
   text-decoration:none;
 }
 
-/* Nav */
 .topnav{margin-left:auto; margin-right:0; transform:none; padding-right:0;}
 .topnav-columns{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;gap:2.5rem;align-items:center;font-family:'Courier Prime', monospace;font-size:13px;line-height:1;text-transform:uppercase;letter-spacing:0.06em}
 .topnav-columns li{color:var(--black)}
@@ -111,10 +106,8 @@ main{
 .hero-inner{position:relative;padding:1rem;color:var(--black)}
 .hero-sub{font-family:'Courier Prime', monospace;margin-top:.5rem;color:rgba(0,0,0,0.75);letter-spacing:0.01em}
 
-/* Grid: eine Spalte, mehr Abstand */
 .grid{display:grid;grid-template-columns:1fr;gap:32px;margin:2rem 0;align-items:start;max-width:760px;margin-left:auto;margin-right:auto}
 
-/* Tile: reduzierter, moderner */
 .tile{
   background:var(--white);
   position:relative;
@@ -134,7 +127,6 @@ main{
 
 .tile-row-item{padding:2.25rem}
 
-/* Typografie innerhalb Tiles */
 .title{
   margin:.6rem 0 0;
   color:var(--black);
@@ -156,7 +148,6 @@ main{
 .more{font-weight:700;color:var(--accent);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid transparent;transition:border-color .2s ease}
 .more:hover{border-color:var(--accent)}
 
-/* About: zwei Boxen (Text inkl. Kontakt, Porträt) */
 .about-row{
   grid-column:1;
   display:grid;
@@ -215,11 +206,9 @@ main{
   background:#efefef;
 }
 
-/* Hover effects */
 .tile:hover .img{transform:scale(1.03)}
 .tile::after{content:'';position:absolute;inset:0;pointer-events:none}
 
-/* Responsive rules */
 @media (max-width:720px){
   .hero{min-height:200px;padding:1rem 0}
   .hero-bar{flex-direction:column;align-items:flex-start;padding:0 1rem;gap:0.5rem;height:auto}
@@ -237,7 +226,6 @@ main{
   .portrait{height:280px}
 }
 
-/* Footer: bildschirmbreit, deckend weiss */
 .site-footer{
   border-top:1px solid var(--line);
   padding:2.5rem 0;
@@ -260,7 +248,6 @@ main{
   border-color:var(--grey);
 }
 
-/* Datenschutzerklärung: Überschriften in Cormorant, Text in Courier Prime wie der Rest */
 .datenschutzerklaerung h2{
   font-family:'Cormorant Garamond',serif;
   font-weight:600;
@@ -287,7 +274,6 @@ main{
   color:var(--accent);
 }
 
-/* Brand-Positionierung */
 .hero { position: relative !important; }
 .brand {
   position: absolute !important;
@@ -316,18 +302,16 @@ main{
   margin:0 auto;
 }
 
-/* Beitragstitel */
 .single-post .post-title{
-  margin:0.75rem 0 2.5rem;
+  margin:0.75rem 0 2rem;
   font-family:'Cormorant Garamond',serif;
   font-weight:600;
   letter-spacing:0;
-  line-height:1;
-  font-size:clamp(42px,7vw,72px);
+  line-height:1.05;
+  font-size:clamp(32px,4.5vw,46px);
   color:var(--black);
 }
 
-/* Metadaten */
 .single-post .meta{
   display:flex;
   gap:1.25rem;
@@ -338,9 +322,8 @@ main{
   color:var(--grey);
 }
 
-/* Beitragsbild */
 .post-image{
-  margin:0 0 4rem;
+  margin:0 0 3rem;
 }
 
 .image-placeholder{
@@ -366,7 +349,6 @@ main{
   color:var(--grey);
 }
 
-/* Textabschnitte */
 .post-intro,
 .post-content,
 .post-media,
@@ -374,30 +356,27 @@ main{
 .post-summary,
 .post-cta,
 .post-sources{
-  margin:4rem 0;
+  margin:2.75rem 0;
 }
 
-/* H2 */
 .single-post h2{
-  margin:0 0 1.25rem;
+  margin:0 0 1rem;
   font-family:'Cormorant Garamond',serif;
   font-weight:600;
   letter-spacing:0;
-  font-size:clamp(30px,4vw,42px);
-  line-height:1.1;
+  font-size:clamp(21px,2.4vw,26px);
+  line-height:1.15;
 }
 
-/* H3 */
 .single-post h3{
-  margin:2.5rem 0 0.75rem;
+  margin:1.75rem 0 0.6rem;
   font-family:'Inter',sans-serif;
   font-weight:900;
   letter-spacing:-0.02em;
-  font-size:1.1rem;
+  font-size:1rem;
   line-height:1.2;
 }
 
-/* Lauftext */
 .single-post p{
   font-family:'Courier Prime',monospace;
   font-size:0.95rem;
@@ -407,7 +386,6 @@ main{
   margin:0 0 1.25rem;
 }
 
-/* Listen */
 .single-post ul{
   font-family:'Courier Prime',monospace;
   font-size:0.95rem;
@@ -419,30 +397,26 @@ main{
   margin-bottom:0.5rem;
 }
 
-/* Zitat */
 .single-post blockquote{
-  margin:2.5rem 0;
-  padding:1.5rem 2rem;
+  margin:2rem 0;
+  padding:1.25rem 1.75rem;
   border-left:3px solid var(--black);
   font-family:'Cormorant Garamond',serif;
-  font-size:1.8rem;
-  line-height:1.25;
+  font-size:1.4rem;
+  line-height:1.3;
 }
 
-/* In Kürze */
 .post-summary{
   padding:2rem;
   border:1px solid var(--line);
   background:rgba(255,255,255,0.7);
 }
 
-/* CTA */
 .post-cta{
   padding-top:2rem;
   border-top:1px solid var(--line);
 }
 
-/* Weiter-/Zurück-Link */
 .read-more{
   display:inline-block;
   margin-top:0.5rem;
@@ -459,7 +433,6 @@ main{
   opacity:0.5;
 }
 
-/* Quellen */
 .post-sources{
   padding-top:2rem;
   border-top:1px solid var(--line);
@@ -470,7 +443,6 @@ main{
   text-decoration:underline;
 }
 
-/* Mobile */
 @media (max-width:720px){
 
   .single-post{
@@ -478,12 +450,12 @@ main{
   }
 
   .single-post .post-title{
-    font-size:clamp(40px,12vw,58px);
-    margin-bottom:2rem;
+    font-size:clamp(30px,9vw,40px);
+    margin-bottom:1.5rem;
   }
 
   .post-image{
-    margin-bottom:3rem;
+    margin-bottom:2.25rem;
   }
 
   .image-placeholder{
@@ -497,18 +469,16 @@ main{
   .post-summary,
   .post-cta,
   .post-sources{
-    margin:3rem 0;
+    margin:2.25rem 0;
   }
 
   .single-post blockquote{
-    margin:2rem 0;
+    margin:1.5rem 0;
     padding:1rem 1.25rem;
-    font-size:1.5rem;
+    font-size:1.2rem;
   }
 
 }
-
-/* LinkedIn im Footer */
 
 .linkedin-footer{
   display:inline-flex;
