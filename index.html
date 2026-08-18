@@ -10,56 +10,61 @@
   <!-- Inter für Überschriften -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <!-- Cache‑Busted CSS -->
-  <link rel="stylesheet" href="styles.css?v=50">
+  <link rel="stylesheet" href="styles.css?v=54">
 </head>
 <body>
   <header class="hero">
     <div class="hero-media" aria-hidden="true"></div>
-    <!-- Brand ist jetzt ein Link -> fungiert als Home-Button -->
     <div class="brand">
       <a href="index.html" class="mast-name">Nuria Piller</a>
     </div>
-    <!-- Hero bar: contains only the centered container with the nav on the right -->
     <div class="hero-bar container" role="banner">
-    <nav class="topnav" aria-label="Hauptnavigation">
-      <ul class="topnav-columns">
-        <li><a href="ueber-mich.html">About</a></li>
-    </ul>
-    </nav>
+      <nav class="topnav" aria-label="Hauptnavigation">
+        <ul class="topnav-columns">
+          <li><a href="ueber-mich.html">About</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
   <main class="container">
-  <section class="grid">
-    <article class="tile tile-row-item">
-      <div class="meta">
-        <span class="date">29.07.26</span>
-      </div>
-      <h2 class="title">Note from the author</h2>
-      <p class="excerpt">Hier entsteht der Leistungsnachweis für den MAZ-Kurs "Geschichten online und auf Social Media erzählen". Momentan gibt's sonst hier noch nicht viel zu sehen. Die Webseite wird im Lauf meiner journalistischen Karriere ergänzt.</p>
-    <a class="read-more" href="beitrag-01.html">Weiter →</a>
-    </article>
- 
-  </section>
-</main>
+
+    <!-- Kurzer Intro-Text: Home = Beitragsübersicht -->
+    <section class="home-intro">
+      <p>Mein Slogan lässt noch auf sich warten.</p>
+    </section>
+
+    <section class="grid">
+      <article class="tile tile-row-item">
+        <div class="meta">
+          <span class="date">29.07.26</span>
+        </div>
+        <h2 class="title">Note from the author</h2>
+        <p class="excerpt">Hier entsteht der Leistungsnachweis für den MAZ-Kurs "Geschichten online und auf Social Media erzählen". Momentan gibt's sonst hier noch nicht viel zu sehen. Die Webseite wird im Lauf meiner journalistischen Karriere ergänzt.</p>
+        <a class="read-more" href="beitrag-01.html">Weiter →</a>
+      </article>
+
+      <!-- Weitere Beiträge kommen hier als zusätzliche <article class="tile tile-row-item"> dazu -->
+
+    </section>
+  </main>
   <footer class="site-footer">
-  <div class="container">
-   <small>
-  © <span id="year"></span> Nuria Piller |
-  Alle Rechte vorbehalten |
-  <a class="footer-link" href="datenschutz.html">Datenschutz</a> |
-  <a
-    class="linkedin-footer"
-    href="https://www.linkedin.com/in/nuria-piller/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn"
-  >
-    <span class="linkedin-icon">in</span>
-  </a>
-</small>
-  </div>
-    
-</footer>
+    <div class="container">
+      <small>
+        © <span id="year"></span> Nuria Piller |
+        Alle Rechte vorbehalten |
+        <a class="footer-link" href="datenschutz.html">Datenschutz</a> |
+        <a
+          class="linkedin-footer"
+          href="https://www.linkedin.com/in/nuria-piller/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <span class="linkedin-icon">in</span>
+        </a>
+      </small>
+    </div>
+  </footer>
   <!-- Cache‑Busted JS -->
   <script src="script.js?v=4"></script>
 </body>
