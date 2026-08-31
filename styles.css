@@ -549,12 +549,12 @@ main{
 /* ===== Lead-Visual: Hintergrundbild-Absatz mit Scroll-Effekt ===== */
 .lead-visual{
   position:relative;
-  min-height:85vh;
+  min-height:95vh;
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
+  justify-content:flex-start;
   align-items:stretch;
-  padding:4rem 1.5rem 5rem;
+  padding:3.5rem 1.5rem 2rem;
   margin:2rem 0;
   border-radius:4px;
   overflow:hidden;
@@ -570,10 +570,24 @@ main{
   inset:0;
   background:linear-gradient(
     to bottom,
-    rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.55) 72%,
+    rgba(0,0,0,0.62) 0%,
+    rgba(0,0,0,0.55) 30%,
+    rgba(0,0,0,0.3) 55%,
+    rgba(0,0,0,0.08) 80%,
     var(--white) 100%
   );
+}
+
+.lead-visual .post-title{
+  position:relative;
+  z-index:1;
+  max-width:760px;
+  width:100%;
+  margin:0 auto 1.5rem;
+  padding:0 1.5rem;
+  box-sizing:border-box;
+  color:var(--white);
+  text-shadow:0 2px 18px rgba(0,0,0,0.45);
 }
 
 .lead-visual p{
@@ -598,8 +612,8 @@ main{
 @media (max-width:640px){
   .lead-visual{
     background-attachment:scroll;
-    min-height:70vh;
-    padding:3rem 1.25rem 3.5rem;
+    min-height:80vh;
+    padding:2.5rem 1.25rem 1.5rem;
   }
 }
 
@@ -781,5 +795,78 @@ body{
   .chart-wrapper{
     margin-left:-1.5rem;
     margin-right:-1.5rem;
+  }
+}
+
+/* ===== Social-Teaser-Karte (Ersatz für unzuverlässige Live-Embeds) ===== */
+.social-teaser{
+  margin:2rem 0;
+}
+
+.social-teaser-card{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1.1rem 1.25rem;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--muted);
+  text-decoration:none;
+  color:#222;
+  transition:border-color 0.2s ease, background 0.2s ease;
+}
+
+.social-teaser-card:hover{
+  border-color:var(--accent);
+  background:#f3ede8;
+}
+
+.social-teaser-icon{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--white);
+  border:1px solid var(--line);
+  color:var(--accent);
+}
+
+.social-teaser-text{
+  display:flex;
+  flex-direction:column;
+  gap:0.2rem;
+}
+
+.social-teaser-label{
+  font-family:'Courier Prime', monospace;
+  font-size:0.72rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--grey);
+}
+
+.social-teaser-title{
+  font-family:'Inter', system-ui, sans-serif;
+  font-weight:700;
+  font-size:0.95rem;
+  line-height:1.4;
+}
+
+.social-teaser figcaption{
+  margin-top:0.75rem;
+  font-family:'Courier Prime', monospace;
+  font-size:0.8rem;
+  line-height:1.5;
+  color:var(--grey);
+}
+
+@media (max-width:480px){
+  .social-teaser-card{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.75rem;
   }
 }
