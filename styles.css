@@ -533,3 +533,56 @@ main{
   color:var(--black);
   border-color:var(--black);
 }
+
+/* ===== Lead-Visual: Hintergrundbild-Absatz mit Scroll-Effekt ===== */
+.lead-visual{
+  position:relative;
+  min-height:65vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4rem 1.5rem;
+  margin:2rem 0;
+  border-radius:4px;
+  overflow:hidden;
+  background-image:url('images/schweiss.jpg');
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed; /* erzeugt den Scroll-/Parallax-Effekt */
+}
+
+.lead-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.55) 55%,
+    var(--white) 100%
+  );
+}
+
+.lead-visual p{
+  position:relative;
+  z-index:1;
+  margin:0;
+  max-width:42rem;
+  text-align:center;
+  color:var(--white);
+  font-family:'Inter', system-ui, sans-serif;
+  font-weight:800;
+  letter-spacing:-0.01em;
+  font-size:clamp(1.35rem, 1rem + 2vw, 2.2rem);
+  line-height:1.45;
+  text-shadow:0 2px 14px rgba(0,0,0,0.4);
+}
+
+/* Fixed Background ist auf iOS problematisch -> auf Mobile normal scrollen */
+@media (max-width:640px){
+  .lead-visual{
+    background-attachment:scroll;
+    min-height:55vh;
+    padding:3rem 1.25rem;
+  }
+}
