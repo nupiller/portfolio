@@ -578,16 +578,49 @@ main{
   );
 }
 
+.lead-visual .meta{
+  position:relative;
+  z-index:1;
+  max-width:760px;
+  width:100%;
+  margin:0 auto 0.75rem;
+  padding:0 1.5rem;
+  box-sizing:border-box;
+  color:var(--white);
+  text-shadow:0 1px 10px rgba(0,0,0,0.4);
+  opacity:0;
+  animation:lead-reveal 0.8s ease forwards;
+  animation-delay:0.6s;
+}
+
+.lead-visual .meta .category{
+  color:rgba(255,255,255,0.75);
+}
+
 .lead-visual .post-title{
   position:relative;
   z-index:1;
   max-width:760px;
   width:100%;
-  margin:0 auto 2.25rem;
+  margin:0 auto 3rem;
   padding:0 1.5rem;
   box-sizing:border-box;
   color:var(--white);
   text-shadow:0 2px 18px rgba(0,0,0,0.45);
+  opacity:0;
+  animation:lead-reveal 0.9s ease forwards;
+  animation-delay:0.9s;
+}
+
+@keyframes lead-reveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .lead-visual p{
@@ -602,10 +635,13 @@ main{
   color:var(--white);
   font-family:'Courier Prime', monospace;
   font-weight:700;
-  font-size:1.05rem;
-  line-height:1.7;
+  font-size:1.25rem;
+  line-height:1.6;
   letter-spacing:0.01em;
   text-shadow:0 2px 14px rgba(0,0,0,0.4);
+  opacity:0;
+  animation:lead-reveal 1s ease forwards;
+  animation-delay:1.8s;
 }
 
 /* Fixed Background ist auf iOS problematisch -> auf Mobile normal scrollen */
@@ -658,6 +694,13 @@ body.page-post{
     opacity:1 !important;
     transform:none !important;
     transition:none !important;
+  }
+  .lead-visual .meta,
+  .lead-visual .post-title,
+  .lead-visual p{
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
   }
 }
 
