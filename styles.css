@@ -539,8 +539,9 @@ main{
   position:relative;
   min-height:65vh;
   display:flex;
-  align-items:center;
+  flex-direction:column;
   justify-content:center;
+  align-items:stretch;
   padding:4rem 1.5rem;
   margin:2rem 0;
   border-radius:4px;
@@ -567,14 +568,14 @@ main{
   position:relative;
   z-index:1;
   margin:0;
-  max-width:42rem;
-  text-align:center;
+  max-width:none;
+  text-align:left;
   color:var(--white);
-  font-family:'Inter', system-ui, sans-serif;
-  font-weight:800;
-  letter-spacing:-0.01em;
-  font-size:clamp(1.35rem, 1rem + 2vw, 2.2rem);
-  line-height:1.45;
+  font-family:'Courier Prime', monospace;
+  font-weight:700;
+  font-size:0.95rem;
+  line-height:1.7;
+  letter-spacing:0.01em;
   text-shadow:0 2px 14px rgba(0,0,0,0.4);
 }
 
@@ -585,4 +586,9 @@ main{
     min-height:55vh;
     padding:3rem 1.25rem;
   }
+}
+
+/* Hintergrundbild der gesamten Beitragsseite */
+body.page-post{
+  background-image:url('images/schweiss.jpg');
 }
