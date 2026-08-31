@@ -30,6 +30,8 @@
 
 <body class="page-post">
 
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <header class="hero">
     <div class="hero-media" aria-hidden="true"></div>
 
@@ -65,19 +67,17 @@
 
 
       <!-- Beitragsbild -->
-      <figure class="post-image">
-        <div class="image-placeholder">
-          <span>Porträtbild Loukina Tille</span>
-        </div>
+      <figure class="post-image full-bleed">
+        <img src="images/louki.jpg" alt="Loukina Tille, umgeben von Umzugskartons, beim Durchgehen von Papieren" loading="lazy" />
 
         <figcaption>
-          Platzhalter – eigenes Foto von Loukina Tille einfügen.
+          Loukina Tille. Foto: privat.
         </figcaption>
       </figure>
 
 
       <!-- Lead mit Hintergrundbild -->
-      <div class="lead-visual">
+      <div class="lead-visual full-bleed">
         <p>
           Tropennächte, Herbstblätter im Juli, Kampf um Ventilatoren: Plötzlich
           spüren es auch die behüteten Bewohner*innen im Land der Banken und
@@ -86,6 +86,11 @@
           Hitzewelle, die Erderwärmung. Oder eben: Die Krise.
         </p>
       </div>
+
+      <!-- Atmosphärisches Bild: Ventilator -->
+      <figure class="atmo-image full-bleed">
+        <img src="images/Ventilator.jpg" alt="Silhouette eines Ventilators vor einer Jalousie" loading="lazy" />
+      </figure>
 
       <!-- Einleitung (Rest) -->
       <section class="post-intro">
@@ -134,16 +139,23 @@
         </p>
 
         <!-- Instagram Embed: Patagonia -->
-        <div class="embed-wrapper" style="display:flex; justify-content:center; margin: 2rem 0;">
-          <blockquote
-            class="instagram-media"
-            data-instgrm-captioned
-            data-instgrm-permalink="https://www.instagram.com/p/B22NbxOI3dI/"
-            data-instgrm-version="14"
-            style="max-width:540px; width:100%; margin: 0 auto;">
-          </blockquote>
-        </div>
-        <script async src="//www.instagram.com/embed.js"></script>
+        <figure style="margin: 2rem 0;">
+          <div class="embed-wrapper" style="display:flex; justify-content:center;">
+            <blockquote
+              class="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/p/B22NbxOI3dI/"
+              data-instgrm-version="14"
+              style="max-width:540px; width:100%; margin: 0 auto;">
+            </blockquote>
+          </div>
+          <script async src="//www.instagram.com/embed.js"></script>
+          <figcaption style="text-align:center; font-size:0.85rem; opacity:0.7; margin-top:0.75rem;">
+            Loukina war das Gesicht einer Werbekampagne von Patagonia –
+            ein weiteres Beispiel dafür, wie ihr Aktivismus sie ungewollt
+            zur öffentlichen Figur machte.
+          </figcaption>
+        </figure>
 
         <h3>Das einsame Rampenlicht</h3>
 
@@ -201,7 +213,7 @@
         <p>
           Im letzten Jahrhundert ist der weltweite Verbrauch fossiler Energie
           ungebremst gewachsen – Kohle, dann Öl, dann Gas, jede neue Quelle
-          kam zur vorherigen dazu. Rund 87 Prozent der energiebedingten
+          kam zur vorherigen dazu. Rund <span class="count-up" data-target="87">0</span> Prozent der energiebedingten
           Treibhausgasemissionen stammen aus der Verbrennung fossiler
           Brennstoffe (Statistical Review of World Energy 2025). Im Kern ist
           die Klimakrise deshalb vor allem eines: ein Problem fossiler
@@ -239,8 +251,10 @@
         <h2>Was wirklich zählt</h2>
 
         <p>
-          Ihr Fazit ist so nüchtern wie hoffnungsvoll zugleich. 626 Konflikte,
-          99 Länder, über fast neun Jahrzehnte – und am Ende zwei Faktoren,
+          Ihr Fazit ist so nüchtern wie hoffnungsvoll zugleich.
+          <span class="count-up" data-target="626">0</span> Konflikte,
+          <span class="count-up" data-target="99">0</span> Länder, über fast
+          neun Jahrzehnte – und am Ende zwei Faktoren,
           die wirklich zählen: Breite und Vielfalt. Widerstand ist dann am
           erfolgreichsten, wenn lokale Gemeinschaften sich nicht allein
           durchschlagen, sondern in breite Bündnisse eingebettet sind. Wenn
