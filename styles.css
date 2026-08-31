@@ -320,8 +320,6 @@ main{
   max-width:760px;
   margin:2rem auto 0;
   background:var(--white);
-  border:1px solid var(--line);
-  border-radius:2px;
   padding:2.25rem;
 }
 
@@ -701,4 +699,67 @@ body.page-post{
 
 body{
   overflow-x:hidden; /* verhindert horizontalen Scrollbalken durch 100vw-Elemente */
+}
+
+/* ===== Inline-Link-Vorschau (Hover/Tap) ===== */
+.link-preview{
+  position:relative;
+  color:var(--accent);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:2px;
+  cursor:help;
+}
+
+.link-preview::after{
+  content:attr(data-preview);
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 10px);
+  transform:translateX(-50%) translateY(6px);
+  width:max-content;
+  max-width:260px;
+  background:var(--black);
+  color:var(--white);
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  line-height:1.45;
+  padding:0.6rem 0.75rem;
+  border-radius:4px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.2s ease, transform 0.2s ease;
+  z-index:20;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+
+.link-preview::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 4px);
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:var(--black);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.2s ease;
+  z-index:20;
+}
+
+.link-preview:hover::after,
+.link-preview:focus::after{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+.link-preview:hover::before,
+.link-preview:focus::before{
+  opacity:1;
+}
+
+@media (max-width:640px){
+  .link-preview::after{
+    max-width:200px;
+    font-size:0.7rem;
+  }
 }
