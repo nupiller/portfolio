@@ -763,3 +763,16 @@ body{
     font-size:0.7rem;
   }
 }
+
+/* ===== Chart-Wrapper: Flourish-Grafik breiter als Textspalte ===== */
+.chart-wrapper{
+  padding:0 2rem;
+  box-sizing:border-box;
+  margin-bottom:1.5rem;
+}
+
+@media (max-width:640px){
+  .chart-wrapper{
+    padding:0 1rem;
+  }
+}
