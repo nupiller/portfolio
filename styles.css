@@ -355,6 +355,12 @@ main{
   border:1px solid var(--line);
 }
 
+.post-image--compact{
+  max-width:420px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .image-placeholder{
   min-height:400px;
   border:1px dashed var(--grey);
@@ -543,12 +549,12 @@ main{
 /* ===== Lead-Visual: Hintergrundbild-Absatz mit Scroll-Effekt ===== */
 .lead-visual{
   position:relative;
-  min-height:65vh;
+  min-height:85vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-end;
   align-items:stretch;
-  padding:4rem 1.5rem;
+  padding:4rem 1.5rem 5rem;
   margin:2rem 0;
   border-radius:4px;
   overflow:hidden;
@@ -565,7 +571,7 @@ main{
   background:linear-gradient(
     to bottom,
     rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.55) 55%,
+    rgba(0,0,0,0.55) 72%,
     var(--white) 100%
   );
 }
@@ -592,8 +598,8 @@ main{
 @media (max-width:640px){
   .lead-visual{
     background-attachment:scroll;
-    min-height:55vh;
-    padding:3rem 1.25rem;
+    min-height:70vh;
+    padding:3rem 1.25rem 3.5rem;
   }
 }
 
@@ -764,15 +770,16 @@ body{
   }
 }
 
-/* ===== Chart-Wrapper: Flourish-Grafik breiter als Textspalte ===== */
+/* ===== Chart-Wrapper: Flourish-Grafik etwas breiter als Fliesstext ===== */
 .chart-wrapper{
-  padding:0 2rem;
-  box-sizing:border-box;
+  margin-left:-2.25rem;
+  margin-right:-2.25rem;
   margin-bottom:1.5rem;
 }
 
-@media (max-width:640px){
+@media (max-width:720px){
   .chart-wrapper{
-    padding:0 1rem;
+    margin-left:-1.5rem;
+    margin-right:-1.5rem;
   }
 }
