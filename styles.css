@@ -1,4 +1,4 @@
-:root{
+¨:root{
   --black:#111111;
   --white:#ffffff;
   --grey:#767676;
@@ -349,6 +349,14 @@ main{
   margin:0 0 3rem;
 }
 
+.post-image img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:2px;
+  border:1px solid var(--line);
+}
+
 .image-placeholder{
   min-height:400px;
   border:1px dashed var(--grey);
@@ -567,8 +575,11 @@ main{
 .lead-visual p{
   position:relative;
   z-index:1;
-  margin:0;
-  max-width:none;
+  margin:0 auto;
+  max-width:760px;
+  width:100%;
+  padding:0 1.5rem;
+  box-sizing:border-box;
   text-align:left;
   color:var(--white);
   font-family:'Courier Prime', monospace;
@@ -588,7 +599,106 @@ main{
   }
 }
 
-/* Hintergrundbild der gesamten Beitragsseite */
+/* Hintergrund der Beitragsseite bleibt weiss */
 body.page-post{
-  background-image:url('images/schweiss.jpg');
+  background-image:none;
+  background-color:var(--white);
+}
+
+/* ===== Scrollytelling: Fade-in beim Scrollen ===== */
+.fade-in{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== Scrollytelling: Zahlen hochzählen ===== */
+.count-up{
+  font-weight:900;
+  color:var(--accent);
+}
+
+/* ===== Lesefortschritts-Balken ===== */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0%;
+  background:var(--accent);
+  z-index:1000;
+  transition:width 0.1s ease-out;
+}
+
+/* Reduced Motion: Effekte deaktivieren für Nutzer*innen mit entsprechender Präferenz */
+@media (prefers-reduced-motion: reduce){
+  .fade-in{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+
+/* ===== Atmosphärisches Bild (z.B. Ventilator-Foto) ===== */
+.atmo-image{
+  margin:0 0 2.75rem;
+}
+.atmo-image img{
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  object-fit:cover;
+  display:block;
+  border-radius:2px;
+}
+
+@media (max-width:720px){
+  .atmo-image{
+    margin-bottom:2.25rem;
+  }
+  .atmo-image img{
+    max-height:45vh;
+  }
+}
+
+/* ===== Full-Bleed: Bilder brechen aus der Textspalte aus ===== */
+.full-bleed{
+  width:100vw;
+  margin-left:50%;
+  transform:translateX(-50%);
+}
+
+.post-image.full-bleed{
+  margin-bottom:3rem;
+}
+.post-image.full-bleed img{
+  border-radius:0;
+  border:none;
+  max-height:80vh;
+  object-fit:cover;
+}
+.post-image.full-bleed figcaption{
+  max-width:760px;
+  margin:0.75rem auto 0;
+  padding:0 1.5rem;
+}
+
+.atmo-image.full-bleed{
+  margin-bottom:2.75rem;
+}
+.atmo-image.full-bleed img{
+  border-radius:0;
+  max-height:80vh;
+}
+
+.lead-visual.full-bleed{
+  border-radius:0;
+}
+
+body{
+  overflow-x:hidden; /* verhindert horizontalen Scrollbalken durch 100vw-Elemente */
 }
