@@ -147,6 +147,28 @@ function initScrollProgress() {
   update();
 }
 
+// Fly-Card: Textbox fliegt rein, sobald das Bild im Viewport ist
+function initFlyCards() {
+  const cards = document.querySelectorAll('[data-fly-card]');
+  if (cards.length === 0) return;
+
+  if (!('IntersectionObserver' in window)) {
+    cards.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  cards.forEach(el => io.observe(el));
+}
+
 // YouTube-Embeds: Video erst laden, wenn das jeweilige Deck weggeklickt wird
 function initYouTubeDeck() {
   const frames = document.querySelectorAll('.yt-embed-frame');
@@ -549,4 +571,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScenes();
   initCaseModal();
   initYouTubeDeck();
+  initFlyCards();
 });
