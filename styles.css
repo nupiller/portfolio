@@ -1368,3 +1368,125 @@ body{
   color:var(--grey);
   margin:0 0 1.5rem;
 }
+
+/* ===== Pop-up: Fallbeispiel-Modal ===== */
+.case-trigger{
+  display:inline-block;
+  margin-left:0.3rem;
+  padding:0.15rem 0.7rem;
+  border:1px solid var(--accent);
+  border-radius:20px;
+  background:none;
+  color:var(--accent);
+  font-family:'Courier Prime', monospace;
+  font-size:0.8rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease;
+  vertical-align:middle;
+}
+
+.case-trigger:hover{
+  background:var(--accent);
+  color:var(--white);
+}
+
+.case-modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem;
+  background:rgba(0,0,0,0.55);
+  opacity:0;
+  transition:opacity 0.25s ease;
+}
+
+.case-modal-overlay.is-open{
+  opacity:1;
+}
+
+.case-modal-overlay[hidden]{
+  display:none;
+}
+
+.case-modal{
+  position:relative;
+  max-width:520px;
+  width:100%;
+  max-height:85vh;
+  overflow-y:auto;
+  background:var(--white);
+  border-radius:8px;
+  padding:2.25rem;
+  box-sizing:border-box;
+  transform:translateY(16px) scale(0.98);
+  transition:transform 0.25s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+.case-modal-overlay.is-open .case-modal{
+  transform:translateY(0) scale(1);
+}
+
+.case-modal-close{
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  width:32px;
+  height:32px;
+  border:none;
+  border-radius:50%;
+  background:var(--muted);
+  color:#333;
+  font-size:1rem;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.case-modal-close:hover{
+  background:var(--line);
+}
+
+.case-modal-kicker{
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--accent);
+  margin:0 0 0.5rem;
+}
+
+.case-modal h3{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:2rem;
+  margin:0 0 1.25rem;
+}
+
+.case-modal p{
+  font-family:'Courier Prime', monospace;
+  font-size:0.9rem;
+  line-height:1.65;
+  color:#222;
+  margin:0 0 1rem;
+}
+
+.case-modal p:last-child{
+  margin-bottom:0;
+}
+
+@media (max-width:640px){
+  .case-trigger{
+    display:block;
+    margin:0.75rem 0 0;
+    width:fit-content;
+  }
+  .case-modal{
+    padding:1.75rem;
+  }
+}
