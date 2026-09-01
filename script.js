@@ -147,6 +147,35 @@ function initScrollProgress() {
   update();
 }
 
+// YouTube-Embed: Video erst laden, wenn das Deck weggeklickt wird
+function initYouTubeDeck() {
+  const frame = document.getElementById('ytEmbedFrame');
+  const deck = document.getElementById('ytDeck');
+  if (!frame || !deck) return;
+
+  const videoId = frame.getAttribute('data-yt-id');
+
+  function reveal() {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('title', 'YouTube-Video');
+    frame.appendChild(iframe);
+
+    deck.classList.add('is-hidden');
+    setTimeout(() => deck.remove(), 400);
+  }
+
+  deck.addEventListener('click', reveal);
+  deck.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      reveal();
+    }
+  });
+}
+
 // Pop-up: Fallbeispiel-Modal
 function initCaseModal() {
   const overlay = document.getElementById('caseModalOverlay');
@@ -515,4 +544,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrubChart();
   initScenes();
   initCaseModal();
+  initYouTubeDeck();
 });
