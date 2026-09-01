@@ -1456,12 +1456,12 @@ body{
   margin:0;
 }
 
-.yt-deck--photo{
-  background-image:linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 45%), var(--deck-photo, none);
-  background-size:cover;
-  background-position:center;
-  justify-content:flex-start;
-  padding-top:2.5rem;
+.yt-embed figcaption{
+  margin-top:0.6rem;
+  text-align:center;
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  color:var(--grey);
 }
 
 .yt-embed-frame{
@@ -1496,6 +1496,14 @@ body{
   background:linear-gradient(160deg, #1a1a1a 0%, #000 100%);
   cursor:pointer;
   transition:opacity 0.35s ease, transform 0.35s ease;
+}
+
+.yt-deck--photo{
+  background-image:linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 45%), var(--deck-photo, none) !important;
+  background-size:cover !important;
+  background-position:center !important;
+  justify-content:flex-start !important;
+  padding-top:2.5rem !important;
 }
 
 .yt-deck.is-hidden{
@@ -1723,11 +1731,11 @@ body{
   position:absolute;
   inset:0;
   display:flex;
-  align-items:flex-end;
+  align-items:flex-start;
   justify-content:center;
   padding:2.5rem 1.5rem;
   box-sizing:border-box;
-  background:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.75) 100%);
+  background:linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 50%);
 }
 
 .text-on-image-overlay p{
