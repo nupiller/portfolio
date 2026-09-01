@@ -53,83 +53,68 @@
 
     <article class="single-post">
 
-      <!-- Lead mit Hintergrundbild (inkl. Meta + Titel) -->
-      <div class="lead-visual full-bleed">
-        <div class="lead-title-group">
-          <div class="meta">
-            <span class="date">31.08.26</span>
-            <span class="category">Porträt</span>
+      <!-- Hero: Bild -> Titel (hält) -> scrollen -> Label -> Lead -->
+      <section class="hero-wrapper full-bleed" id="heroWrapper">
+        <div class="hero-sticky lead-visual">
+          <div class="hero-white-overlay" id="heroWhiteOverlay"></div>
+          <div class="lead-title-group" id="heroTitleGroup">
+            <div class="meta">
+              <span class="date">31.08.26</span>
+              <span class="category">Porträt</span>
+            </div>
+            <h1 class="post-title">
+              «Hört auf mich zu fragen, ob ich Hoffnung habe»
+            </h1>
           </div>
-          <h1 class="post-title">
-            «Hört auf mich zu fragen, ob ich Hoffnung habe»
-          </h1>
+          <div class="lead-chapter-label" id="heroLabel">Intro: Immer heisser</div>
+          <p id="heroLeadText">
+            Tropennächte, Herbstblätter im Juli, Kampf um Ventilatoren: Plötzlich
+            spüren es auch die behüteten Bewohner*innen im Land der Banken und
+            Berge. Über Wochen raubt sie ihnen den Schlaf, drängt sie sich in
+            ihre Poren, an den Stammtisch, in die Schlagzeilen. Sie, die
+            Hitzewelle, die Erderwärmung. Oder eben: Die Krise.
+          </p>
+          <div class="hero-scroll-hint" id="heroScrollHint">↓ scrollen</div>
         </div>
-        <div class="lead-chapter-label">Intro: Immer heisser</div>
-        <p>
-          Tropennächte, Herbstblätter im Juli, Kampf um Ventilatoren: Plötzlich
-          spüren es auch die behüteten Bewohner*innen im Land der Banken und
-          Berge. Über Wochen raubt sie ihnen den Schlaf, drängt sie sich in
-          ihre Poren, an den Stammtisch, in die Schlagzeilen. Sie, die
-          Hitzewelle, die Erderwärmung. Oder eben: Die Krise.
-        </p>
-      </div>
+      </section>
 
       <!-- Einleitung (Rest) -->
       <section class="post-intro">
 
-      </section>
+        <p>
+          Manche haben es kommen sehen. Manche versuchten, etwas daran zu
+          ändern. Manche, machten es sich zur Lebensaufgabe. Bekannt wurden
+          sie unter anderem als «Fridays for Future».
+        </p>
 
+        <figure class="atmo-image full-bleed">
+          <img src="images/Pascal%20Bernardon.jpg" alt="Fridays for Future Demonstration" loading="lazy" />
+          <figcaption>Foto: Pascal Bernardon</figcaption>
+        </figure>
 
-      <!-- Szene 1: Fridays for Future -->
-      <section class="scene-wrapper" data-scene>
-        <div class="scene-sticky">
-          <img class="scene-bg" src="images/Pascal%20Bernardon.jpg" alt="Fridays for Future Demonstration" />
-          <div class="scene-overlay"></div>
-          <div class="scene-overlay-white"></div>
-          <div class="scene-text">
-            <p>
-              Manche haben es kommen sehen. Manche versuchten, etwas daran zu
-              ändern. Manche, machten es sich zur Lebensaufgabe. Bekannt
-              wurden sie unter anderem als «Fridays for Future».
-            </p>
-          </div>
-          <div class="scene-credit">Foto: Pascal Bernardon</div>
-        </div>
-      </section>
+        <p>
+          Und weil wir lieber eine einzelne Person, statt eine ganze
+          Bewegung ins Rampenlicht stellen – sei es für den Personenkult
+          oder der persönlichen Projektions- und Angriffsfläche willens –
+          drehte sich die mediale Debatte vor allem um junge Frauen.
+          Allen voran Greta.
+        </p>
 
-      <!-- Szene 2: Greta -->
-      <section class="scene-wrapper" data-scene>
-        <div class="scene-sticky">
-          <img class="scene-bg scene-bg--contain" src="images/Asl%C4%B1han%20Alt%C4%B1n.jpg" alt="Greta Thunberg" />
-          <div class="scene-overlay"></div>
-          <div class="scene-overlay-white"></div>
-          <div class="scene-text">
-            <p>
-              Und weil wir lieber eine einzelne Person, statt eine ganze
-              Bewegung ins Rampenlicht stellen – sei es für den Personenkult
-              oder der persönlichen Projektions- und Angriffsfläche willens –
-              drehte sich die mediale Debatte vor allem um junge Frauen.
-              Allen voran Greta.
-            </p>
-          </div>
-          <div class="scene-credit">Foto: Aslıhan Altın</div>
-        </div>
-      </section>
+        <figure class="atmo-image atmo-image--portrait full-bleed">
+          <img src="images/Asl%C4%B1han%20Alt%C4%B1n.jpg" alt="Greta Thunberg" loading="lazy" />
+          <figcaption>Foto: Aslıhan Altın</figcaption>
+        </figure>
 
-      <!-- Szene 3: Loukina -->
-      <section class="scene-wrapper" data-scene>
-        <div class="scene-sticky">
-          <img class="scene-bg scene-bg--contain" src="images/Loukina%20Tille.png" alt="Loukina Tille" />
-          <div class="scene-overlay"></div>
-          <div class="scene-overlay-white"></div>
-          <div class="scene-text">
-            <p>
-              Und weil die Schweiz immer gerne ein «Made of Switzerland» hat,
-              auch um Menschen wie Loukina.
-            </p>
-          </div>
-          <div class="scene-credit">Foto: Loukina Tille</div>
-        </div>
+        <p>
+          Und weil die Schweiz immer gerne ein «Made of Switzerland» hat,
+          auch um Menschen wie Loukina.
+        </p>
+
+        <figure class="atmo-image atmo-image--portrait full-bleed">
+          <img src="images/Loukina%20Tille.png" alt="Loukina Tille" loading="lazy" />
+          <figcaption>Foto: Loukina Tille</figcaption>
+        </figure>
+
       </section>
 
 
@@ -274,7 +259,10 @@
         <div class="scrub-chart-wrapper" id="scrubChartWrapper">
           <div class="scrub-chart-sticky">
             <div class="scrub-chart-year" id="scrubYear">1800</div>
-            <div class="scrub-chart-bars" id="scrubBars"></div>
+            <div class="scrub-line-chart">
+              <svg id="scrubSvg" viewBox="0 0 900 420" preserveAspectRatio="none"></svg>
+              <div class="scrub-legend" id="scrubLegend"></div>
+            </div>
             <div class="scrub-chart-hint">↓ weiterscrollen, um durch die Jahre zu blättern</div>
           </div>
         </div>
