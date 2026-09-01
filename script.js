@@ -204,13 +204,71 @@ function initScenes() {
   window.addEventListener('resize', onScroll);
 }
 
-// Scroll-Scrubbing Chart Race: Balken reagieren live auf die Scroll-Position
+// Hero-Sequenz: Bild -> Titel (h\u00e4lt) -> beim Scrollen: Label allein -> Lead -> Weiss
+function initHero() {
+  const wrapper = document.getElementById('heroWrapper');
+  const titleGroup = document.getElementById('heroTitleGroup');
+  const label = document.getElementById('heroLabel');
+  const leadText = document.getElementById('heroLeadText');
+  const whiteOverlay = document.getElementById('heroWhiteOverlay');
+  const scrollHint = document.getElementById('heroScrollHint');
+  if (!wrapper || !titleGroup || !label || !leadText || !whiteOverlay) return;
+
+  function render() {
+    const rect = wrapper.getBoundingClientRect();
+    const wrapperHeight = wrapper.offsetHeight;
+    const viewportHeight = window.innerHeight;
+    const scrollable = wrapperHeight - viewportHeight;
+    if (scrollable <= 0) return;
+
+    const scrolled = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+
+    // Solange nicht gescrollt wurde: Titel bleibt, wie er von der
+    // Lade-Animation \u00fcbrig geblieben ist (nichts \u00fcberschreiben).
+    if (progress <= 0.001) {
+      label.style.opacity = 0;
+      leadText.style.opacity = 0;
+      whiteOverlay.style.opacity = 0;
+      if (scrollHint) scrollHint.style.opacity = '';
+      return;
+    }
+
+    if (scrollHint) scrollHint.style.opacity = 0;
+
+    const titleOpacity = 1 - mapRange(progress, 0.12, 0.3, 0, 1);
+    const labelOpacity = mapRange(progress, 0.32, 0.48, 0, 1) * (1 - mapRange(progress, 0.78, 0.9, 0, 1));
+    const leadOpacity = mapRange(progress, 0.58, 0.74, 0, 1) * (1 - mapRange(progress, 0.86, 0.96, 0, 1));
+    const whiteOpacity = mapRange(progress, 0.86, 1, 0, 1);
+
+    titleGroup.style.opacity = titleOpacity;
+    label.style.opacity = labelOpacity;
+    leadText.style.opacity = leadOpacity;
+    whiteOverlay.style.opacity = whiteOpacity;
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      render();
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+}
+
+// Scroll-Scrubbing Line Chart Race: Linien zeichnen sich synchron zum Scrollen
 function initScrubChart() {
   const wrapper = document.getElementById('scrubChartWrapper');
-  const bars = document.getElementById('scrubBars');
+  const svg = document.getElementById('scrubSvg');
+  const legendEl = document.getElementById('scrubLegend');
   const yearEl = document.getElementById('scrubYear');
   const dataScript = document.getElementById('scrubData');
-  if (!wrapper || !bars || !yearEl || !dataScript) return;
+  if (!wrapper || !svg || !legendEl || !yearEl || !dataScript) return;
 
   let payload;
   try {
@@ -237,43 +295,108 @@ function initScrubChart() {
     'Andere Erneuerbare': '#9dbf8f'
   };
 
-  // Baue die Balken-Elemente einmalig
-  const rows = {};
-  names.forEach((name) => {
-    const row = document.createElement('div');
-    row.className = 'scrub-bar-row';
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const W = 900, H = 420;
+  const marginLeft = 45, marginRight = 15, marginTop = 15, marginBottom = 35;
+  const plotW = W - marginLeft - marginRight;
+  const plotH = H - marginTop - marginBottom;
 
-    const label = document.createElement('div');
-    label.className = 'scrub-bar-label';
-    label.textContent = name;
+  const maxVal = Math.max(...names.map((name) => Math.max(...data.map((d) => d[name]))));
 
-    const track = document.createElement('div');
-    track.className = 'scrub-bar-track';
-
-    const fill = document.createElement('div');
-    fill.className = 'scrub-bar-fill';
-    fill.style.background = colors[name] || '#999';
-    track.appendChild(fill);
-
-    const value = document.createElement('div');
-    value.className = 'scrub-bar-value';
-
-    row.appendChild(label);
-    row.appendChild(track);
-    row.appendChild(value);
-    bars.appendChild(row);
-
-    rows[name] = { row, fill, value };
-  });
-
-  const ROW_GAP = 8; // Abstand zwischen den Balken in px
-  function getRowHeight() {
-    const firstRow = rows[names[0]].row;
-    return firstRow.offsetHeight + ROW_GAP;
+  function xForIndex(i) {
+    return marginLeft + (i / (n - 1)) * plotW;
+  }
+  function yForValue(v) {
+    return marginTop + plotH - (v / maxVal) * plotH;
   }
 
+  // X-Achse (Jahre) + Y-Achsen-Grundlinie
+  const axis = document.createElementNS(svgNS, 'g');
+  axis.setAttribute('class', 'scrub-axis');
+
+  const baseline = document.createElementNS(svgNS, 'line');
+  baseline.setAttribute('x1', marginLeft);
+  baseline.setAttribute('x2', W - marginRight);
+  baseline.setAttribute('y1', marginTop + plotH);
+  baseline.setAttribute('y2', marginTop + plotH);
+  baseline.setAttribute('class', 'scrub-axis-line');
+  axis.appendChild(baseline);
+
+  [years[0], years[Math.round((n - 1) / 2)], years[n - 1]].forEach((yr) => {
+    const idx = years.indexOf(yr);
+    const label = document.createElementNS(svgNS, 'text');
+    label.setAttribute('x', xForIndex(idx));
+    label.setAttribute('y', H - 10);
+    label.setAttribute('class', 'scrub-axis-label');
+    label.setAttribute('text-anchor', idx === 0 ? 'start' : idx === n - 1 ? 'end' : 'middle');
+    label.textContent = yr;
+    axis.appendChild(label);
+  });
+
+  svg.appendChild(axis);
+
+  // Playhead (vertikale Linie an der aktuellen Scroll-Position)
+  const playhead = document.createElementNS(svgNS, 'line');
+  playhead.setAttribute('y1', marginTop);
+  playhead.setAttribute('y2', marginTop + plotH);
+  playhead.setAttribute('class', 'scrub-playhead');
+  svg.appendChild(playhead);
+
+  // Linien + Endpunkte pro Kategorie
+  const lines = {};
+  names.forEach((name) => {
+    const path = document.createElementNS(svgNS, 'path');
+    let d = '';
+    for (let i = 0; i < n; i++) {
+      const x = xForIndex(i);
+      const y = yForValue(data[i][name]);
+      d += (i === 0 ? 'M' : 'L') + x + ',' + y + ' ';
+    }
+    path.setAttribute('d', d.trim());
+    path.setAttribute('class', 'scrub-line');
+    path.style.stroke = colors[name] || '#999';
+    svg.appendChild(path);
+
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+
+    const dot = document.createElementNS(svgNS, 'circle');
+    dot.setAttribute('r', 4.5);
+    dot.setAttribute('class', 'scrub-dot');
+    dot.style.fill = colors[name] || '#999';
+    dot.style.opacity = 0;
+    svg.appendChild(dot);
+
+    lines[name] = { path, len, dot };
+  });
+
+  // Legende (aktuelle Werte, live aktualisiert)
+  const legendRows = {};
+  names.forEach((name) => {
+    const row = document.createElement('div');
+    row.className = 'scrub-legend-row';
+
+    const swatch = document.createElement('span');
+    swatch.className = 'scrub-legend-swatch';
+    swatch.style.background = colors[name] || '#999';
+
+    const label = document.createElement('span');
+    label.className = 'scrub-legend-label';
+    label.textContent = name;
+
+    const value = document.createElement('span');
+    value.className = 'scrub-legend-value';
+
+    row.appendChild(swatch);
+    row.appendChild(label);
+    row.appendChild(value);
+    legendEl.appendChild(row);
+
+    legendRows[name] = { row, value };
+  });
+
   function interpolate(progress) {
-    // progress: 0..1 über den gesamten Datensatz
     const pos = progress * (n - 1);
     const i0 = Math.floor(pos);
     const i1 = Math.min(i0 + 1, n - 1);
@@ -286,23 +409,32 @@ function initScrubChart() {
       const v1 = data[i1][name];
       values[name] = v0 + (v1 - v0) * frac;
     });
-    return { year, values };
+    return { year, values, pos };
   }
 
   function render(progress) {
-    const { year, values } = interpolate(progress);
+    const { year, values, pos } = interpolate(progress);
     yearEl.textContent = year;
 
-    const maxVal = Math.max(...names.map((name) => values[name]), 1);
-    const sorted = [...names].sort((a, b) => values[b] - values[a]);
-    const rowHeight = getRowHeight();
+    const px = marginLeft + (pos / (n - 1)) * plotW;
+    playhead.setAttribute('x1', px);
+    playhead.setAttribute('x2', px);
 
-    sorted.forEach((name, rank) => {
-      const r = rows[name];
-      const pct = (values[name] / maxVal) * 100;
-      r.fill.style.width = pct + '%';
-      r.value.textContent = Math.round(values[name]).toLocaleString('de-CH') + ' TWh';
-      r.row.style.transform = `translateY(${rank * rowHeight}px)`;
+    // Kategorien nach aktuellem Wert sortieren, damit die Legende mitwandert
+    const sorted = [...names].sort((a, b) => values[b] - values[a]);
+
+    sorted.forEach((name) => {
+      const { path, len, dot } = lines[name];
+      path.style.strokeDashoffset = len * (1 - progress);
+
+      const py = yForValue(values[name]);
+      dot.setAttribute('cx', px);
+      dot.setAttribute('cy', py);
+      dot.style.opacity = progress > 0.01 ? 1 : 0;
+
+      const lr = legendRows[name];
+      lr.value.textContent = Math.round(values[name]).toLocaleString('de-CH') + ' TWh';
+      legendEl.appendChild(lr.row); // DOM-Reihenfolge = Rangfolge
     });
   }
 
@@ -317,7 +449,6 @@ function initScrubChart() {
       const viewportHeight = window.innerHeight;
       const scrollable = wrapperHeight - viewportHeight;
 
-      // Wie weit sind wir in den Wrapper reingescrollt (0 = Start, 1 = Ende)
       const scrolled = -rect.top;
       let progress = scrollable > 0 ? scrolled / scrollable : 0;
       progress = Math.max(0, Math.min(1, progress));
@@ -340,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollFade();
   initCountUp();
   initScrollProgress();
+  initHero();
   initScrubChart();
   initScenes();
 });
