@@ -300,6 +300,31 @@ function initScenes() {
   window.addEventListener('resize', onScroll);
 }
 
+// Echte Kante-zu-Kante-Breite: per JS gemessen statt per CSS-Formel berechnet
+// (umgeht Scrollbar-Breite- und verschachtelte-Container-Probleme zuverlässig)
+function initViewportBleed() {
+  const els = document.querySelectorAll('.bleed-viewport');
+  if (els.length === 0) return;
+
+  function apply() {
+    const viewportWidth = document.documentElement.clientWidth;
+    els.forEach((el) => {
+      el.style.marginLeft = '';
+      el.style.marginRight = '';
+      el.style.width = '';
+      const rect = el.getBoundingClientRect();
+      const leftGap = rect.left;
+      const rightGap = viewportWidth - rect.right;
+      el.style.marginLeft = `${-leftGap}px`;
+      el.style.marginRight = `${-rightGap}px`;
+      el.style.width = `${viewportWidth}px`;
+    });
+  }
+
+  apply();
+  window.addEventListener('resize', apply);
+}
+
 // Hero-Sequenz: Bild -> Titel (h\u00e4lt) -> beim Scrollen: Label allein -> Lead -> Weiss
 function initHero() {
   const wrapper = document.getElementById('heroWrapper');
@@ -565,6 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setYear();
   initLazyBg();
   initNavToggle();
+  initViewportBleed();
   initScrollFade();
   initCountUp();
   initScrollProgress();
