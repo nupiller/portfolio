@@ -618,8 +618,19 @@ main{
   padding:0 1.5rem;
   box-sizing:border-box;
   opacity:0;
-  animation:lead-reveal 1s ease forwards;
+  animation:hero-title-reveal 1s ease forwards;
   animation-delay:0.6s;
+}
+
+@keyframes hero-title-reveal{
+  from{
+    opacity:0;
+    transform:translate(-50%, calc(-50% + 18px));
+  }
+  to{
+    opacity:1;
+    transform:translate(-50%, -50%);
+  }
 }
 
 .lead-visual .meta{
@@ -809,8 +820,8 @@ body.page-post{
 /* ===== Full-Bleed: Bilder brechen aus der Textspalte aus ===== */
 .full-bleed{
   width:100vw;
-  margin-left:50%;
-  transform:translateX(-50%);
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
 }
 
 .post-image.full-bleed{
@@ -1258,4 +1269,89 @@ body{
   .scene-wrapper{
     height:auto;
   }
+}
+
+/* ===== Kapitel-Titel: grosser Zwischentitel statt Bild ===== */
+.chapter-title{
+  margin:4.5rem 0 2rem;
+  text-align:center;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:clamp(2.2rem, 6vw, 3.4rem);
+  line-height:1.15;
+  color:var(--black);
+}
+
+.chapter-title .chapter-number{
+  display:block;
+  font-family:'Courier Prime', monospace;
+  font-weight:700;
+  font-size:0.9rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:0.75rem;
+}
+
+@media (max-width:640px){
+  .chapter-title{
+    margin:3rem 0 1.5rem;
+  }
+}
+
+/* ===== Media-Embed: Video/Audio-Statement ===== */
+.media-embed{
+  margin:2rem 0;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.media-embed video,
+.media-embed audio{
+  width:100%;
+  display:block;
+  border-radius:4px;
+  background:#000;
+}
+
+.media-embed audio{
+  background:none;
+}
+
+.media-embed figcaption{
+  margin-top:0.6rem;
+  text-align:center;
+  font-family:'Courier Prime', monospace;
+  font-size:0.8rem;
+  color:var(--grey);
+}
+
+/* ===== Kapitel-Frage: hervorgehobene Frage mitten im Fliesstext ===== */
+.chapter-question{
+  text-align:center;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:clamp(1.6rem, 3.5vw, 2.2rem);
+  font-style:italic;
+  color:var(--accent);
+  margin:2rem 0;
+}
+
+/* ===== Chart-Titel/-Untertitel ===== */
+.chart-title{
+  text-align:center;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:clamp(1.6rem, 4vw, 2.4rem);
+  margin:0 0 0.4rem;
+  color:var(--black);
+}
+
+.chart-subtitle{
+  text-align:center;
+  font-family:'Courier Prime', monospace;
+  font-size:0.85rem;
+  color:var(--grey);
+  margin:0 0 1.5rem;
 }
