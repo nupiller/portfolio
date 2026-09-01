@@ -203,6 +203,9 @@ function initScenes() {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
 }
+
+// Scroll-Scrubbing Chart Race: Balken reagieren live auf die Scroll-Position
+function initScrubChart() {
   const wrapper = document.getElementById('scrubChartWrapper');
   const bars = document.getElementById('scrubBars');
   const yearEl = document.getElementById('scrubYear');
