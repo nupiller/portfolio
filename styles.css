@@ -557,6 +557,7 @@ main{
   position:sticky;
   top:0;
   height:100vh;
+  height:100dvh;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
@@ -682,9 +683,12 @@ main{
 }
 
 .lead-visual p{
-  position:relative;
+  position:absolute;
   z-index:1;
-  margin:0 auto;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  margin:0;
   max-width:760px;
   width:100%;
   padding:0 1.5rem;
@@ -726,6 +730,15 @@ body.page-post{
   transform:translateY(0);
 }
 
+/* Bilder: langsamer, mit leichtem Zoom-Effekt – wirkt cineastischer */
+figure.fade-in{
+  transform:translateY(0) scale(1.04);
+  transition:opacity 1.1s ease, transform 1.1s ease;
+}
+figure.fade-in.is-visible{
+  transform:translateY(0) scale(1);
+}
+
 /* ===== Scrollytelling: Zahlen hochzählen ===== */
 .count-up{
   font-weight:900;
@@ -762,7 +775,7 @@ body.page-post{
   }
   .lead-visual p{
     opacity:1 !important;
-    transform:none !important;
+    transform:translate(-50%, -50%) !important;
     animation:none !important;
   }
   .hero-white-overlay{
