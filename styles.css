@@ -1490,3 +1490,71 @@ body{
     padding:1.75rem;
   }
 }
+
+/* ===== YouTube-Embed mit Deck-Overlay (Click-to-Reveal) ===== */
+.yt-embed{
+  margin:2rem auto;
+  max-width:380px;
+}
+
+.yt-embed-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:9/16;
+  border-radius:8px;
+  overflow:hidden;
+  background:#111;
+}
+
+.yt-embed-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.yt-deck{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.25rem;
+  padding:2rem;
+  box-sizing:border-box;
+  text-align:center;
+  background:linear-gradient(160deg, #1a1a1a 0%, #000 100%);
+  cursor:pointer;
+  transition:opacity 0.35s ease, transform 0.35s ease;
+}
+
+.yt-deck.is-hidden{
+  opacity:0;
+  transform:scale(1.03);
+  pointer-events:none;
+}
+
+.yt-deck-question{
+  margin:0;
+  color:var(--white);
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-style:italic;
+  font-size:1.5rem;
+  line-height:1.4;
+}
+
+.yt-deck-hint{
+  color:var(--accent);
+  font-family:'Courier Prime', monospace;
+  font-size:0.8rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+
+.yt-deck:hover .yt-deck-hint{
+  text-decoration:underline;
+}
