@@ -147,6 +147,43 @@ function initScrollProgress() {
   update();
 }
 
+// Pop-up: Fallbeispiel-Modal
+function initCaseModal() {
+  const overlay = document.getElementById('caseModalOverlay');
+  const closeBtn = document.getElementById('caseModalClose');
+  const triggers = document.querySelectorAll('[data-case-open]');
+  if (!overlay || triggers.length === 0) return;
+
+  let lastFocused = null;
+
+  function openModal() {
+    lastFocused = document.activeElement;
+    overlay.hidden = false;
+    // Reflow erzwingen, damit die Transition greift
+    requestAnimationFrame(() => overlay.classList.add('is-open'));
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(() => { overlay.hidden = true; }, 250);
+    if (lastFocused) lastFocused.focus();
+  }
+
+  triggers.forEach((btn) => btn.addEventListener('click', openModal));
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.hidden) closeModal();
+  });
+}
+
 // Hilfsfunktion: Wert von einem Bereich in einen anderen mappen, geklemmt
 function mapRange(value, inMin, inMax, outMin, outMax) {
   if (inMax === inMin) return outMin;
@@ -477,4 +514,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initHero();
   initScrubChart();
   initScenes();
+  initCaseModal();
 });
