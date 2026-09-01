@@ -75,9 +75,12 @@ function initScrollFade() {
 
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
+      const isFigure = entry.target.tagName === 'FIGURE';
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
+        if (!isFigure) obs.unobserve(entry.target); // Text bleibt sichtbar
+      } else if (isFigure) {
+        entry.target.classList.remove('is-visible'); // Bilder faden auch wieder aus
       }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
@@ -236,10 +239,10 @@ function initHero() {
 
     if (scrollHint) scrollHint.style.opacity = 0;
 
-    const titleOpacity = 1 - mapRange(progress, 0.12, 0.3, 0, 1);
-    const labelOpacity = mapRange(progress, 0.32, 0.48, 0, 1) * (1 - mapRange(progress, 0.78, 0.9, 0, 1));
-    const leadOpacity = mapRange(progress, 0.58, 0.74, 0, 1) * (1 - mapRange(progress, 0.86, 0.96, 0, 1));
-    const whiteOpacity = mapRange(progress, 0.86, 1, 0, 1);
+    const titleOpacity = 1 - mapRange(progress, 0.08, 0.2, 0, 1);
+    const labelOpacity = mapRange(progress, 0.28, 0.4, 0, 1) * (1 - mapRange(progress, 0.55, 0.65, 0, 1));
+    const leadOpacity = mapRange(progress, 0.72, 0.84, 0, 1);
+    const whiteOpacity = mapRange(progress, 0.88, 1, 0, 1);
 
     titleGroup.style.opacity = titleOpacity;
     label.style.opacity = labelOpacity;
