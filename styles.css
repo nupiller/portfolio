@@ -913,3 +913,237 @@ body{
     gap:0.75rem;
   }
 }
+
+/* ===== Scroll-Scrubbing Chart Race ===== */
+.scrub-chart-wrapper{
+  position:relative;
+  height:400vh; /* Scroll-Distanz, die die Animation durchläuft */
+  margin:2rem 0;
+}
+
+.scrub-chart-sticky{
+  position:sticky;
+  top:8vh;
+  height:84vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:2rem 1.5rem;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+
+.scrub-chart-year{
+  font-family:'Inter', system-ui, sans-serif;
+  font-weight:900;
+  font-size:clamp(2.5rem, 6vw, 4rem);
+  color:var(--accent);
+  text-align:center;
+  margin-bottom:1.5rem;
+  font-variant-numeric:tabular-nums;
+}
+
+.scrub-chart-bars{
+  position:relative;
+  height:400px; /* 9 Zeilen x 44px */
+  max-width:700px;
+  margin:0 auto;
+  width:100%;
+}
+
+.scrub-bar-row{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:36px;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  transition:transform 0.25s ease;
+}
+
+.scrub-bar-label{
+  flex:0 0 120px;
+  font-family:'Courier Prime', monospace;
+  font-size:0.8rem;
+  text-align:right;
+  color:#333;
+}
+
+.scrub-bar-track{
+  flex:1;
+  height:22px;
+  background:var(--muted);
+  border-radius:3px;
+  overflow:hidden;
+}
+
+.scrub-bar-fill{
+  height:100%;
+  border-radius:3px;
+  transition:width 0.1s linear;
+}
+
+.scrub-bar-value{
+  flex:0 0 90px;
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  color:var(--grey);
+  white-space:nowrap;
+}
+
+.scrub-chart-hint{
+  text-align:center;
+  margin-top:1.5rem;
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  color:var(--grey);
+  animation:scrub-hint-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scrub-hint-pulse{
+  0%, 100%{ opacity:0.4; }
+  50%{ opacity:1; }
+}
+
+@media (max-width:640px){
+  .scrub-chart-wrapper{
+    height:300vh;
+  }
+  .scrub-chart-sticky{
+    top:4vh;
+    height:88vh;
+    padding:1.25rem 1rem;
+  }
+  .scrub-bar-label{
+    flex-basis:78px;
+    font-size:0.68rem;
+  }
+  .scrub-bar-value{
+    flex-basis:64px;
+    font-size:0.65rem;
+  }
+  .scrub-chart-bars{
+    height:340px;
+  }
+  .scrub-bar-row{
+    height:30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .scrub-chart-hint{
+    animation:none;
+  }
+}
+
+/* ===== Szenen-System: Bild -> abdunkeln + Text -> zu Weiss ausblenden ===== */
+.scene-wrapper{
+  position:relative;
+  height:220vh;
+  width:100vw;
+  margin-left:50%;
+  transform:translateX(-50%);
+}
+
+.scene-sticky{
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.scene-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.scene-overlay{
+  position:absolute;
+  inset:0;
+  background:#000;
+  opacity:0;
+  pointer-events:none;
+}
+
+.scene-overlay-white{
+  position:absolute;
+  inset:0;
+  background:var(--white);
+  opacity:0;
+  pointer-events:none;
+}
+
+.scene-text{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  width:100%;
+  padding:0 1.5rem;
+  box-sizing:border-box;
+  opacity:0;
+}
+
+.scene-text p{
+  margin:0;
+  color:var(--white);
+  font-family:'Courier Prime', monospace;
+  font-weight:700;
+  font-size:1.25rem;
+  line-height:1.6;
+  letter-spacing:0.01em;
+  text-shadow:0 2px 14px rgba(0,0,0,0.5);
+}
+
+.scene-credit{
+  position:absolute;
+  z-index:2;
+  bottom:1.5rem;
+  right:1.75rem;
+  color:rgba(255,255,255,0.75);
+  font-family:'Courier Prime', monospace;
+  font-size:0.7rem;
+  letter-spacing:0.03em;
+  opacity:0;
+  text-shadow:0 1px 6px rgba(0,0,0,0.4);
+}
+
+@media (max-width:640px){
+  .scene-wrapper{
+    height:180vh;
+  }
+  .scene-text p{
+    font-size:1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .scene-sticky{
+    position:relative;
+    height:auto;
+    min-height:60vh;
+  }
+  .scene-overlay{
+    opacity:0.55 !important;
+  }
+  .scene-overlay-white{
+    opacity:0 !important;
+  }
+  .scene-text,
+  .scene-credit{
+    opacity:1 !important;
+  }
+  .scene-wrapper{
+    height:auto;
+  }
+}
