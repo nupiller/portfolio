@@ -57,7 +57,8 @@ function initScrollFade() {
     '.single-post .post-summary',
     '.single-post .post-books',
     '.single-post .post-sources',
-    '.single-post .post-cta'
+    '.single-post .post-cta',
+    '.single-post .chapter-announce'
   ].join(',');
 
   const els = document.querySelectorAll(selector);
@@ -302,44 +303,44 @@ function initScenes() {
 // Hero-Sequenz: Bild -> Titel (h\u00e4lt) -> beim Scrollen: Label allein -> Lead -> Weiss
 function initHero() {
   const wrapper = document.getElementById('heroWrapper');
-  const titleGroup = document.getElementById('heroTitleGroup');
-  const label = document.getElementById('heroLabel');
-  const leadText = document.getElementById('heroLeadText');
-  const whiteOverlay = document.getElementById('heroWhiteOverlay');
+  if (!wrapper) return;
+
+  const panels = wrapper.querySelectorAll('[data-hero-panel]');
+  const white = document.getElementById('heroWhite');
   const scrollHint = document.getElementById('heroScrollHint');
-  if (!wrapper || !titleGroup || !label || !leadText || !whiteOverlay) return;
+  if (panels.length === 0) return;
 
-  function render() {
+  // Zeitfenster pro Panel: [start, end] jeweils fuer Einblenden und Ausblenden.
+  // Grosszuegige Luecken dazwischen, damit sich nie zwei Panels gleichzeitig
+  // ueberlappen koennen.
+  const schedule = {
+    title: { in: [-0.02, -0.001], out: [0.14, 0.22] },
+    label: { in: [0.3, 0.38], out: [0.5, 0.58] },
+    lead:  { in: [0.66, 0.76], out: [0.98, 1.0] }
+  };
+
+  function opacityFor(name, progress) {
+    const s = schedule[name];
+    if (!s) return 0;
+    const fadeIn = mapRange(progress, s.in[0], s.in[1], 0, 1);
+    const fadeOut = mapRange(progress, s.out[0], s.out[1], 0, 1);
+    return fadeIn * (1 - fadeOut);
+  }
+
+  function render(progress) {
+    panels.forEach((panel) => {
+      const name = panel.getAttribute('data-hero-panel');
+      panel.style.opacity = opacityFor(name, progress);
+    });
+    if (white) white.style.opacity = mapRange(progress, 0.88, 1, 0, 1);
+    if (scrollHint) scrollHint.style.opacity = progress <= 0.02 ? 1 : 0;
+  }
+
+  function currentProgress() {
     const rect = wrapper.getBoundingClientRect();
-    const wrapperHeight = wrapper.offsetHeight;
-    const viewportHeight = window.innerHeight;
-    const scrollable = wrapperHeight - viewportHeight;
-    if (scrollable <= 0) return;
-
-    const scrolled = -rect.top;
-    const progress = Math.max(0, Math.min(1, scrolled / scrollable));
-
-    // Solange nicht gescrollt wurde: Titel bleibt, wie er von der
-    // Lade-Animation \u00fcbrig geblieben ist (nichts \u00fcberschreiben).
-    if (progress <= 0.001) {
-      label.style.opacity = 0;
-      leadText.style.opacity = 0;
-      whiteOverlay.style.opacity = 0;
-      if (scrollHint) scrollHint.style.opacity = '';
-      return;
-    }
-
-    if (scrollHint) scrollHint.style.opacity = 0;
-
-    const titleOpacity = 1 - mapRange(progress, 0.08, 0.2, 0, 1);
-    const labelOpacity = mapRange(progress, 0.28, 0.4, 0, 1) * (1 - mapRange(progress, 0.55, 0.65, 0, 1));
-    const leadOpacity = mapRange(progress, 0.72, 0.84, 0, 1);
-    const whiteOpacity = mapRange(progress, 0.88, 1, 0, 1);
-
-    titleGroup.style.opacity = titleOpacity;
-    label.style.opacity = labelOpacity;
-    leadText.style.opacity = leadOpacity;
-    whiteOverlay.style.opacity = whiteOpacity;
+    const scrollable = wrapper.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return 0;
+    return Math.max(0, Math.min(1, -rect.top / scrollable));
   }
 
   let ticking = false;
@@ -347,11 +348,12 @@ function initHero() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      render();
+      render(currentProgress());
       ticking = false;
     });
   }
 
+  render(currentProgress()); // sofort initialisieren, nicht erst beim ersten Scroll
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
 }
