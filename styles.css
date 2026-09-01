@@ -634,12 +634,16 @@ main{
 }
 
 .hero-panel--label{
-  color:var(--white);
-  font-family:'Inter', system-ui, sans-serif;
-  font-weight:800;
-  font-size:clamp(28px, 5vw, 44px);
-  letter-spacing:0.02em;
-  text-shadow:0 2px 16px rgba(0,0,0,0.45);
+  text-align:center;
+}
+
+.hero-panel--label .chapter-announce-title{
+  margin:0;
+  text-shadow:0 2px 16px rgba(0,0,0,0.5);
+}
+
+.hero-panel--label .chapter-announce-number{
+  text-shadow:0 1px 10px rgba(0,0,0,0.5);
 }
 
 .hero-panel p{
@@ -1444,6 +1448,11 @@ body{
   max-width:380px;
 }
 
+.yt-embed--featured{
+  max-width:480px;
+  margin:2.5rem auto;
+}
+
 .yt-embed-row{
   display:flex;
   flex-wrap:wrap;
@@ -1759,4 +1768,57 @@ body{
   font-family:'Courier Prime', monospace;
   font-size:0.75rem;
   color:var(--grey);
+}
+
+/* ===== Kapitelübersicht ===== */
+.toc{
+  margin:3rem 0;
+  padding:2rem;
+  background:var(--muted);
+  border-radius:6px;
+}
+
+.toc-label{
+  display:block;
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--accent);
+  margin-bottom:1rem;
+}
+
+.toc-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:0.6rem;
+}
+
+.toc-list a{
+  display:flex;
+  align-items:baseline;
+  gap:0.75rem;
+  text-decoration:none;
+  color:#222;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:1.35rem;
+  padding:0.3rem 0;
+  border-bottom:1px solid var(--line);
+  transition:color 0.2s ease, padding-left 0.2s ease;
+}
+
+.toc-list a:hover{
+  color:var(--accent);
+  padding-left:0.4rem;
+}
+
+.toc-number{
+  font-family:'Courier Prime', monospace;
+  font-weight:700;
+  font-size:0.85rem;
+  color:var(--accent);
+  flex:0 0 auto;
 }
