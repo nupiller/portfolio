@@ -81,16 +81,17 @@
       <!-- Einleitung (Rest) -->
       <section class="post-intro">
 
-        <p>
-          Manche haben es kommen sehen. Manche versuchten, etwas daran zu
-          ändern. Manche, machten es sich zur Lebensaufgabe. Bekannt wurden
-          sie unter anderem als «Fridays for Future».
-        </p>
-
-        <figure class="atmo-image full-bleed">
-          <img src="images/Pascal%20Bernardon.jpg" alt="Fridays for Future Demonstration" loading="lazy" />
-          <figcaption>Foto: Pascal Bernardon</figcaption>
-        </figure>
+        <div class="fly-card-wrapper full-bleed" data-fly-card>
+          <img class="fly-card-bg" src="images/Pascal%20Bernardon.jpg" alt="Fridays for Future Demonstration" loading="lazy" />
+          <div class="fly-card-box">
+            <p>
+              Manche haben es kommen sehen. Manche versuchten, etwas daran
+              zu ändern. Manche, machten es sich zur Lebensaufgabe. Bekannt
+              wurden sie unter anderem als «Fridays for Future».
+            </p>
+          </div>
+          <div class="fly-card-credit">Foto: Pascal Bernardon</div>
+        </div>
 
         <p>
           Und weil wir lieber eine einzelne Person, statt eine ganze
@@ -185,17 +186,14 @@
           sie versagt.
         </p>
 
-        <!-- Video-Statement: Platzhalter, bis eigenes Material vorliegt -->
-        <figure class="media-embed">
-          <video controls preload="none" poster="images/louki.jpg">
-            <source src="media/loukina-statement.mp4" type="video/mp4">
-            Dein Browser unterstützt das Video-Element nicht.
-            <a href="media/loukina-statement.mp4">Video herunterladen</a>.
-          </video>
-          <figcaption>
-            Loukina Tille im Gespräch über ihr Verhältnis zum Rampenlicht.
-            (Platzhalter – eigenes Videomaterial hier einsetzen)
-          </figcaption>
+        <!-- YouTube-Video mit Foto-Deck -->
+        <figure class="yt-embed">
+          <div class="yt-embed-frame" data-yt-id="EYUsICdAxWU">
+            <div class="yt-deck yt-deck--photo" role="button" tabindex="0" style="--deck-photo:url('images/louki.jpg');">
+              <p class="yt-deck-question">Hast Du noch Hoffnung?</p>
+              <span class="yt-deck-hint">▶ Video ansehen</span>
+            </div>
+          </div>
         </figure>
 
         <blockquote>
@@ -393,16 +391,6 @@
           Zurück im Aktivismus ist Loukina noch nicht. Aber es rumort in
           ihr. Sie ist noch nicht fertig mit der Welt.
         </p>
-
-        <!-- YouTube-Video mit Foto-Deck -->
-        <figure class="yt-embed">
-          <div class="yt-embed-frame" data-yt-id="EYUsICdAxWU">
-            <div class="yt-deck yt-deck--photo" role="button" tabindex="0" style="--deck-photo:url('images/louki.jpg');">
-              <p class="yt-deck-question">Hast Du noch Hoffnung?</p>
-              <span class="yt-deck-hint">▶ Video ansehen</span>
-            </div>
-          </div>
-        </figure>
 
         <p><strong>Die Zukunft wird, was wir daraus machen.</strong></p>
 
