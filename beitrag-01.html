@@ -74,20 +74,59 @@
       <!-- Einleitung (Rest) -->
       <section class="post-intro">
 
-        <p>
-          Manche haben es kommen sehen. Manche versuchten, etwas daran zu
-          ändern. Manche versuchten es nicht nur, sondern machten es sich zur
-          Lebensaufgabe. Bekannt wurden sie als «Fridays for Future».
-        </p>
+      </section>
 
-        <p>
-          Weil wir lieber eine einzelne Person, statt eine ganze Bewegung ins
-          Rampenlicht stellen – sei es für den Personenkult oder persönliche
-          Projektions- und Angriffsfläche – drehte sich der Diskurs vor allem
-          um junge Frauen. Allen voran Greta. Und weil die Schweiz immer gerne
-          ein «Made of Switzerland» hat, auch um Menschen wie Loukina.
-        </p>
 
+      <!-- Szene 1: Fridays for Future -->
+      <section class="scene-wrapper" data-scene>
+        <div class="scene-sticky">
+          <img class="scene-bg" src="images/Pascal%20Bernardon.jpg" alt="Fridays for Future Demonstration" />
+          <div class="scene-overlay"></div>
+          <div class="scene-overlay-white"></div>
+          <div class="scene-text">
+            <p>
+              Manche haben es kommen sehen. Manche versuchten, etwas daran zu
+              ändern. Manche, machten es sich zur Lebensaufgabe. Bekannt
+              wurden sie unter anderem als «Fridays for Future».
+            </p>
+          </div>
+          <div class="scene-credit">Foto: Pascal Bernardon</div>
+        </div>
+      </section>
+
+      <!-- Szene 2: Greta -->
+      <section class="scene-wrapper" data-scene>
+        <div class="scene-sticky">
+          <img class="scene-bg" src="images/Asl%C4%B1han%20Alt%C4%B1n.jpg" alt="Greta Thunberg" />
+          <div class="scene-overlay"></div>
+          <div class="scene-overlay-white"></div>
+          <div class="scene-text">
+            <p>
+              Und weil wir lieber eine einzelne Person, statt eine ganze
+              Bewegung ins Rampenlicht stellen – sei es für den Personenkult
+              oder der persönlichen Projektions- und Angriffsfläche willens –
+              drehte sich die mediale Debatte vor allem um junge Frauen.
+              Allen voran Greta.
+            </p>
+          </div>
+          <div class="scene-credit">Foto: Aslıhan Altın</div>
+        </div>
+      </section>
+
+      <!-- Szene 3: Loukina -->
+      <section class="scene-wrapper" data-scene>
+        <div class="scene-sticky">
+          <img class="scene-bg" src="images/Loukina%20Tille.png" alt="Loukina Tille" />
+          <div class="scene-overlay"></div>
+          <div class="scene-overlay-white"></div>
+          <div class="scene-text">
+            <p>
+              Und weil die Schweiz immer gerne ein «Made of Switzerland» hat,
+              auch um Menschen wie Loukina.
+            </p>
+          </div>
+          <div class="scene-credit">Foto: Loukina Tille</div>
+        </div>
       </section>
 
 
@@ -228,14 +267,19 @@
           bringt.
         </p>
 
-        <div class="chart-wrapper">
-          <div class="flourish-embed flourish-chart" data-src="visualisation/30108778">
-            <script src="https://public.flourish.studio/resources/embed.js"></script>
-            <noscript>
-              <img src="https://public.flourish.studio/visualisation/30108778/thumbnail" width="100%" alt="Weltweiter Energieverbrauch nach Quelle, 1800–2025" />
-            </noscript>
+        <!-- Scroll-Scrubbing Chart Race: Weltweiter Energieverbrauch 1800-2025 -->
+        <div class="scrub-chart-wrapper" id="scrubChartWrapper">
+          <div class="scrub-chart-sticky">
+            <div class="scrub-chart-year" id="scrubYear">1800</div>
+            <div class="scrub-chart-bars" id="scrubBars"></div>
+            <div class="scrub-chart-hint">↓ weiterscrollen, um durch die Jahre zu blättern</div>
           </div>
         </div>
+
+        <script id="scrubData" type="application/json">
+        {"years": [1800, 1805, 1810, 1815, 1820, 1825, 1830, 1835, 1840, 1845, 1850, 1855, 1860, 1865, 1870, 1875, 1880, 1885, 1890, 1895, 1900, 1905, 1910, 1915, 1920, 1925, 1930, 1935, 1940, 1945, 1950, 1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025], "names": ["Kohle", "Erdoel", "Gas", "Kernkraft", "Wasserkraft", "Wind", "Solar", "Biotreibstoffe", "Andere Erneuerbare"], "data": [{"Kohle": 97.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 112.5, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 128.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 140.5, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 153.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 208.5, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 264.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 310.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 356.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 462.5, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 569.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 815.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 1061.0, "Erdoel": 0.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 1351.5, "Erdoel": 3.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 1642.0, "Erdoel": 6.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 2092.0, "Erdoel": 19.5, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 2542.0, "Erdoel": 33.0, "Gas": 0.0, "Kernkraft": 0.0, "Wasserkraft": 0.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 3199.0, "Erdoel": 61.0, "Gas": 16.5, "Kernkraft": 0.0, "Wasserkraft": 7.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 3856.0, "Erdoel": 89.0, "Gas": 33.0, "Kernkraft": 0.0, "Wasserkraft": 14.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 4792.0, "Erdoel": 135.0, "Gas": 48.5, "Kernkraft": 0.0, "Wasserkraft": 15.5, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 5728.0, "Erdoel": 181.0, "Gas": 64.0, "Kernkraft": 0.0, "Wasserkraft": 17.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 7192.0, "Erdoel": 289.0, "Gas": 103.0, "Kernkraft": 0.0, "Wasserkraft": 25.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 8656.0, "Erdoel": 397.0, "Gas": 142.0, "Kernkraft": 0.0, "Wasserkraft": 33.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 9244.5, "Erdoel": 643.0, "Gas": 187.5, "Kernkraft": 0.0, "Wasserkraft": 48.5, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 9833.0, "Erdoel": 889.0, "Gas": 233.0, "Kernkraft": 0.0, "Wasserkraft": 64.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 9979.0, "Erdoel": 1322.5, "Gas": 418.0, "Kernkraft": 0.0, "Wasserkraft": 97.5, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 10125.0, "Erdoel": 1756.0, "Gas": 603.0, "Kernkraft": 0.0, "Wasserkraft": 131.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 10855.5, "Erdoel": 2204.5, "Gas": 739.0, "Kernkraft": 0.0, "Wasserkraft": 161.5, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 11586.0, "Erdoel": 2653.0, "Gas": 875.0, "Kernkraft": 0.0, "Wasserkraft": 192.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 12094.5, "Erdoel": 4048.5, "Gas": 1483.5, "Kernkraft": 0.0, "Wasserkraft": 262.5, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 12603.0, "Erdoel": 5444.0, "Gas": 2092.0, "Kernkraft": 0.0, "Wasserkraft": 333.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 14022.5, "Erdoel": 8270.5, "Gas": 3282.0, "Kernkraft": 0.0, "Wasserkraft": 511.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 15442.0, "Erdoel": 11097.0, "Gas": 4472.0, "Kernkraft": 0.0, "Wasserkraft": 689.0, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 0.0, "Andere Erneuerbare": 0.0}, {"Kohle": 16177.69, "Erdoel": 18007.85, "Gas": 6303.82, "Kernkraft": 77.39, "Wasserkraft": 923.2, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 9.03, "Andere Erneuerbare": 83.26}, {"Kohle": 17087.01, "Erdoel": 26680.23, "Gas": 9614.81, "Kernkraft": 239.01, "Wasserkraft": 1174.65, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 13.5, "Andere Erneuerbare": 111.44}, {"Kohle": 18045.44, "Erdoel": 31996.93, "Gas": 11659.74, "Kernkraft": 1120.75, "Wasserkraft": 1448.88, "Wind": 0.0, "Solar": 0.0, "Biotreibstoffe": 13.69, "Andere Erneuerbare": 164.05}, {"Kohle": 20877.78, "Erdoel": 35569.11, "Gas": 14237.16, "Kernkraft": 2157.35, "Wasserkraft": 1731.65, "Wind": 0.01, "Solar": 0.0, "Biotreibstoffe": 32.79, "Andere Erneuerbare": 247.33}, {"Kohle": 23996.74, "Erdoel": 33681.21, "Gas": 16262.68, "Kernkraft": 4511.88, "Wasserkraft": 1979.24, "Wind": 0.06, "Solar": 0.01, "Biotreibstoffe": 68.41, "Andere Erneuerbare": 396.82}, {"Kohle": 25925.97, "Erdoel": 37663.42, "Gas": 19481.85, "Kernkraft": 6062.41, "Wasserkraft": 2158.62, "Wind": 3.63, "Solar": 0.39, "Biotreibstoffe": 106.57, "Andere Erneuerbare": 610.47}, {"Kohle": 25995.75, "Erdoel": 39496.73, "Gas": 21104.49, "Kernkraft": 7037.97, "Wasserkraft": 2483.39, "Wind": 8.27, "Solar": 0.64, "Biotreibstoffe": 131.2, "Andere Erneuerbare": 715.97}, {"Kohle": 27452.62, "Erdoel": 42987.12, "Gas": 23994.26, "Kernkraft": 7820.2, "Wasserkraft": 2646.68, "Wind": 31.41, "Solar": 1.06, "Biotreibstoffe": 122.66, "Andere Erneuerbare": 925.38}, {"Kohle": 36222.54, "Erdoel": 46891.2, "Gas": 27439.5, "Kernkraft": 8389.71, "Wasserkraft": 2911.26, "Wind": 104.63, "Solar": 4.18, "Biotreibstoffe": 226.26, "Andere Erneuerbare": 1172.71}, {"Kohle": 41980.54, "Erdoel": 48191.35, "Gas": 31593.26, "Kernkraft": 8389.6, "Wasserkraft": 3432.23, "Wind": 346.53, "Solar": 33.92, "Biotreibstoffe": 676.2, "Andere Erneuerbare": 1601.56}, {"Kohle": 43691.93, "Erdoel": 51280.73, "Gas": 34704.54, "Kernkraft": 7805.56, "Wasserkraft": 3880.08, "Wind": 832.07, "Solar": 256.52, "Biotreibstoffe": 896.4, "Andere Erneuerbare": 2151.79}, {"Kohle": 41866.8, "Erdoel": 48859.16, "Gas": 38693.08, "Kernkraft": 8155.18, "Wasserkraft": 4357.88, "Wind": 1596.24, "Solar": 861.06, "Biotreibstoffe": 1067.05, "Andere Erneuerbare": 2626.12}, {"Kohle": 46119.5, "Erdoel": 55825.84, "Gas": 41860.35, "Kernkraft": 8622.4, "Wasserkraft": 4479.16, "Wind": 2714.07, "Solar": 2811.06, "Biotreibstoffe": 1414.52, "Andere Erneuerbare": 2906.7}]}
+        </script>
+
         <p style="font-size: 0.85rem; opacity: 0.7; max-width:760px; margin-left:auto; margin-right:auto;">
           Quelle:
           <a
@@ -245,7 +289,7 @@
             target="_blank" rel="noopener">Energy Institute – Statistical Review of World Energy (2026); Smil (2017), Datenaufbereitung: Our World in Data</a>
           • Angaben in Terawattstunden (TWh). Werte vor 1965 basieren auf
           historischen Schätzungen und liegen nur in Zehnjahres-Schritten
-          vor, ab 1965 jährlich.
+          vor, ab 1965 jährlich. Scrolle, um durch die Jahre zu blättern.
         </p>
 
       </section>
