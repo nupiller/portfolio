@@ -558,28 +558,25 @@ main{
   top:0;
   height:100vh;
   height:100dvh;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  align-items:stretch;
-  padding:3.5rem 1.5rem 2rem;
   overflow:hidden;
-  background-image:url('images/schweiss.jpg');
-  background-size:cover;
-  background-position:center;
 }
 
-.hero-sticky::before{
-  content:"";
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.hero-dim{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,0.6);
-  opacity:0;
-  animation:hero-dim 1s ease forwards;
-  animation-delay:0.5s;
 }
 
-.hero-white-overlay{
+.hero-white{
   position:absolute;
   inset:0;
   background:var(--white);
@@ -587,111 +584,65 @@ main{
   pointer-events:none;
 }
 
-@keyframes hero-dim{
-  from{ opacity:0; }
-  to{ opacity:1; }
-}
-
 .hero-scroll-hint{
   position:absolute;
   left:50%;
   bottom:2.5rem;
   transform:translateX(-50%);
-  z-index:2;
+  z-index:3;
   color:rgba(255,255,255,0.8);
   font-family:'Courier Prime', monospace;
   font-size:0.8rem;
   letter-spacing:0.04em;
-  opacity:0;
-  animation:lead-reveal 0.8s ease forwards;
-  animation-delay:1.6s;
 }
 
-.lead-title-group{
+/* Alle drei Inhalts-Phasen (Titel / Label / Lead) sind exakt deckungsgleiche
+   Panels, die per JS ein- und ausgeblendet werden. Kein transform-Trick,
+   keine CSS-Animationen -> kann nicht mehr mit Scroll-JS kollidieren. */
+.hero-panel{
   position:absolute;
-  z-index:1;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  max-width:760px;
-  width:100%;
-  padding:0 1.5rem;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:2rem 1.5rem;
   box-sizing:border-box;
+  text-align:center;
   opacity:0;
-  animation:hero-title-reveal 1s ease forwards;
-  animation-delay:0.6s;
 }
 
-@keyframes hero-title-reveal{
-  from{
-    opacity:0;
-    transform:translate(-50%, calc(-50% + 18px));
-  }
-  to{
-    opacity:1;
-    transform:translate(-50%, -50%);
-  }
-}
-
-.lead-visual .meta{
+.hero-panel .meta{
   margin:0 0 0.75rem;
   color:var(--white);
   text-shadow:0 1px 10px rgba(0,0,0,0.4);
 }
 
-.lead-visual .meta .category{
+.hero-panel .meta .category{
   color:rgba(255,255,255,0.75);
 }
 
-.lead-visual .post-title{
+.hero-panel .post-title{
   margin:0;
+  max-width:760px;
   color:var(--white);
   text-shadow:0 2px 18px rgba(0,0,0,0.45);
   font-size:clamp(44px, 7.5vw, 68px);
 }
 
-@keyframes lead-reveal{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.lead-chapter-label{
-  position:absolute;
-  z-index:1;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  max-width:760px;
-  width:100%;
-  padding:0 1.5rem;
-  box-sizing:border-box;
-  text-align:center;
+.hero-panel--label{
   color:var(--white);
   font-family:'Inter', system-ui, sans-serif;
   font-weight:800;
   font-size:clamp(28px, 5vw, 44px);
   letter-spacing:0.02em;
   text-shadow:0 2px 16px rgba(0,0,0,0.45);
-  opacity:0; /* Sichtbarkeit wird per Scroll (JS) gesteuert */
 }
 
-.lead-visual p{
-  position:absolute;
-  z-index:1;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+.hero-panel p{
   margin:0;
   max-width:760px;
-  width:100%;
-  padding:0 1.5rem;
-  box-sizing:border-box;
   text-align:left;
   color:var(--white);
   font-family:'Courier Prime', monospace;
@@ -700,17 +651,8 @@ main{
   line-height:1.55;
   letter-spacing:0.01em;
   text-shadow:0 2px 14px rgba(0,0,0,0.4);
-  opacity:0; /* Sichtbarkeit wird per Scroll (JS) gesteuert */
 }
 
-/* Fixed Background ist auf iOS problematisch -> auf Mobile normal scrollen */
-@media (max-width:640px){
-  .lead-visual{
-    background-attachment:scroll;
-    min-height:80vh;
-    padding:2.5rem 1.25rem 1.5rem;
-  }
-}
 
 /* Hintergrund der Beitragsseite bleibt weiss */
 body.page-post{
@@ -763,21 +705,14 @@ figure.fade-in.is-visible{
     transform:none !important;
     transition:none !important;
   }
-  .lead-title-group{
-    opacity:1 !important;
-    animation:none !important;
-    transform:translate(-50%, -50%) !important;
+  .hero-panel{
+    display:none !important;
   }
-  .lead-chapter-label{
+  .hero-panel[data-hero-panel="title"]{
+    display:flex !important;
     opacity:1 !important;
-    transform:translate(-50%, -50%) !important;
   }
-  .lead-visual p{
-    opacity:1 !important;
-    transform:translate(-50%, -50%) !important;
-    animation:none !important;
-  }
-  .hero-white-overlay{
+  .hero-white{
     opacity:0 !important;
   }
   .hero-scroll-hint{
@@ -831,9 +766,15 @@ figure.fade-in.is-visible{
 
 /* ===== Full-Bleed: Bilder brechen aus der Textspalte aus ===== */
 .full-bleed{
-  width:100vw;
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
+  margin-left:-2.25rem;
+  margin-right:-2.25rem;
+}
+
+@media (max-width:720px){
+  .full-bleed{
+    margin-left:-1.5rem;
+    margin-right:-1.5rem;
+  }
 }
 
 .post-image.full-bleed{
@@ -857,10 +798,6 @@ figure.fade-in.is-visible{
 .atmo-image.full-bleed img{
   border-radius:0;
   max-height:80vh;
-}
-
-.lead-visual.full-bleed{
-  border-radius:0;
 }
 
 body{
@@ -1479,6 +1416,15 @@ body{
   margin-bottom:0;
 }
 
+.case-modal-sources{
+  margin-top:1.25rem !important;
+  padding-top:1rem;
+  border-top:1px solid var(--line);
+  font-size:0.75rem !important;
+  color:var(--grey) !important;
+  line-height:1.5 !important;
+}
+
 @media (max-width:640px){
   .case-trigger{
     display:block;
@@ -1511,11 +1457,11 @@ body{
 }
 
 .yt-deck--photo{
-  background-image:linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%), var(--deck-photo, none);
+  background-image:linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 45%), var(--deck-photo, none);
   background-size:cover;
   background-position:center;
-  justify-content:flex-end;
-  padding-bottom:2.5rem;
+  justify-content:flex-start;
+  padding-top:2.5rem;
 }
 
 .yt-embed-frame{
@@ -1658,4 +1604,149 @@ body{
   .fly-card-box{
     transition:none;
   }
+}
+
+/* ===== Kapitel-Ankündigung: eigener Screen, analog zum Intro ===== */
+.chapter-announce{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:70vh;
+  margin:3rem 0;
+  padding:3rem 1.5rem;
+  box-sizing:border-box;
+  background:#0a0a0a;
+}
+
+.chapter-announce-inner{
+  text-align:center;
+  max-width:600px;
+}
+
+.chapter-announce-number{
+  display:block;
+  font-family:'Courier Prime', monospace;
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:0.15em;
+  color:var(--accent);
+  margin-bottom:1rem;
+}
+
+.chapter-announce-title{
+  margin:0;
+  color:var(--white);
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:clamp(2.4rem, 7vw, 4rem);
+  line-height:1.15;
+}
+
+@media (max-width:640px){
+  .chapter-announce{
+    min-height:55vh;
+    margin:2rem 0;
+    padding:2rem 1.25rem;
+  }
+}
+
+/* ===== Side-by-Side: Bild + Text (Desktop nebeneinander, Mobile gestapelt) ===== */
+.side-by-side{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  margin:2.5rem 0;
+}
+
+.side-by-side-image{
+  flex:1 1 45%;
+  margin:0;
+  max-width:340px;
+}
+
+.side-by-side-image img{
+  width:100%;
+  height:auto;
+  max-height:80vh;
+  object-fit:contain;
+  background:#111;
+  display:block;
+  border-radius:4px;
+}
+
+.side-by-side-image figcaption{
+  margin-top:0.6rem;
+  text-align:center;
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  color:var(--grey);
+}
+
+.side-by-side-text{
+  flex:1 1 50%;
+}
+
+.side-by-side-text p{
+  margin:0;
+  font-family:'Courier Prime', monospace;
+  font-size:1.05rem;
+  line-height:1.65;
+  color:#222;
+}
+
+@media (max-width:720px){
+  .side-by-side{
+    flex-direction:column;
+    gap:1.25rem;
+  }
+  .side-by-side-image{
+    max-width:280px;
+  }
+}
+
+/* ===== Text-on-Image: grosser Text direkt im Bild ===== */
+.text-on-image{
+  position:relative;
+  margin:2.5rem 0;
+}
+
+.text-on-image img{
+  width:100%;
+  height:auto;
+  max-height:85vh;
+  object-fit:contain;
+  background:#111;
+  display:block;
+}
+
+.text-on-image-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:2.5rem 1.5rem;
+  box-sizing:border-box;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.75) 100%);
+}
+
+.text-on-image-overlay p{
+  margin:0;
+  max-width:520px;
+  text-align:center;
+  color:var(--white);
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-style:italic;
+  font-size:clamp(1.5rem, 3.5vw, 2.1rem);
+  line-height:1.4;
+  text-shadow:0 2px 14px rgba(0,0,0,0.5);
+}
+
+.text-on-image figcaption{
+  margin-top:0.6rem;
+  text-align:center;
+  font-family:'Courier Prime', monospace;
+  font-size:0.75rem;
+  color:var(--grey);
 }
