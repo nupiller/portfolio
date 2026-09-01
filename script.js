@@ -144,6 +144,191 @@ function initScrollProgress() {
   update();
 }
 
+// Hilfsfunktion: Wert von einem Bereich in einen anderen mappen, geklemmt
+function mapRange(value, inMin, inMax, outMin, outMax) {
+  if (inMax === inMin) return outMin;
+  const t = (value - inMin) / (inMax - inMin);
+  const clamped = Math.max(0, Math.min(1, t));
+  return outMin + clamped * (outMax - outMin);
+}
+
+// Szenen-System: Bild -> abdunkeln + Text einblenden -> zu Weiss ausblenden
+function initScenes() {
+  const scenes = document.querySelectorAll('[data-scene]');
+  if (scenes.length === 0) return;
+
+  const items = Array.from(scenes).map((wrapper) => {
+    return {
+      wrapper,
+      darkOverlay: wrapper.querySelector('.scene-overlay'),
+      whiteOverlay: wrapper.querySelector('.scene-overlay-white'),
+      text: wrapper.querySelector('.scene-text'),
+      credit: wrapper.querySelector('.scene-credit')
+    };
+  });
+
+  function render() {
+    items.forEach(({ wrapper, darkOverlay, whiteOverlay, text, credit }) => {
+      const rect = wrapper.getBoundingClientRect();
+      const wrapperHeight = wrapper.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const scrollable = wrapperHeight - viewportHeight;
+      if (scrollable <= 0) return;
+
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+
+      const darkOpacity = mapRange(progress, 0.15, 0.35, 0, 0.55);
+      const textOpacity = mapRange(progress, 0.2, 0.4, 0, 1) * (1 - mapRange(progress, 0.65, 0.82, 0, 1));
+      const whiteOpacity = mapRange(progress, 0.65, 0.9, 0, 1);
+
+      if (darkOverlay) darkOverlay.style.opacity = darkOpacity;
+      if (whiteOverlay) whiteOverlay.style.opacity = whiteOpacity;
+      if (text) text.style.opacity = textOpacity;
+      if (credit) credit.style.opacity = textOpacity;
+    });
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      render();
+      ticking = false;
+    });
+  }
+
+  render();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+}
+  const wrapper = document.getElementById('scrubChartWrapper');
+  const bars = document.getElementById('scrubBars');
+  const yearEl = document.getElementById('scrubYear');
+  const dataScript = document.getElementById('scrubData');
+  if (!wrapper || !bars || !yearEl || !dataScript) return;
+
+  let payload;
+  try {
+    payload = JSON.parse(dataScript.textContent);
+  } catch (e) {
+    console.error('Scrub-Chart: Daten konnten nicht gelesen werden', e);
+    return;
+  }
+
+  const years = payload.years;
+  const names = payload.names;
+  const data = payload.data;
+  const n = years.length;
+
+  const colors = {
+    'Kohle': '#3a3a3a',
+    'Erdoel': '#b23a2f',
+    'Gas': '#e08a2b',
+    'Kernkraft': '#7a5ba6',
+    'Wasserkraft': '#2c6fa8',
+    'Wind': '#3fa796',
+    'Solar': '#e0b02b',
+    'Biotreibstoffe': '#5a8f4f',
+    'Andere Erneuerbare': '#9dbf8f'
+  };
+
+  // Baue die Balken-Elemente einmalig
+  const rows = {};
+  names.forEach((name) => {
+    const row = document.createElement('div');
+    row.className = 'scrub-bar-row';
+
+    const label = document.createElement('div');
+    label.className = 'scrub-bar-label';
+    label.textContent = name;
+
+    const track = document.createElement('div');
+    track.className = 'scrub-bar-track';
+
+    const fill = document.createElement('div');
+    fill.className = 'scrub-bar-fill';
+    fill.style.background = colors[name] || '#999';
+    track.appendChild(fill);
+
+    const value = document.createElement('div');
+    value.className = 'scrub-bar-value';
+
+    row.appendChild(label);
+    row.appendChild(track);
+    row.appendChild(value);
+    bars.appendChild(row);
+
+    rows[name] = { row, fill, value };
+  });
+
+  const ROW_GAP = 8; // Abstand zwischen den Balken in px
+  function getRowHeight() {
+    const firstRow = rows[names[0]].row;
+    return firstRow.offsetHeight + ROW_GAP;
+  }
+
+  function interpolate(progress) {
+    // progress: 0..1 über den gesamten Datensatz
+    const pos = progress * (n - 1);
+    const i0 = Math.floor(pos);
+    const i1 = Math.min(i0 + 1, n - 1);
+    const frac = pos - i0;
+
+    const year = Math.round(years[i0] + (years[i1] - years[i0]) * frac);
+    const values = {};
+    names.forEach((name) => {
+      const v0 = data[i0][name];
+      const v1 = data[i1][name];
+      values[name] = v0 + (v1 - v0) * frac;
+    });
+    return { year, values };
+  }
+
+  function render(progress) {
+    const { year, values } = interpolate(progress);
+    yearEl.textContent = year;
+
+    const maxVal = Math.max(...names.map((name) => values[name]), 1);
+    const sorted = [...names].sort((a, b) => values[b] - values[a]);
+    const rowHeight = getRowHeight();
+
+    sorted.forEach((name, rank) => {
+      const r = rows[name];
+      const pct = (values[name] / maxVal) * 100;
+      r.fill.style.width = pct + '%';
+      r.value.textContent = Math.round(values[name]).toLocaleString('de-CH') + ' TWh';
+      r.row.style.transform = `translateY(${rank * rowHeight}px)`;
+    });
+  }
+
+  let ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const rect = wrapper.getBoundingClientRect();
+      const wrapperHeight = wrapper.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const scrollable = wrapperHeight - viewportHeight;
+
+      // Wie weit sind wir in den Wrapper reingescrollt (0 = Start, 1 = Ende)
+      const scrolled = -rect.top;
+      let progress = scrollable > 0 ? scrolled / scrollable : 0;
+      progress = Math.max(0, Math.min(1, progress));
+
+      render(progress);
+      ticking = false;
+    });
+  }
+
+  render(0);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+}
+
 // Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   setYear();
@@ -152,4 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollFade();
   initCountUp();
   initScrollProgress();
+  initScrubChart();
+  initScenes();
 });
