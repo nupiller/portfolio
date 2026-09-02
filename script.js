@@ -368,6 +368,7 @@ function initStory() {
 
   const boxFFF = document.getElementById('storyBoxFFF');
   const imgFFF = document.getElementById('storyImgFFF');
+  const creditFFF = document.getElementById('storyCreditFFF');
   const textGreta = document.getElementById('storyTextGreta');
   const bgBlack = document.getElementById('storyBgBlack');
   const textLoukina = document.getElementById('storyTextLoukina');
@@ -376,6 +377,7 @@ function initStory() {
   const schedule = {
     boxFFF:      { el: boxFFF,      in: [0.00, 0.03], out: [0.14, 0.20] },
     imgFFF:      { el: imgFFF,      in: [0.06, 0.14], out: [0.42, 0.52] },
+    creditFFF:   { el: creditFFF,   in: [0.06, 0.14], out: [0.42, 0.52] },
     textGreta:   { el: textGreta,   in: [0.48, 0.54], out: [0.66, 0.72] },
     textLoukina: { el: textLoukina, in: [0.76, 0.82], out: [0.94, 0.99] },
     loukinaWrap: { el: loukinaWrap, in: [0.90, 0.98], out: [1.01, 1.02] }
