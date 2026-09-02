@@ -361,7 +361,132 @@ function initViewportBleed() {
   window.addEventListener('resize', apply);
 }
 
-// Hero-Sequenz: Bild -> Titel (h\u00e4lt) -> beim Scrollen: Label allein -> Lead -> Weiss
+// Story-Sequenz: Box -> Bild -> Weiss -> Text -> Schwarz -> Text -> Bild
+function initStory() {
+  const wrapper = document.getElementById('storyWrapper');
+  if (!wrapper) return;
+
+  const boxFFF = document.getElementById('storyBoxFFF');
+  const imgFFF = document.getElementById('storyImgFFF');
+  const textGreta = document.getElementById('storyTextGreta');
+  const bgBlack = document.getElementById('storyBgBlack');
+  const textLoukina = document.getElementById('storyTextLoukina');
+  const imgLoukina = document.getElementById('storyImgLoukina');
+
+  const schedule = {
+    boxFFF:      { el: boxFFF,      in: [0.00, 0.03], out: [0.20, 0.26] },
+    imgFFF:      { el: imgFFF,      in: [0.08, 0.16], out: [0.20, 0.26] },
+    textGreta:   { el: textGreta,   in: [0.30, 0.36], out: [0.46, 0.52] },
+    bgBlack:     { el: bgBlack,     in: [0.56, 0.62], out: [1.01, 1.02] },
+    textLoukina: { el: textLoukina, in: [0.62, 0.68], out: [1.01, 1.02] },
+    imgLoukina:  { el: imgLoukina,  in: [0.82, 0.92], out: [1.01, 1.02] }
+  };
+
+  function opacityFor(item, progress) {
+    const fadeIn = mapRange(progress, item.in[0], item.in[1], 0, 1);
+    const fadeOut = mapRange(progress, item.out[0], item.out[1], 0, 1);
+    return fadeIn * (1 - fadeOut);
+  }
+
+  function currentProgress() {
+    const rect = wrapper.getBoundingClientRect();
+    const scrollable = wrapper.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return 0;
+    return Math.max(0, Math.min(1, -rect.top / scrollable));
+  }
+
+  function render(progress) {
+    Object.values(schedule).forEach((item) => {
+      if (!item.el) return;
+      item.el.style.opacity = opacityFor(item, progress);
+    });
+    // Leichter Parallax-Effekt auf den Bildern, solange sie sichtbar sind
+    if (imgFFF) imgFFF.style.transform = `translateY(${(0.5 - progress) * 40}px)`;
+    if (imgLoukina) imgLoukina.style.transform = `translateY(${(0.9 - progress) * 40}px)`;
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      render(currentProgress());
+      ticking = false;
+    });
+  }
+
+  render(currentProgress());
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+}
+
+// Zitat: Wort-fuer-Wort-Enthuellung beim Scrollen
+function initWordReveal() {
+  const els = document.querySelectorAll('[data-word-reveal]');
+  if (els.length === 0) return;
+
+  const items = Array.from(els).map((el) => {
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    const words = text.split(' ');
+    el.innerHTML = words
+      .map((w) => `<span class="word">${w}</span>`)
+      .join(' ');
+    return { el, spans: el.querySelectorAll('.word') };
+  });
+
+  function render() {
+    const vh = window.innerHeight;
+    const start = vh * 0.85;
+    const end = vh * 0.25;
+
+    items.forEach(({ el, spans }) => {
+      const rect = el.getBoundingClientRect();
+      const progress = mapRange(start - rect.top, 0, start - end, 0, 1);
+      const revealCount = Math.floor(progress * spans.length);
+      spans.forEach((span, i) => {
+        span.classList.toggle('is-revealed', i < revealCount);
+      });
+    });
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      render();
+      ticking = false;
+    });
+  }
+
+  render();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+}
+
+// Frage-Zeile: Flacker-Effekt beim Erscheinen
+function initFlickerText() {
+  const els = document.querySelectorAll('.chapter-question');
+  if (els.length === 0) return;
+
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-flickered'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-flickered');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  els.forEach(el => io.observe(el));
+}
+
+// Hero-Sequenz: Bild -> Titel (hält) -> beim Scrollen: Label allein -> Lead -> Weiss
 function initHero() {
   const wrapper = document.getElementById('heroWrapper');
   if (!wrapper) return;
@@ -443,7 +568,7 @@ function initScrubChart() {
 
   const colors = {
     'Kohle': '#3a3a3a',
-    'Erdoel': '#b23a2f',
+    'Erdöl': '#b23a2f',
     'Gas': '#e08a2b',
     'Kernkraft': '#7a5ba6',
     'Wasserkraft': '#2c6fa8',
@@ -631,6 +756,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountUp();
   initScrollProgress();
   initHero();
+  initWordReveal();
+  initFlickerText();
+  initStory();
   initScrubChart();
   initScenes();
   initCaseModal();
