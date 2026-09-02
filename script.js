@@ -377,7 +377,6 @@ function initStory() {
     boxFFF:      { el: boxFFF,      in: [0.00, 0.03], out: [0.14, 0.20] },
     imgFFF:      { el: imgFFF,      in: [0.06, 0.14], out: [0.42, 0.52] },
     textGreta:   { el: textGreta,   in: [0.48, 0.54], out: [0.66, 0.72] },
-    bgBlack:     { el: bgBlack,     in: [0.70, 0.76], out: [1.01, 1.02] },
     textLoukina: { el: textLoukina, in: [0.76, 0.82], out: [0.94, 0.99] },
     loukinaWrap: { el: loukinaWrap, in: [0.90, 0.98], out: [1.01, 1.02] }
   };
