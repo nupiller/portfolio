@@ -1920,6 +1920,20 @@ body{
   filter:grayscale(100%);
 }
 
+.story-bg-image--portrait{
+  object-fit:contain;
+  background:#111;
+}
+
+.story-img-wrap{
+  z-index:1;
+}
+
+.story-img-wrap .story-bg-image{
+  position:absolute;
+  inset:0;
+}
+
 .story-box,
 .story-text{
   z-index:2;
@@ -2071,4 +2085,80 @@ body{
   font-size:clamp(21px,2.4vw,26px);
   line-height:1.2;
   text-shadow:0 2px 12px rgba(0,0,0,0.55);
+}
+
+/* ===== Buch-Karten: verspielt, heben sich vom Rest ab ===== */
+.book-cards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  margin-top:1.75rem;
+}
+
+.book-card{
+  flex:1 1 240px;
+  display:flex;
+  flex-direction:column;
+  gap:0.6rem;
+  padding:1.5rem 1.5rem 1.25rem;
+  border:2px solid var(--black);
+  border-radius:8px;
+  background:var(--muted);
+  text-decoration:none;
+  color:#1a1a1a;
+  transform:rotate(-1.5deg);
+  box-shadow:6px 6px 0 var(--accent);
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-card--alt{
+  transform:rotate(1.5deg);
+  box-shadow:-6px 6px 0 var(--black);
+}
+
+.book-card:hover{
+  transform:rotate(0deg) scale(1.03);
+  box-shadow:9px 9px 0 var(--accent);
+}
+
+.book-card--alt:hover{
+  box-shadow:-9px 9px 0 var(--black);
+}
+
+.book-card-icon{
+  font-size:2rem;
+  line-height:1;
+}
+
+.book-card-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:700;
+  font-size:1.4rem;
+  line-height:1.25;
+}
+
+.book-card-meta{
+  font-family:'Courier Prime', monospace;
+  font-size:0.85rem;
+  line-height:1.5;
+  color:#333;
+}
+
+.book-card-cta{
+  margin-top:0.5rem;
+  font-family:'Courier Prime', monospace;
+  font-weight:700;
+  font-size:0.85rem;
+  color:var(--accent);
+}
+
+@media (max-width:640px){
+  .book-cards{
+    flex-direction:column;
+  }
+  .book-card,
+  .book-card--alt{
+    transform:none;
+    box-shadow:5px 5px 0 var(--accent);
+  }
 }
