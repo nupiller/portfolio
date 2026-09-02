@@ -117,22 +117,13 @@
           <div class="fly-card-credit">Foto: Pascal Bernardon</div>
         </div>
 
-        <!-- Greta: Bild + Text nebeneinander (mobil: Text unter Bild) -->
-        <div class="side-by-side full-bleed">
-          <figure class="side-by-side-image">
-            <img src="images/Asl%C4%B1han%20Alt%C4%B1n.jpg" alt="Greta Thunberg" loading="lazy" />
-            <figcaption>Foto: Aslıhan Altın</figcaption>
-          </figure>
-          <div class="side-by-side-text">
-            <p>
-              Weil wir lieber eine einzelne Person, statt eine ganze
-              Bewegung ins Rampenlicht stellen – sei es für den
-              Personenkult oder der persönlichen Projektions- und
-              Angriffsfläche willens – drehte sich die mediale Debatte vor
-              allem um junge Frauen. Allen voran Greta.
-            </p>
-          </div>
-        </div>
+        <p>
+          Weil wir lieber eine einzelne Person, statt eine ganze
+          Bewegung ins Rampenlicht stellen – sei es für den
+          Personenkult oder der persönlichen Projektions- und
+          Angriffsfläche willens – drehte sich die mediale Debatte vor
+          allem um junge Frauen. Allen voran Greta.
+        </p>
 
         <!-- Loukina: Text gross direkt im Bild -->
         <figure class="text-on-image full-bleed">
@@ -246,17 +237,25 @@
           abgeschlossen, mit der Bestnote. Doch auch diese Arbeit handelt vom
           Klimaaktivismus. Jetzt nähert sie sich mit Datensätzen jener Frage,
           die sie all die Jahre umgetrieben hat:
+          <button type="button" class="case-trigger" data-video-open>
+            Video: Warum der Rückzug →
+          </button>
         </p>
 
-        <!-- Kleines Video-Kästchen: Warum der Rückzug -->
-        <figure class="yt-embed yt-embed--compact">
-          <div class="yt-embed-frame" data-yt-id="91Hj1Pz2Zd8">
-            <div class="yt-deck" role="button" tabindex="0">
-              <p class="yt-deck-question">Warum der Rückzug</p>
-              <span class="yt-deck-hint">▶ Video ansehen</span>
-            </div>
+        <!-- Pop-up: Video "Warum der Rückzug" -->
+        <div class="video-modal-overlay" id="videoModalOverlay" hidden>
+          <div class="video-modal" role="dialog" aria-modal="true" aria-label="Video: Warum der Rückzug">
+            <button type="button" class="case-modal-close" id="videoModalClose" aria-label="Schliessen">✕</button>
+            <figure class="yt-embed">
+              <div class="yt-embed-frame" data-yt-id="91Hj1Pz2Zd8">
+                <div class="yt-deck" role="button" tabindex="0">
+                  <p class="yt-deck-question">Warum der Rückzug</p>
+                  <span class="yt-deck-hint">▶ Video ansehen</span>
+                </div>
+              </div>
+            </figure>
           </div>
-        </figure>
+        </div>
 
         <p class="chapter-question">Wann wirkt Widerstand tatsächlich?</p>
 
