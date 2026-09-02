@@ -7,6 +7,15 @@ function setYear() {
 }
 
 // Lazy‑load background images declared via data-bg
+// Stabilere Viewport-Hoehe: nutzt visualViewport falls verfuegbar, das ist
+// auf Mobile deutlich ruhiger als window.innerHeight (das bei ein-/
+// ausblendender Adressleiste staendig springt und Scroll-Animationen
+// "wackeln" liess)
+function getStableViewportHeight() {
+  if (window.visualViewport) return window.visualViewport.height;
+  return window.innerHeight;
+}
+
 function initLazyBg() {
   const els = document.querySelectorAll('.bg-lazy');
   if (!('IntersectionObserver' in window) || els.length === 0) {
@@ -138,7 +147,7 @@ function initScrollProgress() {
 
   function update() {
     const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight - getStableViewportHeight();
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = pct + '%';
   }
@@ -303,7 +312,7 @@ function initScenes() {
     items.forEach(({ wrapper, darkOverlay, whiteOverlay, text, credit }) => {
       const rect = wrapper.getBoundingClientRect();
       const wrapperHeight = wrapper.offsetHeight;
-      const viewportHeight = window.innerHeight;
+      const viewportHeight = getStableViewportHeight();
       const scrollable = wrapperHeight - viewportHeight;
       if (scrollable <= 0) return;
 
@@ -342,7 +351,25 @@ function initViewportBleed() {
   const els = document.querySelectorAll('.bleed-viewport');
   if (els.length === 0) return;
 
+  // Auf schmalen Screens (Mobile) gibt es das Scrollbar-Breite-Problem
+  // nicht -> die reine CSS-Loesung (width:100vw + calc-Margin) reicht dort
+  // zuverlaessig aus. JS-Messung nur auf Desktop, wo Scrollbars Platz
+  // wegnehmen koennen.
+  const MOBILE_BREAKPOINT = 768;
+
+  function clearInlineStyles() {
+    els.forEach((el) => {
+      el.style.marginLeft = '';
+      el.style.marginRight = '';
+      el.style.width = '';
+    });
+  }
+
   function apply() {
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+      clearInlineStyles(); // CSS-Fallback uebernimmt
+      return;
+    }
     const viewportWidth = document.documentElement.clientWidth;
     els.forEach((el) => {
       el.style.marginLeft = '';
@@ -357,8 +384,18 @@ function initViewportBleed() {
     });
   }
 
+  // Nur auf echte Breiten-Aenderungen reagieren, nicht auf Hoehen-Aenderungen
+  // (mobile Adressleiste aendert staendig die Hoehe, nicht die Breite --
+  // das war vermutlich die Ursache fuer das "Wackeln")
+  let lastWidth = window.innerWidth;
+  function onResize() {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    apply();
+  }
+
   apply();
-  window.addEventListener('resize', apply);
+  window.addEventListener('resize', onResize);
 }
 
 // Story-Sequenz: Box -> Bild -> Weiss -> Text -> Schwarz -> Text -> Bild
@@ -391,7 +428,7 @@ function initStory() {
 
   function currentProgress() {
     const rect = wrapper.getBoundingClientRect();
-    const scrollable = wrapper.offsetHeight - window.innerHeight;
+    const scrollable = wrapper.offsetHeight - getStableViewportHeight();
     if (scrollable <= 0) return 0;
     return Math.max(0, Math.min(1, -rect.top / scrollable));
   }
@@ -442,7 +479,7 @@ function initWordReveal() {
   });
 
   function render() {
-    const vh = window.innerHeight;
+    const vh = getStableViewportHeight();
     const start = vh * 0.85;
     const end = vh * 0.25;
 
@@ -531,7 +568,7 @@ function initHero() {
 
   function currentProgress() {
     const rect = wrapper.getBoundingClientRect();
-    const scrollable = wrapper.offsetHeight - window.innerHeight;
+    const scrollable = wrapper.offsetHeight - getStableViewportHeight();
     if (scrollable <= 0) return 0;
     return Math.max(0, Math.min(1, -rect.top / scrollable));
   }
@@ -736,7 +773,7 @@ function initScrubChart() {
     requestAnimationFrame(() => {
       const rect = wrapper.getBoundingClientRect();
       const wrapperHeight = wrapper.offsetHeight;
-      const viewportHeight = window.innerHeight;
+      const viewportHeight = getStableViewportHeight();
       const scrollable = wrapperHeight - viewportHeight;
 
       const scrolled = -rect.top;
