@@ -474,6 +474,11 @@ main{
   border-top:1px solid var(--line);
 }
 
+.post-books{
+  padding-top:2rem;
+  border-top:1px solid var(--line);
+}
+
 .post-sources a{
   color:var(--black);
   text-decoration:underline;
@@ -1888,7 +1893,7 @@ body{
 /* ===== Story-Sequenz: Box -> Bild -> Weiss -> Text -> Schwarz -> Text -> Bild ===== */
 .story-wrapper{
   position:relative;
-  height:750vh;
+  height:850vh;
   margin:2rem 0;
 }
 
@@ -1920,18 +1925,23 @@ body{
   filter:grayscale(100%);
 }
 
-.story-bg-image--portrait{
-  object-fit:contain;
-  background:#111;
-}
-
-.story-img-wrap{
+.story-img-wrap--contained{
   z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem 1.5rem;
+  box-sizing:border-box;
 }
 
-.story-img-wrap .story-bg-image{
-  position:absolute;
-  inset:0;
+.story-contained-image{
+  max-width:760px;
+  width:100%;
+  height:auto;
+  max-height:75vh;
+  object-fit:contain;
+  filter:grayscale(100%);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
 .story-box,
@@ -1992,7 +2002,7 @@ body{
 
 @media (max-width:640px){
   .story-wrapper{
-    height:640vh;
+    height:720vh;
   }
   .story-box p{
     font-size:1rem;
