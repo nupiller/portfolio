@@ -378,8 +378,8 @@ function initStory() {
     imgFFF:      { el: imgFFF,      in: [0.06, 0.14], out: [0.42, 0.52] },
     textGreta:   { el: textGreta,   in: [0.48, 0.54], out: [0.66, 0.72] },
     bgBlack:     { el: bgBlack,     in: [0.70, 0.76], out: [1.01, 1.02] },
-    textLoukina: { el: textLoukina, in: [0.76, 0.82], out: [0.90, 0.98] },
-    loukinaWrap: { el: loukinaWrap, in: [0.88, 0.97], out: [1.01, 1.02] }
+    textLoukina: { el: textLoukina, in: [0.76, 0.82], out: [0.94, 0.99] },
+    loukinaWrap: { el: loukinaWrap, in: [0.90, 0.98], out: [1.01, 1.02] }
   };
 
   function opacityFor(item, progress) {
@@ -406,7 +406,7 @@ function initStory() {
 
     // Loukina-Text scrollt beim Weggehen nach oben, waehrend das Bild einblendet
     if (textLoukina) {
-      const scrollUp = mapRange(progress, 0.90, 0.98, 0, 1);
+      const scrollUp = mapRange(progress, 0.94, 0.99, 0, 1);
       textLoukina.style.transform = `translateY(${-scrollUp * 80}px)`;
     }
   }
