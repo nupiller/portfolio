@@ -1453,6 +1453,19 @@ body{
   margin:2.5rem auto;
 }
 
+.yt-embed--compact{
+  max-width:200px;
+  margin:1.5rem auto;
+}
+
+.yt-embed--compact .yt-deck-question{
+  font-size:1.05rem !important;
+}
+
+.yt-embed--compact .yt-deck-hint{
+  font-size:0.65rem !important;
+}
+
 .yt-embed-row{
   display:flex;
   flex-wrap:wrap;
