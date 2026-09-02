@@ -2044,3 +2044,31 @@ body{
     animation:none;
   }
 }
+
+/* ===== Tile: Titel im Bild (analog zum Artikel-Hero) ===== */
+.tile-img-title{
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
+
+.tile-img-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.8) 100%);
+}
+
+.tile-title-on-image{
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:1.5rem;
+  color:var(--white);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  letter-spacing:0;
+  font-size:clamp(21px,2.4vw,26px);
+  line-height:1.2;
+  text-shadow:0 2px 12px rgba(0,0,0,0.55);
+}
