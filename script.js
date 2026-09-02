@@ -370,14 +370,16 @@ function initStory() {
   const imgFFF = document.getElementById('storyImgFFF');
   const textGreta = document.getElementById('storyTextGreta');
   const bgBlack = document.getElementById('storyBgBlack');
+  const textLoukina = document.getElementById('storyTextLoukina');
   const loukinaWrap = document.getElementById('storyLoukinaWrap');
 
   const schedule = {
     boxFFF:      { el: boxFFF,      in: [0.00, 0.03], out: [0.14, 0.20] },
-    imgFFF:      { el: imgFFF,      in: [0.08, 0.16], out: [0.36, 0.42] },
-    textGreta:   { el: textGreta,   in: [0.46, 0.52], out: [0.64, 0.70] },
-    bgBlack:     { el: bgBlack,     in: [0.74, 0.80], out: [1.01, 1.02] },
-    loukinaWrap: { el: loukinaWrap, in: [0.84, 0.92], out: [1.01, 1.02] }
+    imgFFF:      { el: imgFFF,      in: [0.06, 0.14], out: [0.42, 0.52] },
+    textGreta:   { el: textGreta,   in: [0.48, 0.54], out: [0.66, 0.72] },
+    bgBlack:     { el: bgBlack,     in: [0.70, 0.76], out: [1.01, 1.02] },
+    textLoukina: { el: textLoukina, in: [0.76, 0.82], out: [0.90, 0.98] },
+    loukinaWrap: { el: loukinaWrap, in: [0.88, 0.97], out: [1.01, 1.02] }
   };
 
   function opacityFor(item, progress) {
@@ -398,9 +400,15 @@ function initStory() {
       if (!item.el) return;
       item.el.style.opacity = opacityFor(item, progress);
     });
-    // Leichter Parallax-Effekt auf den Bildern, solange sie sichtbar sind
+
+    // Leichter Parallax-Effekt auf dem FFF-Bild, solange es sichtbar ist
     if (imgFFF) imgFFF.style.transform = `translateY(${(0.5 - progress) * 40}px)`;
-    if (loukinaWrap) loukinaWrap.style.transform = `translateY(${(0.9 - progress) * 40}px)`;
+
+    // Loukina-Text scrollt beim Weggehen nach oben, waehrend das Bild einblendet
+    if (textLoukina) {
+      const scrollUp = mapRange(progress, 0.90, 0.98, 0, 1);
+      textLoukina.style.transform = `translateY(${-scrollUp * 80}px)`;
+    }
   }
 
   let ticking = false;
