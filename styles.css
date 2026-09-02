@@ -2173,3 +2173,34 @@ body{
     box-shadow:5px 5px 0 var(--accent);
   }
 }
+
+/* ===== Kapitel-Frage: Steigerung fuer den "krasseren" Effekt ===== */
+.chapter-question--bold{
+  font-size:clamp(2.4rem, 6vw, 3.6rem) !important;
+  color:var(--accent) !important;
+  font-weight:700 !important;
+}
+
+.chapter-question--bold.is-flickered{
+  animation:question-flicker-bold 1.6s steps(1) forwards !important;
+}
+
+@keyframes question-flicker-bold{
+  0%   { opacity:0; text-shadow:none; }
+  4%   { opacity:1; text-shadow:0 0 18px rgba(255,90,44,0.8); }
+  8%   { opacity:0.15; text-shadow:none; }
+  12%  { opacity:1; text-shadow:0 0 18px rgba(255,90,44,0.8); }
+  18%  { opacity:0.2; text-shadow:none; }
+  22%  { opacity:1; text-shadow:0 0 22px rgba(255,90,44,0.9); }
+  40%  { opacity:0.4; text-shadow:0 0 8px rgba(255,90,44,0.4); }
+  45%  { opacity:1; text-shadow:0 0 22px rgba(255,90,44,0.9); }
+  65%  { opacity:0.6; text-shadow:0 0 8px rgba(255,90,44,0.4); }
+  70%  { opacity:1; text-shadow:0 0 24px rgba(255,90,44,1); }
+  100% { opacity:1; text-shadow:0 0 24px rgba(255,90,44,1); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .chapter-question--bold{
+    opacity:1 !important;
+  }
+}
