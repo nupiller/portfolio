@@ -1422,6 +1422,55 @@ body{
   margin-bottom:0;
 }
 
+/* ===== Pop-up: Video-Modal ===== */
+.video-modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem;
+  background:rgba(0,0,0,0.7);
+  opacity:0;
+  transition:opacity 0.25s ease;
+}
+
+.video-modal-overlay.is-open{
+  opacity:1;
+}
+
+.video-modal-overlay[hidden]{
+  display:none;
+}
+
+.video-modal{
+  position:relative;
+  max-width:400px;
+  width:100%;
+  transform:translateY(16px) scale(0.98);
+  transition:transform 0.25s ease;
+}
+
+.video-modal-overlay.is-open .video-modal{
+  transform:translateY(0) scale(1);
+}
+
+.video-modal .yt-embed{
+  margin:0 auto;
+}
+
+.video-modal .case-modal-close{
+  top:-44px;
+  right:0;
+  background:rgba(255,255,255,0.15);
+  color:var(--white);
+}
+
+.video-modal .case-modal-close:hover{
+  background:rgba(255,255,255,0.3);
+}
+
 .case-modal-sources{
   margin-top:1.25rem !important;
   padding-top:1rem;
