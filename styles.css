@@ -1758,6 +1758,7 @@ body{
   background:#111;
   display:block;
   border-radius:4px;
+  filter:grayscale(100%);
 }
 
 .side-by-side-image figcaption{
@@ -1940,7 +1941,7 @@ body{
   height:auto;
   max-height:75vh;
   object-fit:contain;
-  filter:grayscale(100%);
+  filter:grayscale(100%) !important;
   box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
