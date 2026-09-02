@@ -664,6 +664,22 @@ main{
   text-shadow:0 2px 14px rgba(0,0,0,0.4);
 }
 
+@media (max-width:640px){
+  .hero-panel{
+    padding:1.5rem 1.25rem;
+  }
+  .hero-panel .post-title{
+    font-size:clamp(30px, 9vw, 44px);
+  }
+  .hero-panel p{
+    font-size:1.15rem;
+    line-height:1.5;
+  }
+  .hero-scroll-hint{
+    bottom:1.5rem;
+  }
+}
+
 
 /* Hintergrund der Beitragsseite bleibt weiss */
 body.page-post{
@@ -780,6 +796,15 @@ figure.fade-in.is-visible{
 .full-bleed{
   margin-left:-2.25rem;
   margin-right:-2.25rem;
+}
+
+/* CSS-Basis fuer volle Breite: zuverlaessig auf Mobile (kein Scrollbar-Problem
+   dort). Auf Desktop wird das per JS (initViewportBleed) noch praeziser
+   nachjustiert -- siehe script.js */
+.bleed-viewport{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
 }
 
 @media (max-width:720px){
@@ -1009,7 +1034,7 @@ body{
 }
 
 #scrubSvg{
-  flex:1 1 560px;
+  flex:1 1 auto;
   width:100%;
   max-width:640px;
   height:auto;
@@ -2006,10 +2031,16 @@ body{
   .story-wrapper{
     height:720vh;
   }
+  .story-box,
+  .story-text{
+    padding:1.5rem 1rem;
+  }
   .story-box p{
     font-size:1rem;
     padding:1.4rem 1.6rem;
-    max-width:90vw;
+    max-width:100%;
+    width:100%;
+    box-sizing:border-box;
   }
   .story-text p{
     font-size:clamp(1.4rem, 5.5vw, 1.9rem);
@@ -2203,5 +2234,25 @@ body{
 @media (prefers-reduced-motion: reduce){
   .chapter-question--bold{
     opacity:1 !important;
+  }
+}
+
+/* ===== Video-Deck: Text auf Mobile verkleinern (fixe Rahmenhoehe durch aspect-ratio) ===== */
+@media (max-width:640px){
+  .yt-deck .yt-deck-question{
+    font-size:1.4rem;
+  }
+  .yt-embed-row .yt-deck .yt-deck-question{
+    font-size:1.1rem;
+  }
+}
+
+/* ===== Kapitelübersicht: etwas kompakter auf Mobile ===== */
+@media (max-width:640px){
+  .toc{
+    padding:1.5rem;
+  }
+  .toc-list a{
+    font-size:1.1rem;
   }
 }
