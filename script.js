@@ -347,55 +347,13 @@ function initScenes() {
 
 // Echte Kante-zu-Kante-Breite: per JS gemessen statt per CSS-Formel berechnet
 // (umgeht Scrollbar-Breite- und verschachtelte-Container-Probleme zuverlässig)
+// Volle Breite (.bleed-viewport) wird komplett per CSS geloest
+// (width:100vw + calc(50% - 50vw) Margin). Das ist zuverlaessiger als jede
+// JS-Messung, die durch Timing-Probleme (z.B. noch ladende Schriften) leicht
+// falsche, eingefrorene Werte liefern kann -- genau das hatte zuvor an
+// manchen Stellen zu falsch ausgerichteten Vollbild-Elementen gefuehrt.
 function initViewportBleed() {
-  const els = document.querySelectorAll('.bleed-viewport');
-  if (els.length === 0) return;
-
-  // Auf schmalen Screens (Mobile) gibt es das Scrollbar-Breite-Problem
-  // nicht -> die reine CSS-Loesung (width:100vw + calc-Margin) reicht dort
-  // zuverlaessig aus. JS-Messung nur auf Desktop, wo Scrollbars Platz
-  // wegnehmen koennen.
-  const MOBILE_BREAKPOINT = 768;
-
-  function clearInlineStyles() {
-    els.forEach((el) => {
-      el.style.marginLeft = '';
-      el.style.marginRight = '';
-      el.style.width = '';
-    });
-  }
-
-  function apply() {
-    if (window.innerWidth < MOBILE_BREAKPOINT) {
-      clearInlineStyles(); // CSS-Fallback uebernimmt
-      return;
-    }
-    const viewportWidth = document.documentElement.clientWidth;
-    els.forEach((el) => {
-      el.style.marginLeft = '';
-      el.style.marginRight = '';
-      el.style.width = '';
-      const rect = el.getBoundingClientRect();
-      const leftGap = rect.left;
-      const rightGap = viewportWidth - rect.right;
-      el.style.marginLeft = `${-leftGap}px`;
-      el.style.marginRight = `${-rightGap}px`;
-      el.style.width = `${viewportWidth}px`;
-    });
-  }
-
-  // Nur auf echte Breiten-Aenderungen reagieren, nicht auf Hoehen-Aenderungen
-  // (mobile Adressleiste aendert staendig die Hoehe, nicht die Breite --
-  // das war vermutlich die Ursache fuer das "Wackeln")
-  let lastWidth = window.innerWidth;
-  function onResize() {
-    if (window.innerWidth === lastWidth) return;
-    lastWidth = window.innerWidth;
-    apply();
-  }
-
-  apply();
-  window.addEventListener('resize', onResize);
+  // absichtlich leer -- reines CSS uebernimmt die volle Breite
 }
 
 // Story-Sequenz: Box -> Bild -> Weiss -> Text -> Schwarz -> Text -> Bild
