@@ -1005,13 +1005,13 @@ body{
   height:84vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-start;
   background:var(--white);
   border:1px solid var(--line);
   border-radius:6px;
   padding:2rem 1.5rem;
   box-sizing:border-box;
-  overflow:hidden;
+  overflow-y:auto;
 }
 
 .scrub-chart-year{
