@@ -837,6 +837,10 @@ figure.fade-in.is-visible{
   max-height:80vh;
 }
 
+body{
+  overflow-x:clip; /* wie hidden, aber bricht position:sticky in Safari NICHT (im Gegensatz zu overflow:hidden) */
+}
+
 /* ===== Inline-Link-Vorschau (Hover/Tap) ===== */
 .link-preview{
   position:relative;
