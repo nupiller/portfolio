@@ -798,9 +798,9 @@ figure.fade-in.is-visible{
   margin-right:-2.25rem;
 }
 
-/* CSS-Basis fuer volle Breite: zuverlaessig auf Mobile (kein Scrollbar-Problem
-   dort). Auf Desktop wird das per JS (initViewportBleed) noch praeziser
-   nachjustiert -- siehe script.js */
+/* Volle Breite: reine CSS-Loesung, gilt fuer alle Bildschirmgroessen.
+   Keine JS-Messung mehr (siehe initViewportBleed in script.js) -- das war
+   fehleranfaellig und fuehrte zu falsch ausgerichteten Elementen. */
 .bleed-viewport{
   width:100vw;
   margin-left:calc(50% - 50vw);
