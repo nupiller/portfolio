@@ -837,10 +837,6 @@ figure.fade-in.is-visible{
   max-height:80vh;
 }
 
-body{
-  overflow-x:hidden; /* verhindert horizontalen Scrollbalken durch 100vw-Elemente */
-}
-
 /* ===== Inline-Link-Vorschau (Hover/Tap) ===== */
 .link-preview{
   position:relative;
