@@ -16,6 +16,28 @@ function getStableViewportHeight() {
   return window.innerHeight;
 }
 
+// Cached Element-Position: vermeidet getBoundingClientRect() WAEHREND des
+// Scrollens (das erzwingt bei jedem Aufruf ein Browser-Relayout -> Ruckeln
+// auf schwaecheren Geraeten). Position wird nur beim Laden/Resize gemessen,
+// waehrend des Scrollens nutzen wir stattdessen das ohnehin bekannte
+// window.scrollY.
+function createScrollTracker(el) {
+  let topOffset = 0;
+  function measure() {
+    topOffset = el.getBoundingClientRect().top + window.scrollY;
+  }
+  measure();
+  window.addEventListener('resize', measure);
+  return {
+    progress() {
+      const scrollable = el.offsetHeight - getStableViewportHeight();
+      if (scrollable <= 0) return 0;
+      return Math.max(0, Math.min(1, (window.scrollY - topOffset) / scrollable));
+    },
+    remeasure: measure
+  };
+}
+
 function initLazyBg() {
   const els = document.querySelectorAll('.bg-lazy');
   if (!('IntersectionObserver' in window) || els.length === 0) {
@@ -384,11 +406,9 @@ function initStory() {
     return fadeIn * (1 - fadeOut);
   }
 
+  const tracker = createScrollTracker(wrapper);
   function currentProgress() {
-    const rect = wrapper.getBoundingClientRect();
-    const scrollable = wrapper.offsetHeight - getStableViewportHeight();
-    if (scrollable <= 0) return 0;
-    return Math.max(0, Math.min(1, -rect.top / scrollable));
+    return tracker.progress();
   }
 
   function render(progress) {
@@ -524,11 +544,9 @@ function initHero() {
     if (scrollHint) scrollHint.style.opacity = progress <= 0.02 ? 1 : 0;
   }
 
+  const tracker = createScrollTracker(wrapper);
   function currentProgress() {
-    const rect = wrapper.getBoundingClientRect();
-    const scrollable = wrapper.offsetHeight - getStableViewportHeight();
-    if (scrollable <= 0) return 0;
-    return Math.max(0, Math.min(1, -rect.top / scrollable));
+    return tracker.progress();
   }
 
   let ticking = false;
@@ -724,21 +742,13 @@ function initScrubChart() {
   }
 
   let ticking = false;
+  const tracker = createScrollTracker(wrapper);
 
   function onScroll() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const rect = wrapper.getBoundingClientRect();
-      const wrapperHeight = wrapper.offsetHeight;
-      const viewportHeight = getStableViewportHeight();
-      const scrollable = wrapperHeight - viewportHeight;
-
-      const scrolled = -rect.top;
-      let progress = scrollable > 0 ? scrolled / scrollable : 0;
-      progress = Math.max(0, Math.min(1, progress));
-
-      render(progress);
+      render(tracker.progress());
       ticking = false;
     });
   }
