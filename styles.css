@@ -557,7 +557,8 @@ main{
 .hero-wrapper{
   position:relative;
   height:420vh;
-  margin:2rem 0;
+  margin-top:2rem;
+  margin-bottom:2rem;
 }
 
 .hero-sticky{
@@ -1724,7 +1725,8 @@ body{
   align-items:center;
   justify-content:center;
   min-height:70vh;
-  margin:3rem 0;
+  margin-top:3rem;
+  margin-bottom:3rem;
   padding:3rem 1.5rem;
   box-sizing:border-box;
   background:#0a0a0a;
@@ -1757,7 +1759,8 @@ body{
 @media (max-width:640px){
   .chapter-announce{
     min-height:55vh;
-    margin:2rem 0;
+    margin-top:2rem;
+    margin-bottom:2rem;
     padding:2rem 1.25rem;
   }
 }
@@ -1921,7 +1924,8 @@ body{
 .story-wrapper{
   position:relative;
   height:850vh;
-  margin:2rem 0;
+  margin-top:2rem;
+  margin-bottom:2rem;
 }
 
 .story-sticky{
