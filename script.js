@@ -395,7 +395,7 @@ function initStory() {
     boxFFF:      { el: boxFFF,      in: [0.00, 0.03], out: [0.14, 0.20] },
     imgFFF:      { el: imgFFF,      in: [0.06, 0.14], out: [0.42, 0.52] },
     creditFFF:   { el: creditFFF,   in: [0.06, 0.14], out: [0.42, 0.52] },
-    bgBlack:     { el: bgBlack,     in: [0.38, 0.46], out: [1.01, 1.02] },
+    bgBlack:     { el: bgBlack,     in: [0.00, 0.02], out: [1.01, 1.02] },
     textGreta:   { el: textGreta,   in: [0.48, 0.54], out: [0.66, 0.72] },
     textLoukina: { el: textLoukina, in: [0.76, 0.82], out: [0.94, 0.99] },
     loukinaWrap: { el: loukinaWrap, in: [0.90, 0.98], out: [1.01, 1.02] }
