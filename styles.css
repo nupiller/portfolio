@@ -587,7 +587,7 @@ main{
 .hero-white{
   position:absolute;
   inset:0;
-  background:var(--white);
+  background:#0a0a0a;
   opacity:0;
   pointer-events:none;
 }
